@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<dictionary title="Shion">
+	<suite name="Shion Suite" code="shon" description="Commands and classes for Shion scripting.">
+		<class name="device" code="devc" description="A device controlled using Shion." plural="devices">
+			<cocoa class="Device"/>
+			<property name="name" code="pnam" description="name of the device" type="text" access="r">
+				<cocoa key="name"/>
+			</property>
+			<property name="address" code="addr" description="address of the device" type="text" access="r">
+				<cocoa key="address"/>
+			</property>
+			<property name="type" code="type" description="type of device" type="text" access="r">
+				<cocoa key="type"/>
+			</property>
+			<property name="state" code="stat" description="current state of the device" type="text" access="r">
+				<cocoa key="state"/>
+			</property>
+			<property name="id" code="ID  " description="Identifier for the device (same as address)." type="text" access="r">
+				<cocoa key="identifier"/>
+			</property>
+			<property name="model" code="modl" description="device model" type="text" access="r">
+				<cocoa key="model"/>
+			</property>
+			<property name="level" code="levl" description="light level of a lamp" type="integer">
+				<cocoa key="level"/>
+			</property>
+			<property name="thermostat mode" code="tmmd" description="operation mode of the thermostat" type="text">
+				<cocoa key="thermostat_mode"/>
+			</property>
+			<property name="heat point" code="tmhp" description="heat point of the thermostat" type="integer">
+				<cocoa key="thermostat_heat"/>
+			</property>
+			<property name="cool point" code="tmcp" description="cool point of the thermostat" type="integer">
+				<cocoa key="thermostat_cool"/>
+			</property>
+			<property name="temperature" code="tmtp" description="temperature at the thermostat" type="integer">
+				<cocoa key="thermostat_temperature"/>
+			</property>
+			<property name="fan activity" code="tmfs" description="thermostat fan state" type="boolean">
+				<cocoa key="thermostat_fan"/>
+			</property>
+			<responds-to command="activate">
+				<cocoa method="activate:"/>
+			</responds-to>
+			<responds-to command="deactivate">
+				<cocoa method="deactivate:"/>
+			</responds-to>
+			<responds-to command="dim">
+				<cocoa method="dim:"/>
+			</responds-to>
+			<responds-to command="ring">
+				<cocoa method="chime:"/>
+			</responds-to>
+			<responds-to command="activate all lights">
+				<cocoa method="allLightsOn:"/>
+			</responds-to>
+			<responds-to command="deactivate all devices">
+				<cocoa method="allOff:"/>
+			</responds-to>
+			<responds-to command="deactivate all lights">
+				<cocoa method="allLightsOff:"/>
+			</responds-to>
+			<responds-to command="brighten">
+				<cocoa method="brighten:"/>
+			</responds-to>
+			<responds-to command="take picture">
+				<cocoa method="takePicture:"/>
+			</responds-to>
+		</class>
+		<class name="application" code="capp" description="The application&apos;s top-level scripting object.">
+			<cocoa class="NSApplication"/>
+			<element type="device" access="r">
+				<cocoa key="devices"/>
+			</element>
+			<element type="snapshot" access="r">
+				<cocoa key="snapshots"/>
+			</element>
+			<element type="trigger" access="r">
+				<cocoa key="triggers"/>
+			</element>
+			<property name="sunrise" code="snrs" description="sunrise time" type="date" access="r">
+				<cocoa key="sunrise"/>
+			</property>
+			<property name="sunset" code="snst" description="sunset time" type="date" access="r">
+				<cocoa key="sunset"/>
+			</property>
+		</class>
+		<class name="snapshot" code="snap" description="A snapshot of device settings" plural="snapshots">
+			<cocoa class="Snapshot"/>
+			<property name="name" code="pnam" description="name of the snapshot" type="text" access="r">
+				<cocoa key="name"/>
+			</property>
+			<responds-to command="execute">
+				<cocoa method="execute:"/>
+			</responds-to>
+		</class>
+		<class name="trigger" code="trig" description="Trigger" plural="triggers">
+			<cocoa class="Trigger"/>
+			<property name="name" code="pnam" description="name of the trigger" type="text" access="r">
+				<cocoa key="name"/>
+			</property>
+			<responds-to command="fire">
+				<cocoa method="fire:"/>
+			</responds-to>
+		</class>
+		<command name="activate" code="shonactv" description="activates a device.">
+			<direct-parameter description="Device to be activated" type="device"/>
+		</command>
+		<command name="deactivate" code="shondeac" description="Deactivates a device">
+			<direct-parameter description="Device to be deactivated." type="device"/>
+		</command>
+		<command name="dim" code="shondimm" description="Dims a device.">
+			<direct-parameter description="Device to be dimmed." type="device"/>
+		</command>
+		<command name="brighten" code="shonbrit" description="Brightens a device.">
+			<direct-parameter description="Device to be brightened." type="device"/>
+		</command>
+		<command name="ring" code="shonring" description="Rings a chime device.">
+			<direct-parameter description="Device to be rung." type="device"/>
+		</command>
+		<command name="disable remote sharing" code="disremot" description="disables remote sharing">
+			<cocoa class="DisableRemoteSharingCommand"/>
+		</command>
+		<command name="enable remote sharing" code="enaremot" description="enables remote sharing">
+			<cocoa class="EnableRemoteSharingCommand"/>
+		</command>
+		<command name="activate all lights" code="shonatlt" description="acitvates all lights in an X10 house code">
+			<direct-parameter description="X10 house" type="device"/>
+		</command>
+		<command name="deactivate all lights" code="shondelt" description="deactivates all lights in an X10 house code">
+			<direct-parameter description="X10 house" type="device"/>
+		</command>
+		<command name="deactivate all devices" code="shondeal" description="deactivates all devices in an X10 house code">
+			<direct-parameter description="X10 house" type="device"/>
+		</command>
+		<command name="execute" code="shonexec" description="executes a snapshot">
+			<direct-parameter description="Snapshot" type="snapshot"/>
+		</command>
+		<command name="take picture" code="shonTkpt" description="takes a picture.">
+			<direct-parameter description="Camera device" type="device"/>
+		</command>
+		<command name="fire" code="shonFire" description="manually fires a trigger">
+			<direct-parameter description="Trigger" type="trigger"/>
+		</command>
+	</suite>
+</dictionary>

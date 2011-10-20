@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>image</key>
+		<string>shion-tip-001.png</string>
+		<key>description</key>
+		<string>Shion&apos;s functions are available from the status icon in the upper-right of your screen.</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>shion-tip-002.png</string>
+		<key>description</key>
+		<string>Having problems with Shion? Submit problems and suggestions using the issue reporter. You can find it in the Shion menu under &quot;Report An Issue...&quot;</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>shion-tip-003.png</string>
+		<key>description</key>
+		<string>To add a new device, click the "+" button in the bottom-left of the Console window. Follow the menus until you find the kind of device you want. You can add triggers and snapshots as well.</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>shion-tip-004.png</string>
+		<key>description</key>
+		<string>Are you an iOS user interested in using Shion on your iPad or iPhone? Learn more about the Shion mobile apps and online service at &lt;www.shiononline.com&gt;. (Image credit: ivyfield@flickr)</string>
+	</dict>
+	<dict>
+		<key>image</key>
+		<string>shion-tip-005.png</string>
+		<key>description</key>
+		<string>The bottom-right of the Console displays the controls for devices and a graphical view of their history. Each row represents 24 hours. Enlarge the Console to display more days or a finer-grained view.</string>
+	</dict>
+</array>
+</plist>

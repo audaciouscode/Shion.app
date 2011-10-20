@@ -1,0 +1,17 @@
+//
+//  ActivateSnapshotCommand.h
+//  Shion
+//
+//  Created by Chris Karr on 8/1/09.
+//  Copyright 2009 CASIS LLC. All rights reserved.
+//
+
+#import <Cocoa/Cocoa.h>
+#import "SnapshotCommand.h"
+
+@interface ActivateSnapshotCommand : SnapshotCommand
+{
+
+}
+
+@end
