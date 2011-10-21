@@ -6,6 +6,8 @@
 //  Copyright 2010 CASIS LLC. All rights reserved.
 //
 
+#import <Shion/ASPowerLinc2412Controller.h>
+
 #import "Controller.h"
 #import "DeviceManager.h"
 #import "EventManager.h"
@@ -42,7 +44,6 @@
 {
 	return lastStatus;
 }
-
 
 - (void) calculateStatus:(NSTimer *) theTimer
 {
@@ -155,5 +156,35 @@
 {
 	return NO;
 }
+
+- (void) setValue:(id)value forKey:(NSString *)key
+{
+	if ([key isEqual:@"start_link"])
+	{
+		ASDeviceController * deviceController = [self deviceController];
+		
+		if ([deviceController isKindOfClass:[ASPowerLinc2412Controller class]])
+		{
+			ASPowerLinc2412Controller * serialInsteon = (ASPowerLinc2412Controller *) deviceController;
+			
+			[serialInsteon cancelAllLink];
+			[serialInsteon startAllLink];
+		}
+	}
+	else if ([key isEqual:@"stop_link"])
+	{
+		ASDeviceController * deviceController = [self deviceController];
+		
+		if ([deviceController isKindOfClass:[ASPowerLinc2412Controller class]])
+		{
+			ASPowerLinc2412Controller * serialInsteon = (ASPowerLinc2412Controller *) deviceController;
+			
+			[serialInsteon startAllLink];
+		}
+	}
+	else
+		[super setValue:value forKey:key];
+}
+
 
 @end

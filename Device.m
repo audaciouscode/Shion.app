@@ -6,6 +6,8 @@
 //  Copyright 2010 CASIS LLC. All rights reserved.
 //
 
+#include <stdlib.h>
+
 #import "Device.h"
 
 #import "MotionSensor.h"
@@ -71,6 +73,9 @@
 
 - (void) fetchStatus
 {
+	if ((arc4random() % 5 == 0))
+		[self fetchInfo];
+	
 	if ([self checksStatus] && [self armed])
 	{
 		NSMutableDictionary * command = [NSMutableDictionary dictionary];

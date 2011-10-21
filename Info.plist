@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>audc</string>
 	<key>CFBundleVersion</key>
-	<string>3.0</string>
+	<string>3.0.1</string>
 	<key>IndigoFixURL</key>
 	<string>https://www.shiononline.com/software/shion-app/troubleshooting/#drivers</string>
 	<key>ThinkingHomeFixURL</key>

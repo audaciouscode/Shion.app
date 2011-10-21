@@ -6,6 +6,8 @@
 //  Copyright 2010 CASIS LLC. All rights reserved.
 //
 
+#import <Shion/ASPowerLinc2412Controller.h>
+
 #import "ConsoleManager.h"
 
 #import "DeviceManager.h"
@@ -701,7 +703,14 @@ static ConsoleManager * sharedInstance = nil;
 			else if ([device isKindOfClass:[PowerSensor class]])
 				return @"Power Sensor";
 			else if ([device isKindOfClass:[Controller class]])
+			{
+				Controller * controller = (Controller *) device;
+				
+				if ([[controller deviceController] isKindOfClass:[ASPowerLinc2412Controller class]])
+					return @"Insteon Serial Controller";
+				
 				return @"Controller";
+			}
 			else if ([device isKindOfClass:[House class]])
 				return @"House";
 			else if ([device isKindOfClass:[MobileClient class]])

@@ -23,6 +23,18 @@
 
 static LogManager * sharedInstance = nil;
 
+- (id) init
+{
+	if (self = [super init])
+	{
+		[NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehavior10_4];
+		
+		formatter = [[NSDateFormatter alloc] init];
+	}
+
+	return self;
+}
+
 + (LogManager *) sharedInstance
 {
     @synchronized(self) 
@@ -32,10 +44,9 @@ static LogManager * sharedInstance = nil;
             [[self alloc] init]; // assignment not done here
 
 			[[NSNotificationCenter defaultCenter] addObserver:sharedInstance selector:@selector(log:) name:LOG_NOTIFICATION object:nil];
-
-			formatter = [[NSDateFormatter alloc] init];
 		}
     }
+
     return sharedInstance;
 }
 
@@ -99,8 +110,6 @@ static LogManager * sharedInstance = nil;
 
 - (void) write:(NSDictionary *) theEvent
 {
-	[NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehavior10_4];
-
 	NSDate * now = [NSDate date];
 	
 	NSFileManager * fileManager = [NSFileManager defaultManager];

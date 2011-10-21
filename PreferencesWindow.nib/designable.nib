@@ -611,6 +611,17 @@ VkNQLmh0bSkuICA</string>
 																					<string key="NSAction">_popUpItemAction:</string>
 																					<reference key="NSTarget" ref="848378465"/>
 																				</object>
+																				<object class="NSMenuItem" id="763459974">
+																					<reference key="NSMenu" ref="511432020"/>
+																					<string key="NSTitle">INSTEON Portable USB Adapter</string>
+																					<string key="NSKeyEquiv"/>
+																					<int key="NSKeyEquivModMask">1048576</int>
+																					<int key="NSMnemonicLoc">2147483647</int>
+																					<reference key="NSOnImage" ref="418813221"/>
+																					<reference key="NSMixedImage" ref="842075899"/>
+																					<string key="NSAction">_popUpItemAction:</string>
+																					<reference key="NSTarget" ref="848378465"/>
+																				</object>
 																			</array>
 																		</object>
 																		<int key="NSPreferredEdge">1</int>
@@ -3427,6 +3438,7 @@ ZXNzLiBPbWl0IGFueSBvdGhlciBjaGFyYWN0ZXJzLCBzdWNoIGFzICdodHRwOi8vJy4</string>
 							<reference ref="150722974"/>
 							<reference ref="802219086"/>
 							<reference ref="382604912"/>
+							<reference ref="763459974"/>
 						</array>
 						<reference key="parent" ref="848378465"/>
 					</object>
@@ -4425,6 +4437,11 @@ ZXNzLiBPbWl0IGFueSBvdGhlciBjaGFyYWN0ZXJzLCBzdWNoIGFzICdodHRwOi8vJy4</string>
 						<reference key="object" ref="637883320"/>
 						<reference key="parent" ref="219134339"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">612</int>
+						<reference key="object" ref="763459974"/>
+						<reference key="parent" ref="511432020"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -4586,7 +4603,7 @@ ZXNzLiBPbWl0IGFueSBvdGhlciBjaGFyYWN0ZXJzLCBzdWNoIGFzICdodHRwOi8vJy4</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="40.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="41.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="42.IBEditorWindowLastContentRect">{{341, 381}, {272, 83}}</string>
+				<string key="42.IBEditorWindowLastContentRect">{{495, 361}, {274, 103}}</string>
 				<string key="42.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="43.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="438.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4739,6 +4756,7 @@ ZXNzLiBPbWl0IGFueSBvdGhlciBjaGFyYWN0ZXJzLCBzdWNoIGFzICdodHRwOi8vJy4</string>
 				<boolean value="YES" key="609.IBNumberFormatterLocalizesFormatMetadataKey"/>
 				<string key="609.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="61.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="612.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="62.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="63.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="64.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4771,7 +4789,7 @@ ZXNzLiBPbWl0IGFueSBvdGhlciBjaGFyYWN0ZXJzLCBzdWNoIGFzICdodHRwOi8vJy4</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">611</int>
+			<int key="maxID">612</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

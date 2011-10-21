@@ -12,6 +12,7 @@
 
 #import <Shion/ASPowerLinc2414Controller.h>
 #import <Shion/ASPowerLinc2412Controller.h>
+#import <Shion/ASPowerLincSerialRFController.h>
 #import <Shion/ASCM15AUSBController.h>
 #import <Shion/ASCM11AController.h>
 #import <Shion/ASCM17AController.h>
@@ -169,6 +170,25 @@ static DeviceManager * sharedInstance = nil;
 				[controller setAddress:[[controllerDevice getAddress] description]];
 			
 			[controller setModel:@"PowerLinc 2413"];
+			[controller setPlatform:@"Insteon"];
+			
+			[controller setName:[controller model]];
+		}
+	}
+	else if ([[details valueForKey:SERIAL_CONTROLLER_MODEL] isEqual:CONTROLLER_PLRFUSB])
+	{
+		ASPowerLincSerialRFController * controllerDevice = [ASPowerLincSerialRFController controllerWithPath:portPath];
+		
+		if (controllerDevice != nil)
+		{
+			controller = [Controller controller];
+			
+			[controller setDeviceController:controllerDevice];
+			
+			if ([controllerDevice getAddress] != nil)
+				[controller setAddress:[[controllerDevice getAddress] description]];
+			
+			[controller setModel:@"INSTEON Portable USB Adapter"];
 			[controller setPlatform:@"Insteon"];
 			
 			[controller setName:[controller model]];

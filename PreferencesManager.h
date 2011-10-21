@@ -26,6 +26,7 @@
 
 #define CONTROLLER_PL2412 @"PowerLinc 2412"
 #define CONTROLLER_PL2413 @"PowerLinc 2413"
+#define CONTROLLER_PLRFUSB @"INSTEON Portable USB Adapter"
 #define CONTROLLER_SL2414 @"SmartLinc 2414N"
 #define CONTROLLER_SL2414_BETA @"SmartLinc 2414N (Beta)"
 #define CONTROLLER_EZSRVE @"SimpleHomeNet EZSrve"

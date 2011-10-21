@@ -187,7 +187,7 @@ static PreferencesManager * sharedInstance = nil;
 	}
 	else if ([key isEqual:SERIAL_CONTROLLER_MODELS])
 	{
-		return [NSArray arrayWithObjects:CONTROLLER_CM11A, CONTROLLER_PL2412, CONTROLLER_PL2413, nil];
+		return [NSArray arrayWithObjects:CONTROLLER_CM11A, CONTROLLER_PL2412, CONTROLLER_PL2413, CONTROLLER_PLRFUSB, nil];
 	}
 	else if ([key isEqual:LOG_DAYS])
 	{

@@ -19,7 +19,7 @@
 		[self setValue:@"TED 5000" forKey:MODEL];
 		
 		buffer = [[NSMutableData alloc] init];
-		lastUsage = -9999;
+		lastUsage = 0;
 		lastTotal = -9999;
 		[[NSTimer scheduledTimerWithTimeInterval:60.0 target:self selector:@selector(updateReading:) userInfo:nil repeats:YES] retain];
 	}
@@ -77,7 +77,10 @@
 			NSXMLElement * mtd = [[total elementsForName:@"PowerMTD"] lastObject];
 			
 			NSString * powerNow = [now stringValue];
+			
 			NSNumber * level = [NSNumber numberWithInt:[powerNow intValue]];
+			
+			NSLog(@"POWER NOW: %f - %f", [level floatValue], lastUsage);
 			
 			if (fabs([level floatValue] - lastUsage) > 25 && fabs([level floatValue] - lastUsage) < 10000)
 			{

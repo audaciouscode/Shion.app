@@ -1,0 +1,1221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>0X00 0X04</key>
+	<dict>
+		<key>category</key>
+		<string>0X000X04</string>
+		<key>model</key>
+		<string>2430</string>
+		<key>name</key>
+		<string>ControLinc</string>
+	</dict>
+	<key>0X00 0X05</key>
+	<dict>
+		<key>category</key>
+		<string>0X000X05</string>
+		<key>model</key>
+		<string>2440</string>
+		<key>name</key>
+		<string>RemoteLinc</string>
+	</dict>
+	<key>0X00 0X06</key>
+	<dict>
+		<key>category</key>
+		<string>0X000X06</string>
+		<key>model</key>
+		<string>2830</string>
+		<key>name</key>
+		<string>ICON Tabletop Controller</string>
+	</dict>
+	<key>0X00 0X08</key>
+	<dict>
+		<key>category</key>
+		<string>0X000X08</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>EZBridge/EZServer</string>
+	</dict>
+	<key>0X00 0X09</key>
+	<dict>
+		<key>category</key>
+		<string>0X000X09</string>
+		<key>model</key>
+		<string>2442</string>
+		<key>name</key>
+		<string>SignaLinc RF Signal Enhancer</string>
+	</dict>
+	<key>0X00 0X0A</key>
+	<dict>
+		<key>category</key>
+		<string>0X000X0A</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Poolux LCD Controller</string>
+	</dict>
+	<key>0X00 0X0B</key>
+	<dict>
+		<key>category</key>
+		<string>0X000X0B</string>
+		<key>model</key>
+		<string>2443</string>
+		<key>name</key>
+		<string>Access Point (Wireless Phase Coupler)</string>
+	</dict>
+	<key>0X00 0X0C</key>
+	<dict>
+		<key>category</key>
+		<string>0X000X0C</string>
+		<key>model</key>
+		<string>12005</string>
+		<key>name</key>
+		<string>IES Color Touchscreen</string>
+	</dict>
+	<key>0X00 0X0E</key>
+	<dict>
+		<key>category</key>
+		<string>0X000X0E</string>
+		<key>model</key>
+		<string>2440EZ</string>
+		<key>name</key>
+		<string>RemoteLinc EZ</string>
+	</dict>
+	<key>0X00 0X10</key>
+	<dict>
+		<key>category</key>
+		<string>0X000X10</string>
+		<key>model</key>
+		<string>2444A2WH4</string>
+		<key>name</key>
+		<string>RemoteLinc 2 Keypad, 4 Scene</string>
+	</dict>
+	<key>0X00 0X11</key>
+	<dict>
+		<key>category</key>
+		<string>0X000X11</string>
+		<key>model</key>
+		<string>2444A3WH</string>
+		<key>name</key>
+		<string>RemoteLinc 2 Switch</string>
+	</dict>
+	<key>0X00 0X12</key>
+	<dict>
+		<key>category</key>
+		<string>0X000X12</string>
+		<key>model</key>
+		<string>2444A2WH8</string>
+		<key>name</key>
+		<string>RemoteLinc 2 Keypad, 8 Scene</string>
+	</dict>
+	<key>0X01 0X00</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X00</string>
+		<key>model</key>
+		<string>2456D3</string>
+		<key>name</key>
+		<string>LampLinc 3-Pin</string>
+	</dict>
+	<key>0X01 0X01</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X01</string>
+		<key>model</key>
+		<string>2476D</string>
+		<key>name</key>
+		<string>SwitchLinc Dimmer</string>
+	</dict>
+	<key>0X01 0X02</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X02</string>
+		<key>model</key>
+		<string>2475D</string>
+		<key>name</key>
+		<string>In-LineLinc Dimmer</string>
+	</dict>
+	<key>0X01 0X03</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X03</string>
+		<key>model</key>
+		<string>2876DB</string>
+		<key>name</key>
+		<string>ICON Dimmer Switch</string>
+	</dict>
+	<key>0X01 0X04</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X04</string>
+		<key>model</key>
+		<string>2476DH</string>
+		<key>name</key>
+		<string>SwitchLinc Dimmer (High Wattage)</string>
+	</dict>
+	<key>0X01 0X05</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X05</string>
+		<key>model</key>
+		<string>2484DWH8</string>
+		<key>name</key>
+		<string>Keypad Dimmer Countdown Timer w/ Dimmer</string>
+	</dict>
+	<key>0X01 0X06</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X06</string>
+		<key>model</key>
+		<string>2456D2</string>
+		<key>name</key>
+		<string>LampLinc Dimmer (2-Pin)</string>
+	</dict>
+	<key>0X01 0X07</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X07</string>
+		<key>model</key>
+		<string>2856D2B</string>
+		<key>name</key>
+		<string>ICON LampLinc</string>
+	</dict>
+	<key>0X01 0X09</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X09</string>
+		<key>model</key>
+		<string>2486D</string>
+		<key>name</key>
+		<string>KeypadLinc Dimmer</string>
+	</dict>
+	<key>0X01 0X0A</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X0A</string>
+		<key>model</key>
+		<string>2886D</string>
+		<key>name</key>
+		<string>Icon In-Wall Controller</string>
+	</dict>
+	<key>0X01 0X0C</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X0C</string>
+		<key>model</key>
+		<string>2486DWH8</string>
+		<key>name</key>
+		<string>KeypadLinc Dimmer</string>
+	</dict>
+	<key>0X01 0X0D</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X0D</string>
+		<key>model</key>
+		<string>2454D</string>
+		<key>name</key>
+		<string>SocketLinc</string>
+	</dict>
+	<key>0X01 0X0E</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X0E</string>
+		<key>model</key>
+		<string>2457D2</string>
+		<key>name</key>
+		<string>LampLinc (Dual-Band)</string>
+	</dict>
+	<key>0X01 0X17</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X17</string>
+		<key>model</key>
+		<string>2466D</string>
+		<key>name</key>
+		<string>ToggleLinc Dimmer</string>
+	</dict>
+	<key>0X01 0X18</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X18</string>
+		<key>model</key>
+		<string>2474D</string>
+		<key>name</key>
+		<string>Icon SwitchLinc Dimmer Inline Companion</string>
+	</dict>
+	<key>0X01 0X19</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X19</string>
+		<key>model</key>
+		<string>2476D</string>
+		<key>name</key>
+		<string>SwitchLinc Dimmer [with beeper]</string>
+	</dict>
+	<key>0X01 0X1A</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X1A</string>
+		<key>model</key>
+		<string>2475D</string>
+		<key>name</key>
+		<string>In-LineLinc Dimmer [with beeper]</string>
+	</dict>
+	<key>0X01 0X1B</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X1B</string>
+		<key>model</key>
+		<string>2486DWH6</string>
+		<key>name</key>
+		<string>KeypadLinc Dimmer</string>
+	</dict>
+	<key>0X01 0X1C</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X1C</string>
+		<key>model</key>
+		<string>2486DWH8</string>
+		<key>name</key>
+		<string>KeypadLinc Dimmer</string>
+	</dict>
+	<key>0X01 0X1D</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X1D</string>
+		<key>model</key>
+		<string>2476DH</string>
+		<key>name</key>
+		<string>SwitchLinc Dimmer (High Wattage)[beeper]</string>
+	</dict>
+	<key>0X01 0X1E</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X1E</string>
+		<key>model</key>
+		<string>2876DB</string>
+		<key>name</key>
+		<string>ICON Switch Dimmer</string>
+	</dict>
+	<key>0X01 0X1F</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X1F</string>
+		<key>model</key>
+		<string>2466Dx</string>
+		<key>name</key>
+		<string>ToggleLinc Dimmer [with beeper]</string>
+	</dict>
+	<key>0X01 0X20</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X20</string>
+		<key>model</key>
+		<string>2477D</string>
+		<key>name</key>
+		<string>SwitchLinc Dimmer (Dual-Band)</string>
+	</dict>
+	<key>0X01 0X21</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X21</string>
+		<key>model</key>
+		<string>2472D</string>
+		<key>name</key>
+		<string>OutletLinc Dimmer (Dual-Band)</string>
+	</dict>
+	<key>0X01 0X22</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X22</string>
+		<key>model</key>
+		<string>2457D2X</string>
+		<key>name</key>
+		<string>LampLinc</string>
+	</dict>
+	<key>0X01 0X23</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X23</string>
+		<key>model</key>
+		<string>2457D2EZ</string>
+		<key>name</key>
+		<string>LampLinc Dual-Band EZ</string>
+	</dict>
+	<key>0X01 0X2D</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X2D</string>
+		<key>model</key>
+		<string>2477DH</string>
+		<key>name</key>
+		<string>SwitchLinc-Dimmer Dual-Band 1000W</string>
+	</dict>
+	<key>0X01 0X30</key>
+	<dict>
+		<key>category</key>
+		<string>0X010X30</string>
+		<key>model</key>
+		<string>2476D</string>
+		<key>name</key>
+		<string>SwitchLinc Dimmer</string>
+	</dict>
+	<key>0X02 0X06</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X06</string>
+		<key>model</key>
+		<string>2456S3E</string>
+		<key>name</key>
+		<string>Outdoor ApplianceLinc</string>
+	</dict>
+	<key>0X02 0X07</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X07</string>
+		<key>model</key>
+		<string>2456S3T</string>
+		<key>name</key>
+		<string>TimerLinc</string>
+	</dict>
+	<key>0X02 0X08</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X08</string>
+		<key>model</key>
+		<string>2473S</string>
+		<key>name</key>
+		<string>OutletLinc</string>
+	</dict>
+	<key>0X02 0X09</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X09</string>
+		<key>model</key>
+		<string>2456S3</string>
+		<key>name</key>
+		<string>ApplianceLinc (3-Pin)</string>
+	</dict>
+	<key>0X02 0X0A</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X0A</string>
+		<key>model</key>
+		<string>2476S</string>
+		<key>name</key>
+		<string>SwitchLinc Relay</string>
+	</dict>
+	<key>0X02 0X0B</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X0B</string>
+		<key>model</key>
+		<string>2876S</string>
+		<key>name</key>
+		<string>ICON On/Off Switch</string>
+	</dict>
+	<key>0X02 0X0C</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X0C</string>
+		<key>model</key>
+		<string>2856S3</string>
+		<key>name</key>
+		<string>Icon Appliance Module</string>
+	</dict>
+	<key>0X02 0X0D</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X0D</string>
+		<key>model</key>
+		<string>2466S</string>
+		<key>name</key>
+		<string>ToggleLinc Relay</string>
+	</dict>
+	<key>0X02 0X0E</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X0E</string>
+		<key>model</key>
+		<string>2476ST</string>
+		<key>name</key>
+		<string>SwitchLinc Relay Countdown Timer</string>
+	</dict>
+	<key>0X02 0X0F</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X0F</string>
+		<key>model</key>
+		<string>2486SWH6</string>
+		<key>name</key>
+		<string>KeypadLinc On/Off</string>
+	</dict>
+	<key>0X02 0X10</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X10</string>
+		<key>model</key>
+		<string>2475S</string>
+		<key>name</key>
+		<string>In-LineLinc Relay</string>
+	</dict>
+	<key>0X02 0X12</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X12</string>
+		<key>model</key>
+		<string>2474 S/D</string>
+		<key>name</key>
+		<string>ICON In-lineLinc Relay Companion</string>
+	</dict>
+	<key>0X02 0X14</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X14</string>
+		<key>model</key>
+		<string>2475S2</string>
+		<key>name</key>
+		<string>In-LineLinc Relay with Sense</string>
+	</dict>
+	<key>0X02 0X15</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X15</string>
+		<key>model</key>
+		<string>2476SS</string>
+		<key>name</key>
+		<string>SwitchLinc Relay with Sense</string>
+	</dict>
+	<key>0X02 0X16</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X16</string>
+		<key>model</key>
+		<string>2876S</string>
+		<key>name</key>
+		<string>ICON On/Off Switch (25 max links)</string>
+	</dict>
+	<key>0X02 0X17</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X17</string>
+		<key>model</key>
+		<string>2856S3B</string>
+		<key>name</key>
+		<string>ICON Appliance Module</string>
+	</dict>
+	<key>0X02 0X18</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X18</string>
+		<key>model</key>
+		<string>2494S220</string>
+		<key>name</key>
+		<string>SwitchLinc 220V Relay</string>
+	</dict>
+	<key>0X02 0X19</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X19</string>
+		<key>model</key>
+		<string>2494S220</string>
+		<key>name</key>
+		<string>SwitchLinc 220V Relay [with beeper]</string>
+	</dict>
+	<key>0X02 0X1A</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X1A</string>
+		<key>model</key>
+		<string>2466Sx</string>
+		<key>name</key>
+		<string>ToggleLinc Relay [with Beeper]</string>
+	</dict>
+	<key>0X02 0X1C</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X1C</string>
+		<key>model</key>
+		<string>2476S</string>
+		<key>name</key>
+		<string>SwitchLinc Relay</string>
+	</dict>
+	<key>0X02 0X1E</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X1E</string>
+		<key>model</key>
+		<string>2487S</string>
+		<key>name</key>
+		<string>KeypadLinc On/Off (Dual-Band)</string>
+	</dict>
+	<key>0X02 0X25</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X25</string>
+		<key>model</key>
+		<string>2484SWH8</string>
+		<key>name</key>
+		<string>KeypadLinc 8-Button Countdown On/Off Switch Timer</string>
+	</dict>
+	<key>0X02 0X29</key>
+	<dict>
+		<key>category</key>
+		<string>0X020X29</string>
+		<key>model</key>
+		<string>2476ST</string>
+		<key>name</key>
+		<string>SwitchLinc Relay Countdown Timer</string>
+	</dict>
+	<key>0X03 0X01</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X01</string>
+		<key>model</key>
+		<string>2414S</string>
+		<key>name</key>
+		<string>PowerLinc Serial Controller</string>
+	</dict>
+	<key>0X03 0X02</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X02</string>
+		<key>model</key>
+		<string>2414U</string>
+		<key>name</key>
+		<string>PowerLinc USB Controller</string>
+	</dict>
+	<key>0X03 0X03</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X03</string>
+		<key>model</key>
+		<string>2814S</string>
+		<key>name</key>
+		<string>ICON PowerLinc Serial</string>
+	</dict>
+	<key>0X03 0X04</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X04</string>
+		<key>model</key>
+		<string>2814U</string>
+		<key>name</key>
+		<string>ICON PowerLinc USB</string>
+	</dict>
+	<key>0X03 0X05</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X05</string>
+		<key>model</key>
+		<string>2412S</string>
+		<key>name</key>
+		<string>PowerLinc Serial Modem</string>
+	</dict>
+	<key>0X03 0X06</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X06</string>
+		<key>model</key>
+		<string>2411R</string>
+		<key>name</key>
+		<string>IRLinc Receiver</string>
+	</dict>
+	<key>0X03 0X07</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X07</string>
+		<key>model</key>
+		<string>2411T</string>
+		<key>name</key>
+		<string>IRLinc Transmitter</string>
+	</dict>
+	<key>0X03 0X0A</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X0A</string>
+		<key>model</key>
+		<string>2410S</string>
+		<key>name</key>
+		<string>SeriaLinc - INSTEON to RS232</string>
+	</dict>
+	<key>0X03 0X0B</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X0B</string>
+		<key>model</key>
+		<string>2412U</string>
+		<key>name</key>
+		<string>PowerLinc USB Modem</string>
+	</dict>
+	<key>0X03 0X0D</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X0D</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>SimpleHomeNet EZX10RF</string>
+	</dict>
+	<key>0X03 0X0E</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X0E</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>X10 TW-523/PSC05 Translator</string>
+	</dict>
+	<key>0X03 0X0F</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X0F</string>
+		<key>model</key>
+		<string>EZX10IR</string>
+		<key>name</key>
+		<string>EZX10IR X10 IR Receiver</string>
+	</dict>
+	<key>0X03 0X10</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X10</string>
+		<key>model</key>
+		<string>2412N</string>
+		<key>name</key>
+		<string>SmartLinc</string>
+	</dict>
+	<key>0X03 0X11</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X11</string>
+		<key>model</key>
+		<string>2413S</string>
+		<key>name</key>
+		<string>PowerLinc - Serial Modem (Dual Band)</string>
+	</dict>
+	<key>0X03 0X13</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X13</string>
+		<key>model</key>
+		<string>2412UH</string>
+		<key>name</key>
+		<string>PowerLinc USB Modem for HouseLinc</string>
+	</dict>
+	<key>0X03 0X14</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X14</string>
+		<key>model</key>
+		<string>2412SH</string>
+		<key>name</key>
+		<string>PowerLinc Serial Modem for HouseLinc</string>
+	</dict>
+	<key>0X03 0X15</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X15</string>
+		<key>model</key>
+		<string>2413U</string>
+		<key>name</key>
+		<string>PowerLinc USB Modem (Dual Band)</string>
+	</dict>
+	<key>0X03 0X16</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X16</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Compacta-SrvrBee INSTEON/ZigBee/X10 Gtwy</string>
+	</dict>
+	<key>0X03 0X17</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X17</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Compacta-Serial/ZigBee daughter card PLM</string>
+	</dict>
+	<key>0X03 0X19</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X19</string>
+		<key>model</key>
+		<string>2413SH</string>
+		<key>name</key>
+		<string>PowerLinc Serial Modem for HL(Dual Band)</string>
+	</dict>
+	<key>0X03 0X1A</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X1A</string>
+		<key>model</key>
+		<string>2413UH</string>
+		<key>name</key>
+		<string>PowerLinc USB Modem for HL (Dual Band)</string>
+	</dict>
+	<key>0X03 0X1B</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X1B</string>
+		<key>model</key>
+		<string>2423A4</string>
+		<key>name</key>
+		<string>iGateway</string>
+	</dict>
+	<key>0X03 0X1D</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X1D</string>
+		<key>model</key>
+		<string></string>
+		<key>name</key>
+		<string>PowerLinc Modem Serial w/o EEPROM(w/ RF)</string>
+	</dict>
+	<key>0X03 0X1E</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X1E</string>
+		<key>model</key>
+		<string>2412S</string>
+		<key>name</key>
+		<string>PowerLincModemSerial w/o EEPROM(w/o RF)</string>
+	</dict>
+	<key>0X03 0X1F</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X1F</string>
+		<key>model</key>
+		<string>2448A7</string>
+		<key>name</key>
+		<string>USB Adapter</string>
+	</dict>
+	<key>0X03 0X21</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X21</string>
+		<key>model</key>
+		<string>2448A7H</string>
+		<key>name</key>
+		<string>Portable USB Adapter for HouseLinc</string>
+	</dict>
+	<key>0X03 0X24</key>
+	<dict>
+		<key>category</key>
+		<string>0X030X24</string>
+		<key>model</key>
+		<string>2448A7T</string>
+		<key>name</key>
+		<string>TouchLinc</string>
+	</dict>
+	<key>0X04 0X00</key>
+	<dict>
+		<key>category</key>
+		<string>0X040X00</string>
+		<key>model</key>
+		<string>31270</string>
+		<key>name</key>
+		<string>Compacta EZRain Sprinkler Controller</string>
+	</dict>
+	<key>0X05 0X00</key>
+	<dict>
+		<key>category</key>
+		<string>0X050X00</string>
+		<key>model</key>
+		<string>2670IAQ-80</string>
+		<key>name</key>
+		<string>Broan SMSC080 Exhaust Fan (no beeper)</string>
+	</dict>
+	<key>0X05 0X01</key>
+	<dict>
+		<key>category</key>
+		<string>0X050X01</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Compacta EZTherm</string>
+	</dict>
+	<key>0X05 0X02</key>
+	<dict>
+		<key>category</key>
+		<string>0X050X02</string>
+		<key>model</key>
+		<string>2670IAQ-110</string>
+		<key>name</key>
+		<string>Broan SMSC110 Exhaust Fan (no beeper)</string>
+	</dict>
+	<key>0X05 0X03</key>
+	<dict>
+		<key>category</key>
+		<string>0X050X03</string>
+		<key>model</key>
+		<string>2441V</string>
+		<key>name</key>
+		<string>Thermostat Adapter</string>
+	</dict>
+	<key>0X05 0X04</key>
+	<dict>
+		<key>category</key>
+		<string>0X050X04</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Compacta EZThermx Thermostat</string>
+	</dict>
+	<key>0X05 0X05</key>
+	<dict>
+		<key>category</key>
+		<string>0X050X05</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Broan, Venmar, BEST Rangehoods</string>
+	</dict>
+	<key>0X05 0X06</key>
+	<dict>
+		<key>category</key>
+		<string>0X050X06</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Broan SmartSense Make-up Damper</string>
+	</dict>
+	<key>0X05 0X0E</key>
+	<dict>
+		<key>category</key>
+		<string>0X050X0E</string>
+		<key>model</key>
+		<string>2491TxE</string>
+		<key>name</key>
+		<string>Integrated Remote Control Thermostat</string>
+	</dict>
+	<key>0X06 0X00</key>
+	<dict>
+		<key>category</key>
+		<string>0X060X00</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Compacta EZPool</string>
+	</dict>
+	<key>0X06 0X01</key>
+	<dict>
+		<key>category</key>
+		<string>0X060X01</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Low-end pool controller</string>
+	</dict>
+	<key>0X06 0X02</key>
+	<dict>
+		<key>category</key>
+		<string>0X060X02</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Mid-Range pool controller</string>
+	</dict>
+	<key>0X06 0X03</key>
+	<dict>
+		<key>category</key>
+		<string>0X060X03</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Next Generation pool controller</string>
+	</dict>
+	<key>0X07 0X00</key>
+	<dict>
+		<key>category</key>
+		<string>0X070X00</string>
+		<key>model</key>
+		<string>2450</string>
+		<key>name</key>
+		<string>I/OLinc</string>
+	</dict>
+	<key>0X07 0X01</key>
+	<dict>
+		<key>category</key>
+		<string>0X070X01</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Compacta EZSns1W Sensor Interface Module</string>
+	</dict>
+	<key>0X07 0X02</key>
+	<dict>
+		<key>category</key>
+		<string>0X070X02</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Compacta EZIO8T I/O Module</string>
+	</dict>
+	<key>0X07 0X03</key>
+	<dict>
+		<key>category</key>
+		<string>0X070X03</string>
+		<key>model</key>
+		<string>31274</string>
+		<key>name</key>
+		<string>Compacta EZIO2X4 #5010D</string>
+	</dict>
+	<key>0X07 0X04</key>
+	<dict>
+		<key>category</key>
+		<string>0X070X04</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Compacta EZIO8SA I/O Module</string>
+	</dict>
+	<key>0X07 0X05</key>
+	<dict>
+		<key>category</key>
+		<string>0X070X05</string>
+		<key>model</key>
+		<string>31275</string>
+		<key>name</key>
+		<string>Compacta EZSnsRF RcvrIntrfc Dakota Alert</string>
+	</dict>
+	<key>0X07 0X06</key>
+	<dict>
+		<key>category</key>
+		<string>0X070X06</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Compacta EZISnsRf SensorInterface Module</string>
+	</dict>
+	<key>0X07 0X07</key>
+	<dict>
+		<key>category</key>
+		<string>0X070X07</string>
+		<key>model</key>
+		<string>31280</string>
+		<key>name</key>
+		<string>EZIO6I (6 inputs)</string>
+	</dict>
+	<key>0X07 0X08</key>
+	<dict>
+		<key>category</key>
+		<string>0X070X08</string>
+		<key>model</key>
+		<string>31283</string>
+		<key>name</key>
+		<string>EZIO4O (4 relay outputs)</string>
+	</dict>
+	<key>0X07 0X09</key>
+	<dict>
+		<key>category</key>
+		<string>0X070X09</string>
+		<key>model</key>
+		<string>2423A5</string>
+		<key>name</key>
+		<string>SynchroLinc</string>
+	</dict>
+	<key>0X09 0X00</key>
+	<dict>
+		<key>category</key>
+		<string>0X090X00</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Compacta EZEnergy</string>
+	</dict>
+	<key>0X09 0X01</key>
+	<dict>
+		<key>category</key>
+		<string>0X090X01</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>OnSitePro Leak Detector</string>
+	</dict>
+	<key>0X09 0X02</key>
+	<dict>
+		<key>category</key>
+		<string>0X090X02</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>OnSitePro Control Valve</string>
+	</dict>
+	<key>0X09 0X03</key>
+	<dict>
+		<key>category</key>
+		<string>0X090X03</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Energy Inc. TED 5000 Single Phase MTU</string>
+	</dict>
+	<key>0X09 0X04</key>
+	<dict>
+		<key>category</key>
+		<string>0X090X04</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Energy Inc. TED 5000 Gateway - USB</string>
+	</dict>
+	<key>0X09 0X05</key>
+	<dict>
+		<key>category</key>
+		<string>0X090X05</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Energy Inc. TED 5000 Gateway - Ethernet</string>
+	</dict>
+	<key>0X09 0X06</key>
+	<dict>
+		<key>category</key>
+		<string>0X090X06</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Energy Inc. TED 3000 Three Phase MTU</string>
+	</dict>
+	<key>0X09 0X07</key>
+	<dict>
+		<key>category</key>
+		<string>0X090X07</string>
+		<key>model</key>
+		<string>2423A1</string>
+		<key>name</key>
+		<string>iMeter Solo</string>
+	</dict>
+	<key>0X09 0X0A</key>
+	<dict>
+		<key>category</key>
+		<string>0X090X0A</string>
+		<key>model</key>
+		<string>2477SA1</string>
+		<key>name</key>
+		<string>220/240V 30A Load Controller NO (DB)</string>
+	</dict>
+	<key>0X09 0X0B</key>
+	<dict>
+		<key>category</key>
+		<string>0X090X0B</string>
+		<key>model</key>
+		<string>2477SA2</string>
+		<key>name</key>
+		<string>220/240V 30A Load Controller NC (DB)</string>
+	</dict>
+	<key>0X09 0X0D</key>
+	<dict>
+		<key>category</key>
+		<string>0X090X0D</string>
+		<key>model</key>
+		<string>2448A2</string>
+		<key>name</key>
+		<string>Energy Display</string>
+	</dict>
+	<key>0X0E 0X00</key>
+	<dict>
+		<key>category</key>
+		<string>0X0E0X00</string>
+		<key>model</key>
+		<string>318276I</string>
+		<key>name</key>
+		<string>Somfy Drape Controller RF Bridge</string>
+	</dict>
+	<key>0X0F 0X00</key>
+	<dict>
+		<key>category</key>
+		<string>0X0F0X00</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Weiland Doors Central Drive and Control</string>
+	</dict>
+	<key>0X0F 0X01</key>
+	<dict>
+		<key>category</key>
+		<string>0X0F0X01</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Weiland Doors Secondary Central Drive</string>
+	</dict>
+	<key>0X0F 0X02</key>
+	<dict>
+		<key>category</key>
+		<string>0X0F0X02</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Weiland Doors Assist Drive</string>
+	</dict>
+	<key>0X0F 0X03</key>
+	<dict>
+		<key>category</key>
+		<string>0X0F0X03</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>Weiland Doors Elevation Drive</string>
+	</dict>
+	<key>0X0F 0X04</key>
+	<dict>
+		<key>category</key>
+		<string>0X0F0X04</string>
+		<key>model</key>
+		<string></string>
+		<key>name</key>
+		<string>GarageHawk Garage Unit</string>
+	</dict>
+	<key>0X0F 0X05</key>
+	<dict>
+		<key>category</key>
+		<string>0X0F0X05</string>
+		<key>model</key>
+		<string></string>
+		<key>name</key>
+		<string>GarageHawk Remote Unit</string>
+	</dict>
+	<key>0X0F 0X06</key>
+	<dict>
+		<key>category</key>
+		<string>0X0F0X06</string>
+		<key>model</key>
+		<string>2458A1</string>
+		<key>name</key>
+		<string>MorningLinc</string>
+	</dict>
+	<key>0X10 0X00</key>
+	<dict>
+		<key>category</key>
+		<string>0X100X00</string>
+		<key>model</key>
+		<string>N/A</string>
+		<key>name</key>
+		<string>First Alert ONELink RF to Insteon Bridge</string>
+	</dict>
+	<key>0X10 0X01</key>
+	<dict>
+		<key>category</key>
+		<string>0X100X01</string>
+		<key>model</key>
+		<string>2420M</string>
+		<key>name</key>
+		<string>Motion Sensor</string>
+	</dict>
+	<key>0X10 0X02</key>
+	<dict>
+		<key>category</key>
+		<string>0X100X02</string>
+		<key>model</key>
+		<string>2421</string>
+		<key>name</key>
+		<string>TriggerLinc</string>
+	</dict>
+</dict>
+</plist>
