@@ -11,7 +11,7 @@
 			<string key="NS.object.0">851</string>
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
-			<integer value="23"/>
+			<integer value="588"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -535,7 +535,7 @@ VkNQLmh0bSkuICA</string>
 													<object class="NSTabViewItem" id="1029521378">
 														<string key="NSIdentifier">Serial Port</string>
 														<object class="NSView" key="NSView" id="147685694">
-															<reference key="NSNextResponder" ref="341937496"/>
+															<nil key="NSNextResponder"/>
 															<int key="NSvFlags">256</int>
 															<array class="NSMutableArray" key="NSSubviews">
 																<object class="NSPopUpButton" id="300035201">
@@ -742,7 +742,6 @@ VkNQLmh0bSkuICA</string>
 																</object>
 															</array>
 															<string key="NSFrame">{{10, 7}, {414, 166}}</string>
-															<reference key="NSSuperview" ref="341937496"/>
 														</object>
 														<string key="NSLabel">Serial Port</string>
 														<reference key="NSColor" ref="1036498173"/>
@@ -751,7 +750,7 @@ VkNQLmh0bSkuICA</string>
 													<object class="NSTabViewItem" id="159690885">
 														<string key="NSIdentifier">Network</string>
 														<object class="NSView" key="NSView" id="1072950469">
-															<nil key="NSNextResponder"/>
+															<reference key="NSNextResponder" ref="341937496"/>
 															<int key="NSvFlags">256</int>
 															<array class="NSMutableArray" key="NSSubviews">
 																<object class="NSTextField" id="55258499">
@@ -840,9 +839,9 @@ VkNQLmh0bSkuICA</string>
 																		<string key="NSKeyEquivalent"/>
 																		<int key="NSPeriodicDelay">400</int>
 																		<int key="NSPeriodicInterval">75</int>
-																		<object class="NSMenuItem" key="NSMenuItem" id="272307101">
+																		<object class="NSMenuItem" key="NSMenuItem" id="1049322664">
 																			<reference key="NSMenu" ref="1024863907"/>
-																			<string key="NSTitle">SmartLinc 2414N</string>
+																			<string key="NSTitle">SimpleHomeNet EZSrve</string>
 																			<string key="NSKeyEquiv"/>
 																			<int key="NSKeyEquivModMask">1048576</int>
 																			<int key="NSMnemonicLoc">2147483647</int>
@@ -856,22 +855,9 @@ VkNQLmh0bSkuICA</string>
 																		<object class="NSMenu" key="NSMenu" id="1024863907">
 																			<string key="NSTitle">OtherViews</string>
 																			<array class="NSMutableArray" key="NSMenuItems">
-																				<reference ref="272307101"/>
-																				<object class="NSMenuItem" id="1049322664">
+																				<object class="NSMenuItem" id="272307101">
 																					<reference key="NSMenu" ref="1024863907"/>
-																					<string key="NSTitle">SimpleHomeNet EZSrve</string>
-																					<string key="NSKeyEquiv"/>
-																					<int key="NSKeyEquivModMask">1048576</int>
-																					<int key="NSMnemonicLoc">2147483647</int>
-																					<int key="NSState">1</int>
-																					<reference key="NSOnImage" ref="418813221"/>
-																					<reference key="NSMixedImage" ref="842075899"/>
-																					<string key="NSAction">_popUpItemAction:</string>
-																					<reference key="NSTarget" ref="726012018"/>
-																				</object>
-																				<object class="NSMenuItem" id="134321468">
-																					<reference key="NSMenu" ref="1024863907"/>
-																					<string key="NSTitle">SmartLinc 2414N (Beta)</string>
+																					<string key="NSTitle">SmartLinc 2412N</string>
 																					<string key="NSKeyEquiv"/>
 																					<int key="NSKeyEquivModMask">1048576</int>
 																					<int key="NSMnemonicLoc">2147483647</int>
@@ -880,9 +866,11 @@ VkNQLmh0bSkuICA</string>
 																					<string key="NSAction">_popUpItemAction:</string>
 																					<reference key="NSTarget" ref="726012018"/>
 																				</object>
+																				<reference ref="1049322664"/>
 																			</array>
 																			<reference key="NSMenuFont" ref="771307447"/>
 																		</object>
+																		<int key="NSSelectedIndex">1</int>
 																		<int key="NSPreferredEdge">1</int>
 																		<bool key="NSUsesItemFromMenu">YES</bool>
 																		<bool key="NSAltersState">YES</bool>
@@ -909,6 +897,7 @@ ZXNzLiBPbWl0IGFueSBvdGhlciBjaGFyYWN0ZXJzLCBzdWNoIGFzICdodHRwOi8vJy4</string>
 																</object>
 															</array>
 															<string key="NSFrame">{{10, 7}, {414, 166}}</string>
+															<reference key="NSSuperview" ref="341937496"/>
 														</object>
 														<string key="NSLabel">Network</string>
 														<reference key="NSColor" ref="1036498173"/>
@@ -944,13 +933,13 @@ ZXNzLiBPbWl0IGFueSBvdGhlciBjaGFyYWN0ZXJzLCBzdWNoIGFzICdodHRwOi8vJy4</string>
 														<reference key="NSTabView" ref="341937496"/>
 													</object>
 												</array>
-												<reference key="NSSelectedTabViewItem" ref="1029521378"/>
+												<reference key="NSSelectedTabViewItem" ref="159690885"/>
 												<reference key="NSFont" ref="771307447"/>
 												<int key="NSTvFlags">4</int>
 												<bool key="NSAllowTruncatedLabels">YES</bool>
 												<bool key="NSDrawsBackground">YES</bool>
 												<array class="NSMutableArray" key="NSSubviews">
-													<reference ref="147685694"/>
+													<reference ref="1072950469"/>
 												</array>
 											</object>
 											<object class="NSPopUpButton" id="264895648">
@@ -4353,7 +4342,6 @@ ZXNzLiBPbWl0IGFueSBvdGhlciBjaGFyYWN0ZXJzLCBzdWNoIGFzICdodHRwOi8vJy4</string>
 						<array class="NSMutableArray" key="children">
 							<reference ref="272307101"/>
 							<reference ref="1049322664"/>
-							<reference ref="134321468"/>
 						</array>
 						<reference key="parent" ref="726012018"/>
 					</object>
@@ -4383,11 +4371,6 @@ ZXNzLiBPbWl0IGFueSBvdGhlciBjaGFyYWN0ZXJzLCBzdWNoIGFzICdodHRwOi8vJy4</string>
 					<object class="IBObjectRecord">
 						<int key="objectID">601</int>
 						<reference key="object" ref="1049322664"/>
-						<reference key="parent" ref="1024863907"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">602</int>
-						<reference key="object" ref="134321468"/>
 						<reference key="parent" ref="1024863907"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -4725,7 +4708,7 @@ ZXNzLiBPbWl0IGFueSBvdGhlciBjaGFyYWN0ZXJzLCBzdWNoIGFzICdodHRwOi8vJy4</string>
 					<bytes key="NSTransformStruct">P4AAAL+AAABDBwAAwxcAAA</bytes>
 				</object>
 				<string key="587.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="588.IBEditorWindowLastContentRect">{{337, 401}, {276, 63}}</string>
+				<string key="588.IBEditorWindowLastContentRect">{{491, 421}, {276, 43}}</string>
 				<string key="588.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="589.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="592.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4736,7 +4719,6 @@ ZXNzLiBPbWl0IGFueSBvdGhlciBjaGFyYWN0ZXJzLCBzdWNoIGFzICdodHRwOi8vJy4</string>
 				<string key="599.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="601.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="602.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="603.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<object class="NSAffineTransform" key="603.IBViewBoundsToFrameTransform">
 					<bytes key="NSTransformStruct">P4AAAL+AAABDioAAweAAAA</bytes>

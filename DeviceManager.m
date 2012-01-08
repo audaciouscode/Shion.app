@@ -236,7 +236,7 @@ static DeviceManager * sharedInstance = nil;
 	
 	Controller * controller = nil;
 	
-	if ([[details valueForKey:NETWORK_CONTROLLER_MODEL] isEqual:CONTROLLER_SL2414])
+/*	if ([[details valueForKey:NETWORK_CONTROLLER_MODEL] isEqual:CONTROLLER_SL2414])
 	{
 		ASSmartLincWebController * controllerDevice = [[[ASSmartLincWebController alloc] initWithHost:address] autorelease];
 		
@@ -254,8 +254,8 @@ static DeviceManager * sharedInstance = nil;
 			
 			[controller setName:[controller model]];
 		}
-	}
-	else if ([[details valueForKey:NETWORK_CONTROLLER_MODEL] isEqual:CONTROLLER_SL2414_BETA])
+	} */
+	if ([[details valueForKey:NETWORK_CONTROLLER_MODEL] isEqual:CONTROLLER_SL2412])
 	{
 		ASSmartLincDirectController * controllerDevice = [[[ASSmartLincDirectController alloc] initWithHost:address] autorelease];
 		
@@ -268,7 +268,7 @@ static DeviceManager * sharedInstance = nil;
 			if ([controllerDevice getAddress] != nil)
 				[controller setAddress:[[controllerDevice getAddress] description]];
 			
-			[controller setModel:@"SmartLinc 2414N (Beta)"];
+			[controller setModel:@"SmartLinc 2412N"];
 			[controller setPlatform:@"Insteon"];
 			
 			[controller setName:[controller model]];
@@ -725,7 +725,7 @@ static DeviceManager * sharedInstance = nil;
 							message = [NSString stringWithFormat:@"%@ ceased detecting motion.", [device name]];
 						
 						[[EventManager sharedInstance] createEvent:@"device" source:[device identifier] initiator:[device identifier]
-													   description:message value:level];
+													   description:message value:[level description]];
 					}
 					else if ([device isKindOfClass:[ApertureSensor class]])
 					{
@@ -737,7 +737,7 @@ static DeviceManager * sharedInstance = nil;
 							message = [NSString stringWithFormat:@"%@ is closed.", [device name]];
 						
 						[[EventManager sharedInstance] createEvent:@"device" source:[device identifier] initiator:[device identifier]
-													   description:message value:level];
+													   description:message value:[level description]];
 					}
 					else if ([device isKindOfClass:[PowerSensor class]])
 					{
@@ -749,7 +749,7 @@ static DeviceManager * sharedInstance = nil;
 							message = [NSString stringWithFormat:@"%@ is inactive.", [device name]];
 						
 						[[EventManager sharedInstance] createEvent:@"device" source:[device identifier] initiator:[device identifier]
-													   description:message value:level];
+													   description:message value:[level description]];
 					}
 					else if ([device isKindOfClass:[Thermostat class]])
 					{
@@ -778,7 +778,7 @@ static DeviceManager * sharedInstance = nil;
 							message = [NSString stringWithFormat:@"%@ is experiencing errors.", [device name]];
 						
 						[[EventManager sharedInstance] createEvent:@"device" source:[device identifier] initiator:[device identifier]
-													   description:message value:level];
+													   description:message value:[level description]];
 
 						[device setValue:level forKey:DEVICE_LEVEL];
 					}

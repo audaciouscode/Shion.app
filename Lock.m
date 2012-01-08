@@ -71,9 +71,9 @@
 
 - (BOOL) isLocked
 {
-	Event * event = [[[EventManager sharedInstance] eventsForIdentifier:[self identifier] event:@"device"] lastObject];
+	NSManagedObject * event = [[[EventManager sharedInstance] eventsForIdentifier:[self identifier] event:@"device"] lastObject];
 	
-	if (event != nil && [[event value] intValue] > 255)
+	if (event != nil && [[event valueForKey:@"value"] intValue] > 255)
 		return YES;
 	else
 		return NO;
@@ -88,7 +88,7 @@
 		NSString * message = [NSString stringWithFormat:@"Activated lock."];
 			
 		[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:[self identifier]
-									   description:message value:[NSNumber numberWithInt:255]];
+									   description:message value:@"255"];
 	}
 	else if ([key isEqual:@"do_unlock"])
 	{
@@ -97,7 +97,7 @@
 		NSString * message = [NSString stringWithFormat:@"Deactivated lock."];
 		
 		[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:[self identifier]
-									   description:message value:[NSNumber numberWithInt:0]];
+									   description:message value:@"0"];
 	}
 	else
 		[super setValue:value forKey:key];

@@ -23,6 +23,7 @@
 #define WIND_CHILL @"wind_chill"
 #define VISIBILTY @"visibility"
 #define CREDIT @"credit"
+#define STATION_ID @"station_id"
 
 #import <Shion/ASThermostatDevice.h>
 
@@ -37,6 +38,8 @@
 		[self setValue:@"Weather Station" forKey:TYPE];
 		[self setValue:WU_STATION forKey:MODEL];
 		
+		useAlternative = NO;
+		
 		buffer = [[NSMutableData alloc] init];
 		[[NSTimer scheduledTimerWithTimeInterval:900.0 target:self selector:@selector(updateReading:) userInfo:nil repeats:YES] retain];
 	}
@@ -46,6 +49,9 @@
 
 - (void) setValue:(id) value forKey:(NSString *) key
 {
+	if ([key isEqual:TEMPERATURE] && [[value description] isEqual:@"0"])
+		return;
+	
 	[self willChangeValueForKey:key];
 
 	if (value == nil)
@@ -73,18 +79,34 @@
 	
 	// http://api.wunderground.com/auto/wui/geo/WXCurrentObXML/index.xml?query=KORD
 	
-	NSURLRequest * request = [NSURLRequest requestWithURL:
-							  [NSURL URLWithString:[NSString stringWithFormat:@"http://api.wunderground.com/auto/wui/geo/WXCurrentObXML/index.xml?query=%@", 
-													[self address]]]];
+	NSURLRequest * request = nil;
 	
+	if (!useAlternative)
+	{
+		request = [NSURLRequest requestWithURL:
+				   [NSURL URLWithString:[NSString stringWithFormat:@"http://api.wunderground.com/auto/wui/geo/WXCurrentObXML/index.xml?query=%@", 
+										 [[self address] uppercaseString]]]];
+	}
+	else
+	{
+		request = [NSURLRequest requestWithURL:
+					[NSURL URLWithString:[NSString stringWithFormat:@"http://api.wunderground.com/weatherstation/WXCurrentObXML.asp?ID=%@", 
+										  [[self address] uppercaseString]]]];
+	}
+
 	[buffer setData:[NSData data]];
-	
 	[[NSURLConnection connectionWithRequest:request delegate:self] retain];
+		
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-	// TODO: Error
+	if (!useAlternative)
+	{
+		useAlternative = YES;
+		
+		[self fetchStatus];
+	}
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -114,8 +136,8 @@
 		
 		NSDictionary * dateFields = [NSDictionary dictionaryWithObjectsAndKeys:OBSERVATION_DATE, @"observation_time_rfc822", nil];
 
-		NSDictionary * stringFields = [NSDictionary dictionaryWithObjectsAndKeys:WEATHER_STRING, @"weather", WIND, @"wind_string", CREDIT, @"credit",
-									   nil];
+		NSDictionary * stringFields = [NSDictionary dictionaryWithObjectsAndKeys:WEATHER_STRING, @"weather", WIND, @"wind_string", CREDIT, @"credit", 
+									   STATION_ID, @"station_id", nil];
 
 		NSDictionary * numberFields = [NSDictionary dictionaryWithObjectsAndKeys:TEMPERATURE, @"temp_f", HUMIDITY, @"relative_humidity",
 									   WIND_SPEED, @"wind_mph", BAROMETRIC_PRESSURE, @"pressure_mb", DEW_POINT, @"dewpoint_f", 
@@ -142,39 +164,48 @@
 			
 			[self setValue:[element stringValue] forKey:[stringFields valueForKey:key]];
 		}
-
-		iter = [numberFields keyEnumerator];
-		while (key = [iter nextObject])
+		
+		if ([self valueForKey:@"station_id"] == nil || [[self valueForKey:@"station_id"] isEqual:@""])
 		{
-			NSXMLElement * element = [[container elementsForName:key] lastObject];
+			useAlternative = YES;
 			
-			NSNumber * number = [NSNumber numberWithFloat:[[element stringValue] floatValue]];
-			
-			[self setValue:number forKey:[numberFields valueForKey:key]];
-			
-			if ([key isEqual:@"temp_f"])
-			{
-				Event * lastEvent = [[EventManager sharedInstance] lastUpdateForIdentifier:[self identifier] event:@"device"];
-			
-				if (lastEvent == nil || ![[lastEvent value] isEqual:number])
-				{
-					NSString * message = [NSString stringWithFormat:@"Current temperature is %@°.", number];
-				
-					[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:[self identifier]
-												   description:message value:number];
-				}
-				
-				NSMutableDictionary * theNote = [NSMutableDictionary dictionary];
-				
-				[theNote setValue:[self address] forKey:DEVICE_ADDRESS];
-				[theNote setValue:number forKey:THERMOSTAT_TEMPERATURE];
-				[theNote setValue:[NSNumber numberWithBool:NO] forKey:IS_INDOORS];
-				
-				[[TriggerManager sharedInstance] deviceUpdate:[NSNotification notificationWithName:DEVICE_UPDATE_NOTIFICATION object:nil userInfo:theNote]];
-			}
+			[self fetchStatus];
 		}
-			 
-		[self recordResponse];
+		else 
+		{
+			iter = [numberFields keyEnumerator];
+			while (key = [iter nextObject])
+			{
+				NSXMLElement * element = [[container elementsForName:key] lastObject];
+				
+				NSNumber * number = [NSNumber numberWithFloat:[[element stringValue] floatValue]];
+				
+				[self setValue:number forKey:[numberFields valueForKey:key]];
+				
+				if ([key isEqual:@"temp_f"])
+				{
+					NSManagedObject * lastEvent = [[EventManager sharedInstance] lastUpdateForIdentifier:[self identifier] event:@"device"];
+					
+					if (lastEvent == nil || [[lastEvent valueForKey:@"value"] floatValue] != [number floatValue])
+					{
+						NSString * message = [NSString stringWithFormat:@"Current temperature is %@°.", number];
+						
+						[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:[self identifier]
+													   description:message value:[number description]];
+					}
+					
+					NSMutableDictionary * theNote = [NSMutableDictionary dictionary];
+					
+					[theNote setValue:[self address] forKey:DEVICE_ADDRESS];
+					[theNote setValue:number forKey:THERMOSTAT_TEMPERATURE];
+					[theNote setValue:[NSNumber numberWithBool:NO] forKey:IS_INDOORS];
+					
+					[[TriggerManager sharedInstance] deviceUpdate:[NSNotification notificationWithName:DEVICE_UPDATE_NOTIFICATION object:nil userInfo:theNote]];
+				}
+			}
+			
+			[self recordResponse];
+		}
 		
 		[document release];
 	}
@@ -183,3 +214,4 @@
 }
 
 @end
+ 

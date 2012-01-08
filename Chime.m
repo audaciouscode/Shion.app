@@ -65,7 +65,7 @@
 
 		[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:@"User"
 									   description:[NSString stringWithFormat:@"The user began ringing %@.", [self name]]
-											 value:[NSNumber numberWithInt:(256 * 256) - 1]];
+											 value:@"65535"];
 
 		[[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(expireChime:) userInfo:nil repeats:NO] retain];
 
@@ -79,7 +79,7 @@
 
 	[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:[self identifier]
 								   description:[NSString stringWithFormat:@"%@ finished ringing.", [self name]]
-										 value:[NSNumber numberWithInt:0]];
+										 value:@"0"];
 }
 
 - (void) setValue:(id) value forKey:(NSString *) key

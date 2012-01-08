@@ -77,7 +77,7 @@
 		
 		[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:@"User"
 									   description:[NSString stringWithFormat:@"The user dimmed %@.", [self name]]
-											 value:[NSNumber numberWithInt:255]];
+											 value:@"255"];
 		
 		[self didChangeValueForKey:LAST_UPDATE];
 	}
@@ -99,7 +99,7 @@
 		
 		[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:@"User"
 									   description:[NSString stringWithFormat:@"The user brightened %@.", [self name]]
-											 value:[NSNumber numberWithInt:255]];
+											 value:@"255"];
 		
 		[self didChangeValueForKey:LAST_UPDATE];
 	}
@@ -119,7 +119,7 @@
 		NSString * message = [NSString stringWithFormat:@"%@ is at %0.0f%% strength.", [self name], percentage];
 		
 		[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:[self identifier]
-									   description:message value:level];
+									   description:message value:[level description]];
 		
 		// ???
 		
@@ -139,7 +139,7 @@
 		NSString * message = [NSString stringWithFormat:@"User set %@ to %0.0f%% strength.", [self name], percentage];
 		
 		[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:@"User"
-									   description:message value:level];
+									   description:message value:[level description]];
 		
 		NSMutableDictionary * command = [NSMutableDictionary dictionary];
 		

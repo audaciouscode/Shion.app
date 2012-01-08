@@ -147,7 +147,7 @@
 			NSString * message = [NSString stringWithFormat:@"'%@' was removed and is no longer available.", [channel valueForKey:@"channel"]];
 			
 			[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:[self identifier]
-										   description:message value:[NSNumber numberWithInt:255]];
+										   description:message value:@"255"];
 		}
 
 		iter = [added objectEnumerator];
@@ -156,7 +156,7 @@
 			NSString * message = [NSString stringWithFormat:@"'%@' was added and is now available.", [channel valueForKey:@"channel"]];
 			
 			[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:[self identifier]
-										   description:message value:[NSNumber numberWithInt:255]];
+										   description:message value:@"255"];
 		}
 		
 		[self setValue:channels forKey:AVAILABLE_CONTENT];

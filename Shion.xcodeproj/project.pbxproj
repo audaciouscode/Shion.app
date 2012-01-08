@@ -74,6 +74,7 @@
 		384D5605135395B10059786A /* RokuDVP.m in Sources */ = {isa = PBXBuildFile; fileRef = 384D5604135395B10059786A /* RokuDVP.m */; };
 		3853704912AEF1390082D2D9 /* Tips in Resources */ = {isa = PBXBuildFile; fileRef = 3853704712AEF1390082D2D9 /* Tips */; };
 		38635D221030CBB100E250D7 /* shion-64.png in Resources */ = {isa = PBXBuildFile; fileRef = 38635D211030CBB100E250D7 /* shion-64.png */; };
+		386454D414B943B2001A6036 /* Shion.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 386454D314B943B2001A6036 /* Shion.xcdatamodel */; };
 		38651DC2114878DD00A2A9D5 /* BlackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38651DC1114878DD00A2A9D5 /* BlackView.m */; };
 		3873A43A116C3CAE008E4C03 /* SnapshotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3873A439116C3CAE008E4C03 /* SnapshotManager.m */; };
 		3873A44D116C3DEF008E4C03 /* Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3873A44C116C3DEF008E4C03 /* Snapshot.m */; };
@@ -123,6 +124,8 @@
 		38B82120126D33F700AA5FE9 /* OpenCV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B8211F126D33F700AA5FE9 /* OpenCV.framework */; };
 		38B82166126D340200AA5FE9 /* OpenCV.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38B8211F126D33F700AA5FE9 /* OpenCV.framework */; };
 		38C88C5F111DD2DB003A67CE /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C88C5E111DD2DB003A67CE /* AddressBook.framework */; };
+		38CD572914B965F20079270D /* NSDictionary+BSJSONAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CD572814B965F20079270D /* NSDictionary+BSJSONAdditions.m */; };
+		38CD572C14B966060079270D /* NSScanner+BSJSONAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CD572B14B966060079270D /* NSScanner+BSJSONAdditions.m */; };
 		38D4D5950F141FDC0076B966 /* cache-menu-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D4D5930F141FDC0076B966 /* cache-menu-on.png */; };
 		38D4D5960F141FDC0076B966 /* cache-menu-off.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D4D5940F141FDC0076B966 /* cache-menu-off.png */; };
 		38D4D5E70F1423D70076B966 /* Shion.icns in Resources */ = {isa = PBXBuildFile; fileRef = 38D4D5E60F1423D70076B966 /* Shion.icns */; };
@@ -143,7 +146,6 @@
 		38ED1814116A62E900673F97 /* MainMenuDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ED1813116A62E900673F97 /* MainMenuDelegate.m */; };
 		38ED1890116A699600673F97 /* ConsoleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ED188F116A699600673F97 /* ConsoleManager.m */; };
 		38ED195E116A873C00673F97 /* ASMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ED195D116A873C00673F97 /* ASMutableDictionary.m */; };
-		38ED196F116A887500673F97 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ED196E116A887500673F97 /* Event.m */; };
 		38ED1977116A8A2400673F97 /* Appliance.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ED1976116A8A2400673F97 /* Appliance.m */; };
 		38ED197A116A8A6E00673F97 /* Lamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ED1979116A8A6E00673F97 /* Lamp.m */; };
 		38ED197D116A8AD700673F97 /* Sensor.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ED197C116A8AD700673F97 /* Sensor.m */; };
@@ -303,6 +305,7 @@
 		384D5604135395B10059786A /* RokuDVP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RokuDVP.m; sourceTree = "<group>"; };
 		3853704712AEF1390082D2D9 /* Tips */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tips; sourceTree = "<group>"; };
 		38635D211030CBB100E250D7 /* shion-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shion-64.png"; sourceTree = "<group>"; };
+		386454D314B943B2001A6036 /* Shion.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Shion.xcdatamodel; sourceTree = "<group>"; };
 		38651DC0114878DD00A2A9D5 /* BlackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackView.h; sourceTree = "<group>"; };
 		38651DC1114878DD00A2A9D5 /* BlackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackView.m; sourceTree = "<group>"; };
 		3873A438116C3CAE008E4C03 /* SnapshotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapshotManager.h; sourceTree = "<group>"; };
@@ -381,6 +384,10 @@
 		38B82057126CFF4300AA5FE9 /* ActivateHouseLightsCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivateHouseLightsCommand.m; sourceTree = "<group>"; };
 		38B8211F126D33F700AA5FE9 /* OpenCV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenCV.framework; sourceTree = "<group>"; };
 		38C88C5E111DD2DB003A67CE /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		38CD572714B965F20079270D /* NSDictionary+BSJSONAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+BSJSONAdditions.h"; sourceTree = "<group>"; };
+		38CD572814B965F20079270D /* NSDictionary+BSJSONAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+BSJSONAdditions.m"; sourceTree = "<group>"; };
+		38CD572A14B966060079270D /* NSScanner+BSJSONAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScanner+BSJSONAdditions.h"; sourceTree = "<group>"; };
+		38CD572B14B966060079270D /* NSScanner+BSJSONAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScanner+BSJSONAdditions.m"; sourceTree = "<group>"; };
 		38D4D5930F141FDC0076B966 /* cache-menu-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cache-menu-on.png"; sourceTree = "<group>"; };
 		38D4D5940F141FDC0076B966 /* cache-menu-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cache-menu-off.png"; sourceTree = "<group>"; };
 		38D4D5E60F1423D70076B966 /* Shion.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Shion.icns; sourceTree = "<group>"; };
@@ -409,8 +416,6 @@
 		38ED1957116A855300673F97 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 		38ED195C116A873C00673F97 /* ASMutableDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMutableDictionary.h; sourceTree = "<group>"; };
 		38ED195D116A873C00673F97 /* ASMutableDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMutableDictionary.m; sourceTree = "<group>"; };
-		38ED196D116A887500673F97 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		38ED196E116A887500673F97 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		38ED1975116A8A2400673F97 /* Appliance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appliance.h; sourceTree = "<group>"; };
 		38ED1976116A8A2400673F97 /* Appliance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appliance.m; sourceTree = "<group>"; };
 		38ED1978116A8A6E00673F97 /* Lamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lamp.h; sourceTree = "<group>"; };
@@ -473,7 +478,17 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				38ED170C116A3E6C00673F97 /* New Code */,
+				382F6015117E256B00BD3E2F /* Commands */,
+				382F5BE4117CC18200BD3E2F /* Scripting */,
+				382F5B37117CA75000BD3E2F /* XMPP */,
+				38ED195F116A877D00673F97 /* Model */,
+				38ED1896116A6D0100673F97 /* User Interface */,
+				380E887C0EFEC0DF00EFE5AC /* AppDelegate.h */,
+				380E887D0EFEC0DF00EFE5AC /* AppDelegate.m */,
+				38AA2E691172432100885926 /* Shion.h */,
+				38AA2E6A1172432100885926 /* Shion.m */,
+				38AA2EB6117246FC00885926 /* LogManager.h */,
+				38AA2EB7117246FC00885926 /* LogManager.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -552,6 +567,7 @@
 				38D4D5B40F14202B0076B966 /* Icons */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				386454D314B943B2001A6036 /* Shion.xcdatamodel */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -774,6 +790,7 @@
 		38A01D390F0EDF8C00CEADED /* Third Party Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				38CD572614B965D00079270D /* BSJSONAdditions */,
 				389F66451353EEE10022CFA2 /* Base64.h */,
 				389F66461353EEE10022CFA2 /* Base64.m */,
 				389F65471353C2BA0022CFA2 /* AsyncUdpSocket.h */,
@@ -814,6 +831,17 @@
 				38B7641811B1611000886E0F /* ShionTriggerPopUpButton.m */,
 			);
 			name = Controls;
+			sourceTree = "<group>";
+		};
+		38CD572614B965D00079270D /* BSJSONAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				38CD572714B965F20079270D /* NSDictionary+BSJSONAdditions.h */,
+				38CD572814B965F20079270D /* NSDictionary+BSJSONAdditions.m */,
+				38CD572A14B966060079270D /* NSScanner+BSJSONAdditions.h */,
+				38CD572B14B966060079270D /* NSScanner+BSJSONAdditions.m */,
+			);
+			name = BSJSONAdditions;
 			sourceTree = "<group>";
 		};
 		38D4D5B40F14202B0076B966 /* Icons */ = {
@@ -864,24 +892,6 @@
 				38D6B58C13399FC800C78D5E /* PreferencesWindow.nib */,
 			);
 			name = "User Interface";
-			sourceTree = "<group>";
-		};
-		38ED170C116A3E6C00673F97 /* New Code */ = {
-			isa = PBXGroup;
-			children = (
-				382F6015117E256B00BD3E2F /* Commands */,
-				382F5BE4117CC18200BD3E2F /* Scripting */,
-				382F5B37117CA75000BD3E2F /* XMPP */,
-				38ED195F116A877D00673F97 /* Model */,
-				38ED1896116A6D0100673F97 /* User Interface */,
-				380E887C0EFEC0DF00EFE5AC /* AppDelegate.h */,
-				380E887D0EFEC0DF00EFE5AC /* AppDelegate.m */,
-				38AA2E691172432100885926 /* Shion.h */,
-				38AA2E6A1172432100885926 /* Shion.m */,
-				38AA2EB6117246FC00885926 /* LogManager.h */,
-				38AA2EB7117246FC00885926 /* LogManager.m */,
-			);
-			name = "New Code";
 			sourceTree = "<group>";
 		};
 		38ED1896116A6D0100673F97 /* User Interface */ = {
@@ -938,7 +948,6 @@
 			children = (
 				38ED1974116A88F200673F97 /* Base Types */,
 				38ED196A116A880500673F97 /* Devices */,
-				38ED1970116A888B00673F97 /* Events */,
 				3873A44B116C3DEF008E4C03 /* Snapshot.h */,
 				3873A44C116C3DEF008E4C03 /* Snapshot.m */,
 				38FC563D1190FC3D00DED95A /* Trigger.h */,
@@ -975,15 +984,6 @@
 				384A4C041440A1F800F9CB6B /* GarageHawk.m */,
 			);
 			name = Devices;
-			sourceTree = "<group>";
-		};
-		38ED1970116A888B00673F97 /* Events */ = {
-			isa = PBXGroup;
-			children = (
-				38ED196D116A887500673F97 /* Event.h */,
-				38ED196E116A887500673F97 /* Event.m */,
-			);
-			name = Events;
 			sourceTree = "<group>";
 		};
 		38ED1974116A88F200673F97 /* Base Types */ = {
@@ -1136,7 +1136,6 @@
 				38ED1814116A62E900673F97 /* MainMenuDelegate.m in Sources */,
 				38ED1890116A699600673F97 /* ConsoleManager.m in Sources */,
 				38ED195E116A873C00673F97 /* ASMutableDictionary.m in Sources */,
-				38ED196F116A887500673F97 /* Event.m in Sources */,
 				38ED1977116A8A2400673F97 /* Appliance.m in Sources */,
 				38ED197A116A8A6E00673F97 /* Lamp.m in Sources */,
 				38ED197D116A8AD700673F97 /* Sensor.m in Sources */,
@@ -1217,6 +1216,9 @@
 				3876206B13E492FF0014D34C /* WeatherStationView.m in Sources */,
 				384A4C051440A1F800F9CB6B /* GarageHawk.m in Sources */,
 				384A4C541440C11D00F9CB6B /* GarageHawkView.m in Sources */,
+				386454D414B943B2001A6036 /* Shion.xcdatamodel in Sources */,
+				38CD572914B965F20079270D /* NSDictionary+BSJSONAdditions.m in Sources */,
+				38CD572C14B966060079270D /* NSScanner+BSJSONAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

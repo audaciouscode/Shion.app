@@ -28,8 +28,12 @@
 @implementation GroupView
 
 
-- (void) drawChartForFavoriteDevices:(NSArray *) devices snapshots:(NSArray *) snapshots triggers:(NSArray *) triggers drawn:(unsigned int *) count;
+- (void) drawChartForFavoriteDevices:(NSArray *) devices snapshots:(NSArray *) snapshots triggers:(NSArray *) triggers 
+							   drawn:(unsigned int *) count
 {
+	if (![self needsDisplay])
+		return;
+	
 	[self resetCursorRects];
 	
 	NSEnumerator * rectIter = [deviceAreas objectEnumerator];
@@ -143,12 +147,22 @@
 			
 			NSMutableArray * chartEvents = [NSMutableArray arrayWithArray:events];
 			
-			Event * e = [Event eventWithType:@"device" source:@"" initiator:@"" description:@"" value:[NSNumber numberWithFloat:0]  date:[NSDate date]];
+			NSManagedObjectContext * context = [[EventManager sharedInstance] managedObjectContext];
+			
+			NSManagedObject * e = [NSEntityDescription insertNewObjectForEntityForName:@"Event"
+																inManagedObjectContext:context];
+			[e setValue:@"device" forKey:@"type"];
+			[e setValue:@"" forKey:@"source"];
+			[e setValue:@"" forKey:@"initiator"];
+			[e setValue:@"" forKey:@"event_description"];
+			[e setValue:@"0" forKey:@"value"];
+			[e setValue:[NSDate date] forKey:@"date"];
+
 			[chartEvents addObject:e];
 			
 			NSString * cacheKey = [NSString stringWithFormat:@"%@-%f-%f", identifier, startInterval, latestInterval];
 			
-			PresenceTimeline * timeline = [timelineCache valueForKey:cacheKey];
+			PresenceTimeline * timeline = [[[EventManager sharedInstance] timelineCache] valueForKey:cacheKey];
 			
 			if (timeline == nil && [device isKindOfClass:[Thermostat class]])
 			{
@@ -159,14 +173,13 @@
 				float averageTemp = 0;
 				int count = 0;
 				
-				
 				NSEnumerator * eventIter = [chartEvents objectEnumerator];
-				Event * event = nil;
+				NSManagedObject * event = nil;
 				while ((event = [eventIter nextObject]))
 				{
-					if ([[event value] respondsToSelector:@selector(floatValue)])
+					if ([[event valueForKey:@"value"] respondsToSelector:@selector(floatValue)])
 					{
-						float temp = [[event value] floatValue];
+						float temp = [[event valueForKey:@"value"] floatValue];
 						
 						averageTemp += temp;
 						
@@ -185,8 +198,8 @@
 				{
 					float f = 0;
 					
-					if ([[event value] respondsToSelector:@selector(floatValue)])
-						f = [[event value] floatValue];
+					if ([[event valueForKey:@"value"] respondsToSelector:@selector(floatValue)])
+						f = [[event valueForKey:@"value"] floatValue];
 					
 					float temp = f;
 					
@@ -206,9 +219,9 @@
 				event = nil;
 				while ((event = [eventIter nextObject]))
 				{
-					if ([[event date] timeIntervalSince1970] > startInterval)
+					if ([[event valueForKey:@"date"] timeIntervalSince1970] > startInterval)
 					{
-						float normalizedTemp = ([[event value] floatValue] - minTemp) / diff;
+						float normalizedTemp = ([[event valueForKey:@"value"] floatValue] - minTemp) / diff;
 						
 						if (normalizedTemp < 0)
 							normalizedTemp = 0;
@@ -216,11 +229,11 @@
 						if (normalizedTemp > 1)
 							normalizedTemp = 1;
 						
-						[timeline setValue:(255 * normalizedTemp) atInterval:[[event date] timeIntervalSince1970]];
+						[timeline setValue:(255 * normalizedTemp) atInterval:[[event valueForKey:@"date"] timeIntervalSince1970]];
 					}
 				}
 				
-				[timelineCache setValue:timeline forKey:cacheKey];
+				[[[EventManager sharedInstance] timelineCache] setValue:timeline forKey:cacheKey];
 				[timeline release];
 			}
 			else if (timeline == nil && [device isKindOfClass:[PowerMeterSensor class]])
@@ -233,13 +246,13 @@
 				float maxPower = -9999;
 				
 				NSEnumerator * eventIter = [chartEvents objectEnumerator];
-				Event * event = nil;
+				NSManagedObject * event = nil;
 				while ((event = [eventIter nextObject]))
 				{
 					float f = 0;
 					
-					if ([[event value] respondsToSelector:@selector(floatValue)])
-						f = [[event value] floatValue];
+					if ([[event valueForKey:@"value"] respondsToSelector:@selector(floatValue)])
+						f = [[event valueForKey:@"value"] floatValue];
 					
 					float power = f;
 					
@@ -259,20 +272,20 @@
 				event = nil;
 				while ((event = [eventIter nextObject]))
 				{
-					if ([[event date] timeIntervalSince1970] > startInterval)
+					if ([[event valueForKey:@"date"] timeIntervalSince1970] > startInterval)
 					{
-						float normalizedPower = ([[event value] floatValue] - minPower) / diff;
+						float normalizedPower = ([[event valueForKey:@"value"] floatValue] - minPower) / diff;
 						
 						if (normalizedPower < 0.0)
 							normalizedPower = 0.0;
 						else if (normalizedPower > 1.0)
 							normalizedPower = 1.0;
 						
-						[timeline setValue:(255 * normalizedPower) atInterval:[[event date] timeIntervalSince1970]];
+						[timeline setValue:(255 * normalizedPower) atInterval:[[event valueForKey:@"date"] timeIntervalSince1970]];
 					}
 				}
 				
-				[timelineCache setValue:timeline forKey:cacheKey];
+				[[[EventManager sharedInstance] timelineCache] setValue:timeline forKey:cacheKey];
 				[timeline release];
 			}
 			else if (timeline == nil)
@@ -282,23 +295,23 @@
 													  initialValue:0];
 				
 				NSEnumerator * eventIter = [chartEvents objectEnumerator];
-				Event * event = nil;
+				NSManagedObject * event = nil;
 				while ((event = [eventIter nextObject]))
 				{
 					float f = 255;
 					
-					if ([[event value] respondsToSelector:@selector(floatValue)])
-						f = [[event value] floatValue];
+					if ([[event valueForKey:@"value"] respondsToSelector:@selector(floatValue)])
+						f = [[event valueForKey:@"value"] floatValue];
 					
-					if ([[event date] timeIntervalSince1970] > startInterval)
-						[timeline setValue:f atInterval:[[event date] timeIntervalSince1970]];
+					if ([[event valueForKey:@"date"] timeIntervalSince1970] > startInterval)
+						[timeline setValue:f atInterval:[[event valueForKey:@"date"] timeIntervalSince1970]];
 					
 					if ([device isKindOfClass:[Camera class]] || [device isKindOfClass:[MobileClient class]] || 
 						[device isKindOfClass:[Phone class]])
-						[timeline setValue:0 atInterval:([[event date] timeIntervalSince1970] + 10)];
+						[timeline setValue:0 atInterval:([[event valueForKey:@"date"] timeIntervalSince1970] + 10)];
 				}
 				
-				[timelineCache setValue:timeline forKey:cacheKey];
+				[[[EventManager sharedInstance] timelineCache] setValue:timeline forKey:cacheKey];
 				
 				[timeline release];
 			}
@@ -316,6 +329,8 @@
 			[self drawTimeline:timeline start:(startInterval + daySeconds) end:latestInterval inRect:timeRect object:device highlighted:highlight];
 			
 			*count += 1;
+			
+			[context deleteObject:e];
 		}
 	}
 
@@ -375,12 +390,22 @@
 			
 			NSMutableArray * chartEvents = [NSMutableArray arrayWithArray:events];
 			
-			Event * e = [Event eventWithType:@"snapshot" source:@"" initiator:@"" description:@"" value:[NSNumber numberWithFloat:0]  date:[NSDate date]];
+			NSManagedObjectContext * context = [[EventManager sharedInstance] managedObjectContext];
+			
+			NSManagedObject * e = [NSEntityDescription insertNewObjectForEntityForName:@"Event"
+																inManagedObjectContext:context];
+			[e setValue:@"snapshot" forKey:@"type"];
+			[e setValue:@"" forKey:@"source"];
+			[e setValue:@"" forKey:@"initiator"];
+			[e setValue:@"" forKey:@"event_description"];
+			[e setValue:@"0" forKey:@"value"];
+			[e setValue:[NSDate date] forKey:@"date"];
+			
 			[chartEvents addObject:e];
 			
 			NSString * cacheKey = [NSString stringWithFormat:@"%@-%f-%f", identifier, startInterval, latestInterval];
 			
-			PresenceTimeline * timeline = [timelineCache valueForKey:cacheKey];
+			PresenceTimeline * timeline = [[[EventManager sharedInstance] timelineCache] valueForKey:cacheKey];
 
 			if (timeline == nil)
 			{
@@ -389,21 +414,21 @@
 													  initialValue:0];
 				
 				NSEnumerator * eventIter = [chartEvents objectEnumerator];
-				Event * event = nil;
+				NSManagedObject * event = nil;
 				while ((event = [eventIter nextObject]))
 				{
 					float f = 255;
 					
-					if ([[event value] respondsToSelector:@selector(floatValue)])
-						f = [[event value] floatValue];
+					if ([[event valueForKey:@"value"] respondsToSelector:@selector(floatValue)])
+						f = [[event valueForKey:@"value"] floatValue];
 					
-					if ([[event date] timeIntervalSince1970] > startInterval)
-						[timeline setValue:f atInterval:[[event date] timeIntervalSince1970]];
+					if ([[event valueForKey:@"date"] timeIntervalSince1970] > startInterval)
+						[timeline setValue:f atInterval:[[event valueForKey:@"date"] timeIntervalSince1970]];
 					
-					[timeline setValue:0 atInterval:([[event date] timeIntervalSince1970] + 1)];
+					[timeline setValue:0 atInterval:([[event valueForKey:@"date"] timeIntervalSince1970] + 1)];
 				}
 				
-				[timelineCache setValue:timeline forKey:cacheKey];
+				[[[EventManager sharedInstance] timelineCache] setValue:timeline forKey:cacheKey];
 				
 				[timeline release];
 			}
@@ -421,6 +446,8 @@
 			[self drawTimeline:timeline start:(startInterval + daySeconds) end:latestInterval inRect:timeRect object:snapshot highlighted:highlight];
 			
 			*count += 1;
+			
+			[context deleteObject:e];
 		}
 	}
 
@@ -480,12 +507,22 @@
 			
 			NSMutableArray * chartEvents = [NSMutableArray arrayWithArray:events];
 			
-			Event * e = [Event eventWithType:@"trigger" source:@"" initiator:@"" description:@"" value:[NSNumber numberWithFloat:0]  date:[NSDate date]];
+			NSManagedObjectContext * context = [[EventManager sharedInstance] managedObjectContext];
+			
+			NSManagedObject * e = [NSEntityDescription insertNewObjectForEntityForName:@"Event"
+																inManagedObjectContext:context];
+			[e setValue:@"trigger" forKey:@"type"];
+			[e setValue:@"" forKey:@"source"];
+			[e setValue:@"" forKey:@"initiator"];
+			[e setValue:@"" forKey:@"event_description"];
+			[e setValue:@"0" forKey:@"value"];
+			[e setValue:[NSDate date] forKey:@"date"];
+
 			[chartEvents addObject:e];
 			
 			NSString * cacheKey = [NSString stringWithFormat:@"%@-%f-%f", identifier, startInterval, latestInterval];
 			
-			PresenceTimeline * timeline = [timelineCache valueForKey:cacheKey];
+			PresenceTimeline * timeline = [[[EventManager sharedInstance] timelineCache] valueForKey:cacheKey];
 
 			if (timeline == nil)
 			{
@@ -494,21 +531,21 @@
 													  initialValue:0];
 				
 				NSEnumerator * eventIter = [chartEvents objectEnumerator];
-				Event * event = nil;
+				NSManagedObject * event = nil;
 				while ((event = [eventIter nextObject]))
 				{
 					float f = 255;
 					
-					if ([[event value] respondsToSelector:@selector(floatValue)])
-						f = [[event value] floatValue];
+					if ([[event valueForKey:@"value"] respondsToSelector:@selector(floatValue)])
+						f = [[event valueForKey:@"value"] floatValue];
 					
-					if ([[event date] timeIntervalSince1970] > startInterval)
-						[timeline setValue:f atInterval:[[event date] timeIntervalSince1970]];
+					if ([[event valueForKey:@"date"] timeIntervalSince1970] > startInterval)
+						[timeline setValue:f atInterval:[[event valueForKey:@"date"] timeIntervalSince1970]];
 					
-					[timeline setValue:0 atInterval:([[event date] timeIntervalSince1970] + 1)];
+					[timeline setValue:0 atInterval:([[event valueForKey:@"date"] timeIntervalSince1970] + 1)];
 				}
 				
-				[timelineCache setValue:timeline forKey:cacheKey];
+				[[[EventManager sharedInstance] timelineCache] setValue:timeline forKey:cacheKey];
 				
 				[timeline release];
 			}
@@ -526,6 +563,8 @@
 			[self drawTimeline:timeline start:(startInterval + daySeconds) end:latestInterval inRect:timeRect object:trigger highlighted:highlight];
 			
 			*count += 1;
+			
+			[context deleteObject:e];
 		}
 	}
 	
@@ -727,12 +766,22 @@
 			
 			NSMutableArray * chartEvents = [NSMutableArray arrayWithArray:events];
 			
-			Event * e = [Event eventWithType:@"device" source:@"" initiator:@"" description:@"" value:[NSNumber numberWithFloat:0]  date:[NSDate date]];
+			NSManagedObjectContext * context = [[EventManager sharedInstance] managedObjectContext];
+			
+			NSManagedObject * e = [NSEntityDescription insertNewObjectForEntityForName:@"Event"
+																inManagedObjectContext:context];
+			[e setValue:@"device" forKey:@"type"];
+			[e setValue:@"" forKey:@"source"];
+			[e setValue:@"" forKey:@"initiator"];
+			[e setValue:@"" forKey:@"event_description"];
+			[e setValue:@"0" forKey:@"value"];
+			[e setValue:[NSDate date] forKey:@"date"];
+			
 			[chartEvents addObject:e];
 			
 			NSString * cacheKey = [NSString stringWithFormat:@"%@-%f-%f", identifier, startInterval, latestInterval];
 			
-			PresenceTimeline * timeline = [timelineCache valueForKey:cacheKey];
+			PresenceTimeline * timeline = [[[EventManager sharedInstance] timelineCache] valueForKey:cacheKey];
 
 			if (timeline == nil && [device isKindOfClass:[Thermostat class]])
 			{
@@ -744,12 +793,12 @@
 				int count = 0;
 				
 				NSEnumerator * eventIter = [chartEvents objectEnumerator];
-				Event * event = nil;
+				NSManagedObject * event = nil;
 				while ((event = [eventIter nextObject]))
 				{
-					if ([[event value] respondsToSelector:@selector(floatValue)])
+					if ([[event valueForKey:@"value"] respondsToSelector:@selector(floatValue)])
 					{
-						float temp = [[event value] floatValue];
+						float temp = [[event valueForKey:@"value"] floatValue];
 						
 						averageTemp += temp;
 						
@@ -768,8 +817,8 @@
 				{
 					float f = 0;
 					
-					if ([[event value] respondsToSelector:@selector(floatValue)])
-						f = [[event value] floatValue];
+					if ([[event valueForKey:@"value"] respondsToSelector:@selector(floatValue)])
+						f = [[event valueForKey:@"value"] floatValue];
 					
 					float temp = f;
 					
@@ -791,23 +840,23 @@
 				{
 					unsigned int i = 0;
 					
-					Event * thisEvent = [chartEvents objectAtIndex:0];
-					Event * nextEvent = nil;
+					NSManagedObject * thisEvent = [chartEvents objectAtIndex:0];
+					NSManagedObject * nextEvent = nil;
 					
-					NSTimeInterval thisTime = [[thisEvent date] timeIntervalSince1970];
+					NSTimeInterval thisTime = [[thisEvent valueForKey:@"date"] timeIntervalSince1970];
 					NSTimeInterval nextTime = 0;
 					
 					if (length > 1)
 					{
 						nextEvent = [chartEvents objectAtIndex:1];
-						nextTime = [[nextEvent date] timeIntervalSince1970];
+						nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 					}
 					
 					for (i = 0; i < length; i++)
 					{
 						if (thisTime > startInterval)
 						{
-							float normalizedTemp = ([[thisEvent value] floatValue] - minTemp) / diff;
+							float normalizedTemp = ([[thisEvent valueForKey:@"value"] floatValue] - minTemp) / diff;
 							
 							if (normalizedTemp < 0)
 								normalizedTemp = 0;
@@ -830,14 +879,14 @@
 						if (i < (length - 1))
 						{
 							nextEvent = [chartEvents objectAtIndex:(i + 1)];
-							nextTime = [[nextEvent date] timeIntervalSince1970];
+							nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 						}
 						else
 							nextEvent = nil;
 					}
 				}
 				
-				[timelineCache setValue:timeline forKey:cacheKey];
+				[[[EventManager sharedInstance] timelineCache] setValue:timeline forKey:cacheKey];
 				[timeline release];
 			}
 			else if (timeline == nil && [device isKindOfClass:[PowerMeterSensor class]])
@@ -850,13 +899,13 @@
 				float maxPower = -9999;
 				
 				NSEnumerator * eventIter = [chartEvents objectEnumerator];
-				Event * event = nil;
+				NSManagedObject * event = nil;
 				while ((event = [eventIter nextObject]))
 				{
 					float f = 0;
 					
-					if ([[event value] respondsToSelector:@selector(floatValue)])
-						f = [[event value] floatValue];
+					if ([[event valueForKey:@"value"] respondsToSelector:@selector(floatValue)])
+						f = [[event valueForKey:@"value"] floatValue];
 					
 					float power = f;
 					
@@ -878,23 +927,23 @@
 				{
 					unsigned int i = 0;
 					
-					Event * thisEvent = [chartEvents objectAtIndex:0];
-					Event * nextEvent = nil;
+					NSManagedObject * thisEvent = [chartEvents objectAtIndex:0];
+					NSManagedObject * nextEvent = nil;
 					
-					NSTimeInterval thisTime = [[thisEvent date] timeIntervalSince1970];
+					NSTimeInterval thisTime = [[thisEvent valueForKey:@"date"] timeIntervalSince1970];
 					NSTimeInterval nextTime = 0;
 					
 					if (length > 1)
 					{
 						nextEvent = [chartEvents objectAtIndex:1];
-						nextTime = [[nextEvent date] timeIntervalSince1970];
+						nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 					}
 					
 					for (i = 0; i < length; i++)
 					{
 						if (thisTime > startInterval)
 						{
-							float normalizedPower = ([[thisEvent value] floatValue] - minPower) / diff;
+							float normalizedPower = ([[thisEvent valueForKey:@"value"] floatValue] - minPower) / diff;
 							
 							if (normalizedPower < 0.0)
 								normalizedPower = 0.0;
@@ -916,14 +965,14 @@
 						if (i < (length - 1))
 						{
 							nextEvent = [chartEvents objectAtIndex:(i + 1)];
-							nextTime = [[nextEvent date] timeIntervalSince1970];
+							nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 						}
 						else
 							nextEvent = nil;
 					}
 				}
 				
-				[timelineCache setValue:timeline forKey:cacheKey];
+				[[[EventManager sharedInstance] timelineCache] setValue:timeline forKey:cacheKey];
 				[timeline release];
 			}
 			if (timeline == nil && [device isKindOfClass:[WeatherUndergroundStation class]])
@@ -936,13 +985,13 @@
 				float maxTemp = -9999;
 				
 				NSEnumerator * eventIter = [chartEvents objectEnumerator];
-				Event * event = nil;
+				NSManagedObject * event = nil;
 				while ((event = [eventIter nextObject]))
 				{
 					float f = 0;
 					
-					if ([[event value] respondsToSelector:@selector(floatValue)])
-						f = [[event value] floatValue];
+					if ([[event valueForKey:@"value"] respondsToSelector:@selector(floatValue)])
+						f = [[event valueForKey:@"value"] floatValue];
 					
 					float temp = f;
 					
@@ -964,23 +1013,23 @@
 				{
 					unsigned int i = 0;
 					
-					Event * thisEvent = [chartEvents objectAtIndex:0];
-					Event * nextEvent = nil;
+					NSManagedObject * thisEvent = [chartEvents objectAtIndex:0];
+					NSManagedObject * nextEvent = nil;
 					
-					NSTimeInterval thisTime = [[thisEvent date] timeIntervalSince1970];
+					NSTimeInterval thisTime = [[thisEvent valueForKey:@"date"] timeIntervalSince1970];
 					NSTimeInterval nextTime = 0;
 					
 					if (length > 1)
 					{
 						nextEvent = [chartEvents objectAtIndex:1];
-						nextTime = [[nextEvent date] timeIntervalSince1970];
+						nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 					}
 					
 					for (i = 0; i < length; i++)
 					{
 						if (thisTime > startInterval)
 						{
-							float normalizedPower = ([[thisEvent value] floatValue] - minTemp) / diff;
+							float normalizedPower = ([[thisEvent valueForKey:@"value"] floatValue] - minTemp) / diff;
 							
 							if (normalizedPower < 0)
 								normalizedPower = 0.5;
@@ -1000,14 +1049,14 @@
 						if (i < (length - 1))
 						{
 							nextEvent = [chartEvents objectAtIndex:(i + 1)];
-							nextTime = [[nextEvent date] timeIntervalSince1970];
+							nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 						}
 						else
 							nextEvent = nil;
 					}
 				}
 				
-				[timelineCache setValue:timeline forKey:cacheKey];
+				[[[EventManager sharedInstance] timelineCache] setValue:timeline forKey:cacheKey];
 				[timeline release];
 			}
 			else if (timeline == nil)
@@ -1022,23 +1071,23 @@
 				{
 					unsigned int i = 0;
 					
-					Event * thisEvent = [chartEvents objectAtIndex:0];
-					Event * nextEvent = nil;
+					NSManagedObject * thisEvent = [chartEvents objectAtIndex:0];
+					NSManagedObject * nextEvent = nil;
 					
-					NSTimeInterval thisTime  = [[thisEvent date] timeIntervalSince1970];
+					NSTimeInterval thisTime  = [[thisEvent valueForKey:@"date"] timeIntervalSince1970];
 					NSTimeInterval nextTime = 0;
 					
 					if (length > 1)
 					{
 						nextEvent = [chartEvents objectAtIndex:1];
-						nextTime = [[nextEvent date] timeIntervalSince1970];
+						nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 					}
 					
 					for (i = 0; i < length; i++)
 					{
 						if (thisTime > startInterval)
 						{
-							id value = [thisEvent value];
+							id value = [thisEvent valueForKey:@"value"];
 							
 							float f = 255;
 							
@@ -1077,14 +1126,14 @@
 						if (i < (length - 1))
 						{
 							nextEvent = [chartEvents objectAtIndex:(i + 1)];
-							nextTime = [[nextEvent date] timeIntervalSince1970];
+							nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 						}
 						else
 							nextEvent = nil;
 					}
 				}
 
-				[timelineCache setValue:timeline forKey:cacheKey];
+				[[[EventManager sharedInstance] timelineCache] setValue:timeline forKey:cacheKey];
 				[timeline release];
 			} 
 			
@@ -1101,6 +1150,8 @@
 			[self drawTimeline:timeline start:(startInterval + daySeconds) end:latestInterval inRect:timeRect object:device highlighted:highlight];
 			
 			*count += 1;
+			
+			[context deleteObject:e];
 		}
 	}
 }
@@ -1217,12 +1268,22 @@
 			
 			NSMutableArray * chartEvents = [NSMutableArray arrayWithArray:events];
 			
-			Event * e = [Event eventWithType:@"snapshot" source:@"" initiator:@"" description:@"" value:[NSNumber numberWithFloat:0]  date:[NSDate date]];
+			NSManagedObjectContext * context = [[EventManager sharedInstance] managedObjectContext];
+			
+			NSManagedObject * e = [NSEntityDescription insertNewObjectForEntityForName:@"Event"
+																inManagedObjectContext:context];
+			[e setValue:@"snapshot" forKey:@"type"];
+			[e setValue:@"" forKey:@"source"];
+			[e setValue:@"" forKey:@"initiator"];
+			[e setValue:@"" forKey:@"event_description"];
+			[e setValue:@"0" forKey:@"value"];
+			[e setValue:[NSDate date] forKey:@"date"];
+			
 			[chartEvents addObject:e];
 			
 			NSString * cacheKey = [NSString stringWithFormat:@"%@-%f-%f", identifier, startInterval, latestInterval];
 			
-			PresenceTimeline * timeline = [timelineCache valueForKey:cacheKey];
+			PresenceTimeline * timeline = [[[EventManager sharedInstance] timelineCache] valueForKey:cacheKey];
 
 			if (timeline == nil)
 			{
@@ -1236,23 +1297,23 @@
 				{
 					unsigned int i = 0;
 					
-					Event * thisEvent = [chartEvents objectAtIndex:0];
-					Event * nextEvent = nil;
+					NSManagedObject * thisEvent = [chartEvents objectAtIndex:0];
+					NSManagedObject * nextEvent = nil;
 					
-					NSTimeInterval thisTime = [[thisEvent date] timeIntervalSince1970];
+					NSTimeInterval thisTime = [[thisEvent valueForKey:@"date"] timeIntervalSince1970];
 					NSTimeInterval nextTime = 0;
 					
 					if (length > 1)
 					{
 						nextEvent = [chartEvents objectAtIndex:1];
-						nextTime = [[nextEvent date] timeIntervalSince1970];
+						nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 					}
 					
 					for (i = 0; i < length; i++)
 					{
 						if (thisTime > startInterval)
 						{
-							id value = [thisEvent value];
+							id value = [thisEvent valueForKey:@"value"];
 							
 							float f = 255;
 							
@@ -1277,14 +1338,14 @@
 						if (i < (length - 1))
 						{
 							nextEvent = [chartEvents objectAtIndex:(i + 1)];
-							nextTime = [[nextEvent date] timeIntervalSince1970];
+							nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 						}
 						else
 							nextEvent = nil;
 					}
 				}
 
-				[timelineCache setValue:timeline forKey:cacheKey];
+				[[[EventManager sharedInstance] timelineCache] setValue:timeline forKey:cacheKey];
 				
 				[timeline release];
 			}
@@ -1302,6 +1363,8 @@
 			[self drawTimeline:timeline start:(startInterval + daySeconds) end:latestInterval inRect:timeRect object:snapshot highlighted:highlight];
 			
 			*count += 1;
+			
+			[context deleteObject:e];
 		}
 	}
 }
@@ -1417,13 +1480,23 @@
 			NSArray * events = [[EventManager sharedInstance] eventsForIdentifier:identifier event:@"trigger"];
 			
 			NSMutableArray * chartEvents = [NSMutableArray arrayWithArray:events];
+
+			NSManagedObjectContext * context = [[EventManager sharedInstance] managedObjectContext];
 			
-			Event * e = [Event eventWithType:@"trigger" source:@"" initiator:@"" description:@"" value:[NSNumber numberWithFloat:0]  date:[NSDate date]];
+			NSManagedObject * e = [NSEntityDescription insertNewObjectForEntityForName:@"Event"
+																inManagedObjectContext:context];
+			[e setValue:@"trigger" forKey:@"type"];
+			[e setValue:@"" forKey:@"source"];
+			[e setValue:@"" forKey:@"initiator"];
+			[e setValue:@"" forKey:@"event_description"];
+			[e setValue:@"0" forKey:@"value"];
+			[e setValue:[NSDate date] forKey:@"date"];
+
 			[chartEvents addObject:e];
 			
 			NSString * cacheKey = [NSString stringWithFormat:@"%@-%f-%f", identifier, startInterval, latestInterval];
 			
-			PresenceTimeline * timeline = [timelineCache valueForKey:cacheKey];
+			PresenceTimeline * timeline = [[[EventManager sharedInstance] timelineCache] valueForKey:cacheKey];
 
 			if (timeline == nil)
 			{
@@ -1437,23 +1510,23 @@
 				{
 					unsigned int i = 0;
 					
-					Event * thisEvent = [chartEvents objectAtIndex:0];
-					Event * nextEvent = nil;
+					NSManagedObject * thisEvent = [chartEvents objectAtIndex:0];
+					NSManagedObject * nextEvent = nil;
 					
-					NSTimeInterval thisTime = [[thisEvent date] timeIntervalSince1970];
+					NSTimeInterval thisTime = [[thisEvent valueForKey:@"date"] timeIntervalSince1970];
 					NSTimeInterval nextTime = 0;
 					
 					if (length > 1)
 					{
 						nextEvent = [chartEvents objectAtIndex:1];
-						nextTime = [[nextEvent date] timeIntervalSince1970];
+						nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 					}
 					
 					for (i = 0; i < length; i++)
 					{
 						if (thisTime > startInterval)
 						{
-							id value = [thisEvent value];
+							id value = [thisEvent valueForKey:@"value"];
 
 							float f = 255;
 							
@@ -1478,14 +1551,14 @@
 						if (i < (length - 1))
 						{
 							nextEvent = [chartEvents objectAtIndex:(i + 1)];
-							nextTime = [[nextEvent date] timeIntervalSince1970];
+							nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 						}
 						else
 							nextEvent = nil;
 					}
 				}
 				
-				[timelineCache setValue:timeline forKey:cacheKey];
+				[[[EventManager sharedInstance] timelineCache] setValue:timeline forKey:cacheKey];
 				
 				[timeline release];
 			}
@@ -1503,6 +1576,8 @@
 			[self drawTimeline:timeline start:(startInterval + daySeconds) end:latestInterval inRect:timeRect object:trigger highlighted:highlight];
 			
 			*count += 1;
+			
+			[context deleteObject:e];
 		}
 	}
 }

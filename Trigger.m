@@ -163,7 +163,7 @@
 
 	[[EventManager sharedInstance] createEvent:@"trigger" source:[self identifier] initiator:[self identifier]
 								   description:[NSString stringWithFormat:@"Trigger '%@' fired.", [self name]]
-										 value:[NSNumber numberWithInt:(256 * 256) - 1]];
+										 value:@"65535"];
 	
 	[self willChangeValueForKey:FIRED];
 	

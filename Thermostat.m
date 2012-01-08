@@ -130,7 +130,7 @@
 		
 		[[EventManager sharedInstance] createEvent:@"device_fan" source:[self identifier] initiator:@"User"
 									   description:[NSString stringWithFormat:@"The user activated the fan on %@", [self name]]
-											 value:[NSNumber numberWithBool:YES]];
+											 value:@"1"];
 
 		[super setValue:[NSNumber numberWithInt:255] forKey:DEVICE_THERMOSTAT_FAN];
 	}
@@ -140,7 +140,7 @@
 
 		[[EventManager sharedInstance] createEvent:@"device_fan" source:[self identifier] initiator:@"User"
 									   description:[NSString stringWithFormat:@"The user deactivated the fan on %@", [self name]]
-											 value:[NSNumber numberWithBool:NO]];
+											 value:@"0"];
 
 		[super setValue:[NSNumber numberWithInt:0] forKey:DEVICE_THERMOSTAT_FAN];
 	}
@@ -197,7 +197,7 @@
 	
 	[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:[self identifier]
 								   description:[NSString stringWithFormat:@"%@ local temperature is %@.", [self name], temperature]
-										 value:temperature];
+										 value:[temperature description]];
 }
 
 
@@ -226,7 +226,7 @@
 		
 		[[EventManager sharedInstance] createEvent:@"device_heat" source:[self identifier] initiator:@"User"
 									   description:[NSString stringWithFormat:@"The user set %@ heat point to %@.", [self name], heatPoint]
-											 value:heatPoint];
+											 value:[heatPoint description]];
 		
 		[self didChangeValueForKey:LAST_UPDATE];
 	}
@@ -234,19 +234,19 @@
 	{
 		[[EventManager sharedInstance] createEvent:@"device_heat" source:[self identifier] initiator:[self identifier]
 									   description:[NSString stringWithFormat:@"%@ heat point is %@.", [self name], heatPoint]
-											 value:heatPoint];
+											 value:[heatPoint description]];
 	}
 }
 
 - (void) setRunning:(BOOL) running
 {
 	NSString * message = [NSString stringWithFormat:@"%@ is running.", [self name]];
-	NSNumber * level = [NSNumber numberWithInt:255];
+	NSString * level = @"255";
 	
 	if (!running)
 	{
 		message = [NSString stringWithFormat:@"%@ stopped running.", [self name]];
-		level = [NSNumber numberWithInt:0];
+		level = @"0";
 	}
 
 	[[EventManager sharedInstance] createEvent:@"hvac_state" source:[self identifier] initiator:[self identifier]
@@ -289,7 +289,7 @@
 		
 		[[EventManager sharedInstance] createEvent:@"device_cool" source:[self identifier] initiator:@"User"
 									   description:[NSString stringWithFormat:@"The user set %@ cool point to %@.", [self name], coolPoint]
-											 value:coolPoint];
+											 value:[coolPoint description]];
 		
 		[self didChangeValueForKey:LAST_UPDATE];
 	}
@@ -297,7 +297,7 @@
 	{
 		[[EventManager sharedInstance] createEvent:@"device_cool" source:[self identifier] initiator:[self identifier]
 									   description:[NSString stringWithFormat:@"%@ cool point is %@.", [self name], coolPoint]
-											 value:coolPoint];
+											 value:[coolPoint description]];
 	}
 }
 

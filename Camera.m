@@ -192,14 +192,14 @@
 			
 			[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:[self identifier]
 										   description:@"Image captured."
-												 value:[NSNumber numberWithInt:INT16_MAX]
+												 value:@"65535"
 												 match:NO];
 		}
 		else
 		{
 			[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:[self identifier]
 										   description:@"Image discarded for lack of significant changes"
-												 value:[NSNumber numberWithInt:0]
+												 value:@"0"
 												 match:NO];
 		}
 		

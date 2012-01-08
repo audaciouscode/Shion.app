@@ -8,7 +8,6 @@
 
 #import "WeatherStationView.h"
 
-#import "Event.h"
 #import "EventManager.h"
 
 #import "WeatherUndergroundStation.h"
@@ -22,7 +21,17 @@
 	{
 		NSMutableArray * chartEvents = [NSMutableArray arrayWithArray:events];
 		
-		Event * e = [Event eventWithType:@"device" source:@"" initiator:@"" description:@"" value:[NSNumber numberWithFloat:0]  date:[NSDate date]];
+		NSManagedObjectContext * context = [[EventManager sharedInstance] managedObjectContext];
+		
+		NSManagedObject * e = [NSEntityDescription insertNewObjectForEntityForName:@"Event"
+															inManagedObjectContext:context];
+		[e setValue:@"device" forKey:@"type"];
+		[e setValue:@"" forKey:@"source"];
+		[e setValue:@"" forKey:@"initiator"];
+		[e setValue:@"" forKey:@"event_description"];
+		[e setValue:@"0" forKey:@"value"];
+		[e setValue:[NSDate date] forKey:@"date"];
+
 		[chartEvents addObject:e];
 		
 		NSRect bounds = [self bounds];
@@ -45,7 +54,7 @@
 		
 		NSString * cacheKey = [NSString stringWithFormat:@"%@-%f-%f", [[events lastObject] source], startInterval, latestInterval];
 		
-		PresenceTimeline * timeline = [timelineCache valueForKey:cacheKey];
+		PresenceTimeline * timeline = [[[EventManager sharedInstance] timelineCache] valueForKey:cacheKey];
 		
 		if (timeline == nil)
 		{
@@ -57,10 +66,10 @@
 			maxTemp = -9999;
 			
 			NSEnumerator * eventIter = [chartEvents objectEnumerator];
-			Event * event = nil;
+			NSManagedObject * event = nil;
 			while ((event = [eventIter nextObject]))
 			{
-				float temp = [[event value] floatValue];
+				float temp = [[event valueForKey:@"value"] floatValue];
 			
 				if (temp != 0)
 				{
@@ -81,23 +90,23 @@
 			{
 				unsigned int i = 0;
 				
-				Event * thisEvent = [chartEvents objectAtIndex:0];
-				Event * nextEvent = nil;
+				NSManagedObject * thisEvent = [chartEvents objectAtIndex:0];
+				NSManagedObject * nextEvent = nil;
 				
-				NSTimeInterval thisTime = [[thisEvent date] timeIntervalSince1970];
+				NSTimeInterval thisTime = [[thisEvent valueForKey:@"date"] timeIntervalSince1970];
 				NSTimeInterval nextTime = 0;
 				
 				if (length > 1)
 				{
 					nextEvent = [chartEvents objectAtIndex:1];
-					nextTime = [[nextEvent date] timeIntervalSince1970];
+					nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 				}
 				
 				for (i = 0; i < length; i++)
 				{
 					if (thisTime > startInterval)
 					{
-						float normalizedPower = ([[thisEvent value] floatValue] - minTemp) / diff;
+						float normalizedPower = ([[thisEvent valueForKey:@"value"] floatValue] - minTemp) / diff;
 						
 						if (normalizedPower < 0)
 							normalizedPower = 0.5;
@@ -117,14 +126,14 @@
 					if (i < (length - 1))
 					{
 						nextEvent = [chartEvents objectAtIndex:(i + 1)];
-						nextTime = [[nextEvent date] timeIntervalSince1970];
+						nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 					}
 					else
 						nextEvent = nil;
 				}
 			}
 			
-			[timelineCache setValue:timeline forKey:cacheKey];
+			[[[EventManager sharedInstance] timelineCache] setValue:timeline forKey:cacheKey];
 			[timeline release];
 		}
 		
@@ -185,6 +194,8 @@
 			
 			latestInterval -= daySeconds;
 		}
+		
+		[context deleteObject:e];
 	}
 }
 
@@ -204,7 +215,7 @@
 		
 		[self drawChartForEvents:events];
 		
-		Event * lastEvent = nil;
+		NSManagedObject * lastEvent = nil;
 		
 		if ([events count] > 0)
 		{
@@ -212,9 +223,9 @@
 			
 			lastEvent = [events lastObject];
 			
-			NSNumber * lastLevel = [lastEvent value];
+			float lastLevel = [[lastEvent valueForKey:@"value"] floatValue];
 			
-			NSString * desc = [NSString stringWithFormat:@"Temperature: %@°", lastLevel];;
+			NSString * desc = [NSString stringWithFormat:@"Temperature: %0.1f°", lastLevel];;
 			NSColor * color = [NSColor whiteColor];
 			
 			NSMutableDictionary * attributes = [NSMutableDictionary dictionary];

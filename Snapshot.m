@@ -148,7 +148,7 @@
 
 	[[EventManager sharedInstance] createEvent:@"snapshot" source:[self identifier] initiator:[self identifier]
 								   description:[NSString stringWithFormat:@"Snapshot '%@' executed.", [self name]]
-										 value:[NSNumber numberWithInt:(256 * 256) - 1]];
+										 value:@"65535"];
 	
 	[self setValue:[NSDate date] forKey:USED];
 

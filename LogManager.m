@@ -28,8 +28,9 @@ static LogManager * sharedInstance = nil;
 	if (self = [super init])
 	{
 		[NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehavior10_4];
+		pendingEvents = [[NSMutableArray alloc] init];
 		
-		formatter = [[NSDateFormatter alloc] init];
+		logTimer = [[NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(writeEvents:) userInfo:nil repeats:YES] retain];
 	}
 
 	return self;
@@ -110,16 +111,31 @@ static LogManager * sharedInstance = nil;
 
 - (void) write:(NSDictionary *) theEvent
 {
+	@synchronized(pendingEvents)
+	{
+		[pendingEvents addObject:theEvent];
+	}
+}
+
+- (void) writeEvents:(NSTimer *) theTimer
+{
+	if ([pendingEvents count] == 0)
+		return;
+	
+	NSDictionary * theEvent = [pendingEvents objectAtIndex:0];
+	
+	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+	
 	NSDate * now = [NSDate date];
 	
 	NSFileManager * fileManager = [NSFileManager defaultManager];
 	
 	NSMutableString * analyticsFolder = [NSMutableString stringWithString:[self analyticsFolder]];
-
+	
 	BOOL isDir = NO;
 	[formatter setDateFormat:@"yyyy"];
 	[analyticsFolder appendFormat:@"/%@", [formatter stringFromDate:now]];
-
+	
 	if (![fileManager fileExistsAtPath:analyticsFolder isDirectory:&isDir] || !isDir)
 	{
 		[fileManager removeFileAtPath:analyticsFolder handler:nil];
@@ -129,7 +145,7 @@ static LogManager * sharedInstance = nil;
 	isDir = NO;
 	[formatter setDateFormat:@"MM"];
 	[analyticsFolder appendFormat:@"/%@", [formatter stringFromDate:now]];
-
+	
 	if (![fileManager fileExistsAtPath:analyticsFolder isDirectory:&isDir] || !isDir)
 	{
 		[fileManager removeFileAtPath:analyticsFolder handler:nil];
@@ -139,7 +155,7 @@ static LogManager * sharedInstance = nil;
 	isDir = NO;
 	[formatter setDateFormat:@"dd"];
 	[analyticsFolder appendFormat:@"/%@", [formatter stringFromDate:now]];
-
+	
 	if (![fileManager fileExistsAtPath:analyticsFolder isDirectory:&isDir] || !isDir)
 	{
 		[fileManager removeFileAtPath:analyticsFolder handler:nil];
@@ -147,27 +163,31 @@ static LogManager * sharedInstance = nil;
 	}
 	
 	[formatter setDateFormat:@"HH"];
-
+	
 	NSString * logFile = [analyticsFolder stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.txt", [formatter stringFromDate:now]]];
-
+	
 	[formatter setDateFormat:@"HH:mm.ss"];
-
+	
 	NSMutableString * logString = [NSMutableString string];
 	
 	if ([theEvent valueForKey:LOG_DESCRIPTION] != nil)
 	{
 		[logString appendFormat:@"%@: [%@] %@\n", [formatter stringFromDate:now], [theEvent valueForKey:LOG_TYPE], [theEvent valueForKey:LOG_DESCRIPTION]];
-	
+		
 		if (![fileManager fileExistsAtPath:logFile isDirectory:&isDir])
 			[[NSData data] writeToFile:logFile atomically:YES];
 		
 		NSFileHandle * handle = [NSFileHandle fileHandleForWritingAtPath:logFile];
 		[handle seekToEndOfFile];
-	
+		
 		[handle writeData:[logString dataUsingEncoding:NSUTF8StringEncoding]];
 		
 		[handle closeFile];
 	}
+	
+	[formatter release];
+	
+	[pendingEvents removeObjectAtIndex:0];
 }
 
 - (void) log:(NSNotification *) theNote

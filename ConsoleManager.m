@@ -8,6 +8,9 @@
 
 #import <Shion/ASPowerLinc2412Controller.h>
 
+#import "NSDictionary+BSJSONAdditions.h"
+#import "NSScanner+BSJSONAdditions.h"
+
 #import "ConsoleManager.h"
 
 #import "DeviceManager.h"
@@ -854,13 +857,15 @@ static ConsoleManager * sharedInstance = nil;
 		NSArray * events = [[EventManager sharedInstance] eventsForIdentifier:@"Phone"];
 		
 		NSEnumerator * iter = [events objectEnumerator];
-		Event * event = nil;
+		NSManagedObject * event = nil;
 		while (event = [iter nextObject])
 		{
+			NSDictionary * callDict = [NSDictionary dictionaryWithJSONString:[event valueForKey:@"value"]];
+			
 			NSMutableDictionary * call = [NSMutableDictionary dictionary];
-			[call setValue:[[event value] valueForKey:@"caller_name"] forKey:@"caller"];
-			[call setValue:[[event value] valueForKey:@"number"] forKey:@"number"];
-			[call setValue:[event date] forKey:@"date"];
+			[call setValue:[callDict valueForKey:@"caller_name"] forKey:@"caller"];
+			[call setValue:[callDict valueForKey:@"number"] forKey:@"number"];
+			[call setValue:[event valueForKey:@"date"] forKey:@"date"];
 			
 			[array addObject:call];
 		}

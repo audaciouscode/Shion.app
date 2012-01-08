@@ -10,7 +10,6 @@
 
 #import "ApertureSensor.h"
 #import "EventManager.h"
-#import "Event.h"
 
 @implementation ApertureSensorView
 
@@ -30,7 +29,7 @@
 		
 		[self drawChartForEvents:events];
 		
-		Event * lastEvent = nil;
+		NSManagedObject * lastEvent = nil;
 		
 		if ([events count] > 0)
 			lastEvent = [events lastObject];
@@ -38,7 +37,7 @@
 		NSString * desc = @"Unknown Status";
 		NSColor * color = [NSColor whiteColor];
 		
-		NSNumber * lastLevel = [lastEvent value];
+		NSString * lastLevel = [lastEvent valueForKey:@"value"];
 		
 		if (lastLevel != nil)
 		{		

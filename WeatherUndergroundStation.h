@@ -16,6 +16,7 @@
 @interface WeatherUndergroundStation : Device
 {
 	NSMutableData * buffer;
+	BOOL useAlternative;
 }
 
 - (NSNumber *) temperature;

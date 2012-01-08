@@ -22,7 +22,8 @@
 
 @interface LogManager : NSObject 
 {
-	NSDateFormatter * formatter;
+	NSMutableArray * pendingEvents;
+	NSTimer * logTimer;
 }
 
 + (LogManager *) sharedInstance;

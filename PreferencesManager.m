@@ -131,19 +131,19 @@ static PreferencesManager * sharedInstance = nil;
 
 - (IBAction) testNetworkController:(id) sender
 {
-	if ([[self valueForKey:NETWORK_CONTROLLER_MODEL] isEqual:CONTROLLER_SL2414])
+/*	if ([[self valueForKey:NETWORK_CONTROLLER_MODEL] isEqual:CONTROLLER_SL2414])
 	{
 		NSURLRequest * request = [NSURLRequest requestWithURL:
 									[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/buffstatus.xml", 
 														  [self valueForKey:NETWORK_CONTROLLER_ADDRESS]]]];
 		
 		[[NSURLConnection connectionWithRequest:request delegate:self] retain];
-	}
+	} */
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-	if ([[self valueForKey:NETWORK_CONTROLLER_MODEL] isEqual:CONTROLLER_SL2414])
+/*	if ([[self valueForKey:NETWORK_CONTROLLER_MODEL] isEqual:CONTROLLER_SL2414])
 	{
 		NSString * string = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
 		
@@ -153,7 +153,7 @@ static PreferencesManager * sharedInstance = nil;
 			NSRunAlertPanel(@"Host Found", @"The host was found, but does not appear to be a SmartLinc 2414N. Please check your host or IP address and try again.", @"OK", nil, nil);
 		
 		[string release];
-	}
+	} */
 }
 										
 

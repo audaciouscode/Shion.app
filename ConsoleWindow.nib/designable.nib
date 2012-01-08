@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2030"/>
+			<integer value="1455"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -2490,7 +2490,7 @@
 								<object class="NSTabViewItem" id="504592842">
 									<string key="NSIdentifier">Event List</string>
 									<object class="NSView" key="NSView" id="884407297">
-										<nil key="NSNextResponder"/>
+										<reference key="NSNextResponder" ref="654897032"/>
 										<int key="NSvFlags">256</int>
 										<object class="NSMutableArray" key="NSSubviews">
 											<bool key="EncodedWithXMLCoder">YES</bool>
@@ -2672,6 +2672,7 @@
 											</object>
 										</object>
 										<string key="NSFrame">{{10, 7}, {352, 289}}</string>
+										<reference key="NSSuperview" ref="654897032"/>
 									</object>
 									<string key="NSLabel">Event List</string>
 									<reference key="NSColor" ref="528091133"/>
@@ -3512,7 +3513,7 @@
 								<object class="NSTabViewItem" id="926793560">
 									<string key="NSIdentifier">Roku</string>
 									<object class="NSView" key="NSView" id="826304199">
-										<reference key="NSNextResponder" ref="654897032"/>
+										<nil key="NSNextResponder"/>
 										<int key="NSvFlags">256</int>
 										<object class="NSMutableArray" key="NSSubviews">
 											<bool key="EncodedWithXMLCoder">YES</bool>
@@ -3862,7 +3863,6 @@
 											</object>
 										</object>
 										<string key="NSFrame">{{10, 7}, {352, 289}}</string>
-										<reference key="NSSuperview" ref="654897032"/>
 									</object>
 									<string key="NSLabel">Roku</string>
 									<reference key="NSColor" ref="528091133"/>
@@ -4570,14 +4570,14 @@
 									<reference key="NSTabView" ref="654897032"/>
 								</object>
 							</object>
-							<reference key="NSSelectedTabViewItem" ref="926793560"/>
+							<reference key="NSSelectedTabViewItem" ref="504592842"/>
 							<reference key="NSFont" ref="842980453"/>
 							<int key="NSTvFlags">4</int>
 							<bool key="NSAllowTruncatedLabels">YES</bool>
 							<bool key="NSDrawsBackground">YES</bool>
 							<object class="NSMutableArray" key="NSSubviews">
 								<bool key="EncodedWithXMLCoder">YES</bool>
-								<reference ref="826304199"/>
+								<reference ref="884407297"/>
 							</object>
 						</object>
 						<object class="NSBox" id="224274707">
@@ -9136,8 +9136,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<object class="NSMutableArray" key="NSDeclaredKeys">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>date</string>
-					<string>desctiption</string>
-					<string>description</string>
+					<string>event_description</string>
 				</object>
 				<bool key="NSEditable">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
@@ -12064,22 +12063,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: arrangedObjects.description</string>
-						<reference key="source" ref="412357789"/>
-						<reference key="destination" ref="1012099136"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="412357789"/>
-							<reference key="NSDestination" ref="1012099136"/>
-							<string key="NSLabel">value: arrangedObjects.description</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">arrangedObjects.description</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">1464</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: selection.mobile_status</string>
 						<reference key="source" ref="1019237945"/>
 						<reference key="destination" ref="986843080"/>
@@ -14537,6 +14520,22 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						</object>
 					</object>
 					<int key="connectionID">2552</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: arrangedObjects.event_description</string>
+						<reference key="source" ref="412357789"/>
+						<reference key="destination" ref="1012099136"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="412357789"/>
+							<reference key="NSDestination" ref="1012099136"/>
+							<string key="NSLabel">value: arrangedObjects.event_description</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">arrangedObjects.event_description</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">2553</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -23289,7 +23288,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">2552</int>
+			<int key="maxID">2553</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

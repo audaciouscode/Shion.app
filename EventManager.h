@@ -8,31 +8,36 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Event.h"
-
 #define EVENT_LIST @"event_list"
 
 @interface EventManager : NSObject 
 {
-	NSMutableArray * events;
 	NSWindowController * windowController;
 	IBOutlet NSWindow * window;
 	NSMutableDictionary * cache;
 	NSTimer * cleanupTimer;
+	
+	NSMutableDictionary * _timelineCache;
+
+	NSPersistentStoreCoordinator *persistentStoreCoordinator;
+    NSManagedObjectModel *managedObjectModel;
+    NSManagedObjectContext *managedObjectContext;
 	
 	BOOL dirty;
 }
 
 + (EventManager *) sharedInstance;
 
-- (Event *) createEvent:(NSString *) type source:(NSString *) sourceId initiator:(NSString *) initiator 
-			description:(NSString *) description value:(id) value;
+- (NSManagedObjectContext *) managedObjectContext;
 
-- (Event *) createEvent:(NSString *) type source:(NSString *) sourceId initiator:(NSString *) initiator 
-			description:(NSString *) description value:(id) value match:(BOOL) matchCheck;
+- (NSManagedObject *) createEvent:(NSString *) type source:(NSString *) sourceId initiator:(NSString *) initiator 
+			description:(NSString *) description value:(NSString *) value;
+
+- (NSManagedObject *) createEvent:(NSString *) type source:(NSString *) sourceId initiator:(NSString *) initiator 
+			description:(NSString *) description value:(NSString *) value match:(BOOL) matchCheck;
 
 - (NSArray *) events;
-- (Event *) lastUpdateForIdentifier:(NSString *) identifier event:(NSString *) eventType;
+- (NSManagedObject *) lastUpdateForIdentifier:(NSString *) identifier event:(NSString *) eventType;
 
 - (void) saveEvents;
 
@@ -40,5 +45,6 @@
 - (NSArray *) eventsForIdentifier:(NSString *) identifier event:(NSString *) eventType;
 
 - (NSArray *) eventsTree;
+- (NSMutableDictionary *) timelineCache;
 
 @end

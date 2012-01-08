@@ -421,7 +421,7 @@
 	return [Device dictionaryWithDictionary:dataDict];
 }
 
-- (void) addEvent:(Event *) event
+- (void) addEvent:(NSManagedObject *) event
 {
 	// TODO
 }
@@ -442,10 +442,10 @@
 		else if ([self isKindOfClass:[Phone class]])
 			identifier = @"Phone";
 		
-		Event * event = [[EventManager sharedInstance] lastUpdateForIdentifier:identifier event:nil];
+		NSManagedObject * event = [[EventManager sharedInstance] lastUpdateForIdentifier:identifier event:nil];
 		
 		if (event)
-			return [event date];
+			return [event valueForKey:@"date"];
 		else
 			return nil;
 	}

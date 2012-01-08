@@ -59,9 +59,9 @@
 
 - (BOOL) isClosed
 {
-	Event * event = [[[EventManager sharedInstance] eventsForIdentifier:[self identifier] event:@"device"] lastObject];
+	NSManagedObject * event = [[[EventManager sharedInstance] eventsForIdentifier:[self identifier] event:@"device"] lastObject];
 	
-	if (event != nil && [[event value] intValue] == 0)
+	if (event != nil && [[event valueForKey:@"value"] intValue] == 0)
 		return YES;
 	else
 		return NO;
@@ -76,7 +76,7 @@
 		NSString * message = [NSString stringWithFormat:@"Closing garage door."];
 		
 		[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:[self identifier]
-									   description:message value:[NSNumber numberWithInt:255]];
+									   description:message value:@"255"];
 	}
 	else
 		[super setValue:value forKey:key];

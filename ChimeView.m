@@ -28,7 +28,7 @@
 		
 		[self drawChartForEvents:events];
 		
-		Event * lastEvent = nil;
+		NSManagedObject * lastEvent = nil;
 		
 		if ([events count] > 0)
 			lastEvent = [events lastObject];
@@ -36,7 +36,7 @@
 		NSString * desc = @"Never Rang";
 		NSColor * color = [NSColor whiteColor];
 		
-		NSDate * date = [lastEvent date];
+		NSDate * date = [lastEvent valueForKey:@"date"];
 		
 		if (date != nil)
 		{		

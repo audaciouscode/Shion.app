@@ -13,8 +13,6 @@
 {
 	IBOutlet NSObjectController * objectController;
 	NSTimer * refreshTimer;
-	
-	NSMutableDictionary * timelineCache;
 }
 
 - (void) drawTimeline:(PresenceTimeline *) timeline start:(NSTimeInterval) start end:(NSTimeInterval) end inRect:(NSRect) rect;

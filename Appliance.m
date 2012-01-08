@@ -72,9 +72,9 @@
 		
 		[self willChangeValueForKey:USER_DEVICE_LEVEL];
 
-		Event * lastEvent = [[EventManager sharedInstance] lastUpdateForIdentifier:[self identifier] event:nil];
+		NSManagedObject * lastEvent = [[EventManager sharedInstance] lastUpdateForIdentifier:[self identifier] event:nil];
 		
-		if (![[lastEvent value] isEqual:value])
+		if (![[lastEvent valueForKey:@"value"] isEqual:[value description]])
 		{
 			NSNumber * level = (NSNumber *) value;
 		
@@ -84,7 +84,7 @@
 				message = [NSString stringWithFormat:@"%@ is fully deactivated.", [self name]];
 		
 			[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:[self identifier]
-										   description:message value:level];
+										   description:message value:[level description]];
 		}
 		
 		[super setValue:value forKey:key];
@@ -101,7 +101,7 @@
 		{
 			[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:@"User"
 										   description:[NSString stringWithFormat:@"The user deactivated %@.", [self name]]
-												 value:[NSNumber numberWithUnsignedInt:0]];
+												 value:@"0"];
 			
 			[self setActive:NO];
 		}
@@ -109,7 +109,7 @@
 		{
 			[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:@"User"
 										   description:[NSString stringWithFormat:@"The user activated %@.", [self name]]
-												 value:[NSNumber numberWithUnsignedInt:255]];
+												 value:@"255"];
 
 			[self setActive:YES];
 		}

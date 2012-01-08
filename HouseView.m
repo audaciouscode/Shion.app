@@ -88,12 +88,22 @@
 			
 			NSMutableArray * chartEvents = [NSMutableArray arrayWithArray:events];
 			
-			Event * e = [Event eventWithType:@"device" source:@"" initiator:@"" description:@"" value:[NSNumber numberWithFloat:0]  date:[NSDate date]];
+			NSManagedObjectContext * context = [[EventManager sharedInstance] managedObjectContext];
+			
+			NSManagedObject * e = [NSEntityDescription insertNewObjectForEntityForName:@"Event"
+																inManagedObjectContext:context];
+			[e setValue:@"device" forKey:@"type"];
+			[e setValue:@"" forKey:@"source"];
+			[e setValue:@"" forKey:@"initiator"];
+			[e setValue:@"" forKey:@"event_description"];
+			[e setValue:@"0" forKey:@"value"];
+			[e setValue:[NSDate date] forKey:@"date"];
+
 			[chartEvents addObject:e];
 			
 			NSString * cacheKey = [NSString stringWithFormat:@"%@-%f-%f", identifier, startInterval, latestInterval];
 			
-			PresenceTimeline * timeline = [timelineCache valueForKey:cacheKey];
+			PresenceTimeline * timeline = [[[EventManager sharedInstance] timelineCache] valueForKey:cacheKey];
 
 			if (timeline == nil)
 			{
@@ -107,16 +117,16 @@
 				{
 					unsigned int i = 0;
 					
-					Event * thisEvent = [chartEvents objectAtIndex:0];
-					Event * nextEvent = nil;
+					NSManagedObject * thisEvent = [chartEvents objectAtIndex:0];
+					NSManagedObject * nextEvent = nil;
 					
-					NSTimeInterval thisTime = [[thisEvent date] timeIntervalSince1970];
+					NSTimeInterval thisTime = [[thisEvent valueForKey:@"date"] timeIntervalSince1970];
 					NSTimeInterval nextTime = 0;
 					
 					if (length > 1)
 					{
 						nextEvent = [chartEvents objectAtIndex:1];
-						nextTime = [[nextEvent date] timeIntervalSince1970];
+						nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 					}
 					
 					for (i = 0; i < length; i++)
@@ -124,9 +134,9 @@
 						if (thisTime > startInterval)
 						{
 							if (nextEvent != nil)
-								[timeline setValue:[[thisEvent value] floatValue] atInterval:thisTime duration:(nextTime - thisTime)];
+								[timeline setValue:[[thisEvent valueForKey:@"value"] floatValue] atInterval:thisTime duration:(nextTime - thisTime)];
 							else
-								[timeline setValue:[[thisEvent value] floatValue] atInterval:thisTime];
+								[timeline setValue:[[thisEvent valueForKey:@"value"] floatValue] atInterval:thisTime];
 						}
 						
 						if (nextEvent != nil)
@@ -138,7 +148,7 @@
 						if (i < (length - 1))
 						{
 							nextEvent = [chartEvents objectAtIndex:(i + 1)];
-							nextTime = [[nextEvent date] timeIntervalSince1970];
+							nextTime = [[nextEvent valueForKey:@"date"] timeIntervalSince1970];
 						}
 						else
 							nextEvent = nil;
@@ -154,7 +164,7 @@
 						[timeline setValue:[[event value] floatValue] atInterval:[[event date] timeIntervalSince1970]];
 				} */
 				
-				[timelineCache setValue:timeline forKey:cacheKey];
+				[[[EventManager sharedInstance] timelineCache] setValue:timeline forKey:cacheKey];
 				
 				[timeline release];
 			}
@@ -172,6 +182,8 @@
 			[self drawTimeline:timeline start:(startInterval + daySeconds) end:latestInterval inRect:timeRect object:device];
 			
 			*count += 1;
+			
+			[context deleteObject:e];
 		}
 	}
 }

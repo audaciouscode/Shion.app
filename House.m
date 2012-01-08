@@ -102,7 +102,7 @@
 		
 		[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:@"User"
 									   description:[NSString stringWithFormat:@"The user deactivated all lights in %@.", [self name]]
-											 value:[NSNumber numberWithBool:NO]];
+											 value:@"0"];
 		
 		NSEnumerator * iter = [[self devices] objectEnumerator];
 		Device * device = nil;
@@ -137,7 +137,7 @@
 		
 		[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:@"User"
 									   description:[NSString stringWithFormat:@"The user activated all lights in %@.", [self name]]
-											 value:[NSNumber numberWithBool:NO]];
+											 value:@"0"];
 
 		NSEnumerator * iter = [[self devices] objectEnumerator];
 		Device * device = nil;
@@ -172,7 +172,7 @@
 		
 		[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:@"User"
 									   description:[NSString stringWithFormat:@"The user deactivated all devices in %@.", [self name]]
-											 value:[NSNumber numberWithBool:NO]];
+											 value:@"0"];
 
 		NSEnumerator * iter = [[self devices] objectEnumerator];
 		Device * device = nil;

@@ -55,16 +55,14 @@
 	{
 		[self willChangeValueForKey:POWER_LEVEL];
 		
-		Event * lastEvent = [[EventManager sharedInstance] lastUpdateForIdentifier:[self identifier] event:@"device"];
+		NSManagedObject * lastEvent = [[EventManager sharedInstance] lastUpdateForIdentifier:[self identifier] event:@"device"];
 		
-		if (![[lastEvent value] isEqual:value])
+		if (![[lastEvent valueForKey:@"value"] isEqual:[value description]])
 		{
-			NSNumber * level = (NSNumber *) value;
-			
-			NSString * message = [NSString stringWithFormat:@"Currently using %@ watts.", [level description]];
+			NSString * message = [NSString stringWithFormat:@"Currently using %@ watts.", [value description]];
 			
 			[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:[self identifier]
-										   description:message value:level];
+										   description:message value:[value description]];
 		}
 		
 		[super setValue:value forKey:key];
@@ -87,7 +85,7 @@
 
 			[[EventManager sharedInstance] createEvent:@"device_total" source:[self identifier] initiator:@"User"
 										   description:[NSString stringWithFormat:@"The user reset %@ cumulative power total.", [self name]]
-												 value:[NSNumber numberWithUnsignedInt:0]];
+												 value:@"0"];
 			
 			[self didChangeValueForKey:LAST_UPDATE];
 			
@@ -102,16 +100,14 @@
 	{
 		[self willChangeValueForKey:POWER_TOTAL];
 		
-		Event * lastEvent = [[EventManager sharedInstance] lastUpdateForIdentifier:[self identifier] event:@"device_total"];
+		NSManagedObject * lastEvent = [[EventManager sharedInstance] lastUpdateForIdentifier:[self identifier] event:@"device_total"];
 		
-		if (![[lastEvent value] isEqual:value])
+		if (![[lastEvent valueForKey:@"value"] isEqual:[value description]])
 		{
-			NSNumber * level = (NSNumber *) value;
-			
-			NSString * message = [NSString stringWithFormat:@"Current power usage total: %@ kWh.", [level description]];
+			NSString * message = [NSString stringWithFormat:@"Current power usage total: %@ kWh.", [value description]];
 			
 			[[EventManager sharedInstance] createEvent:@"device_total" source:[self identifier] initiator:[self identifier]
-										   description:message value:level];
+										   description:message value:[value description]];
 		}
 		
 		[super setValue:value forKey:key];

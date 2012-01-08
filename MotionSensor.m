@@ -23,11 +23,11 @@
 
 - (BOOL) detectingMotion
 {
-	Event * e = [[EventManager sharedInstance] lastUpdateForIdentifier:[self identifier] event:@"device"];
+	NSManagedObject * e = [[EventManager sharedInstance] lastUpdateForIdentifier:[self identifier] event:@"device"];
 	
 	if (e != nil)
 	{
-		if ([[e value] intValue] > 0)
+		if ([[e valueForKey:@"value"] intValue] > 0)
 			return YES;
 	}
 	

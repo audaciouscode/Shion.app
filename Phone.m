@@ -6,6 +6,9 @@
 //  Copyright 2010 CASIS LLC. All rights reserved.
 //
 
+#import "NSDictionary+BSJSONAdditions.h"
+#import "NSScanner+BSJSONAdditions.h"
+
 #import "Phone.h"
 #import "EventManager.h"
 
@@ -72,9 +75,11 @@
 	NSString * desc = [NSString stringWithFormat:@"Received phone call from %@ (%@).", [call valueForKey:@"caller_name"], 
 					   [call valueForKey:@"number"]];
 	
+	NSString * value = [call jsonStringValue];
+	
 	[[EventManager sharedInstance] createEvent:@"device" source:@"Phone" initiator:@"Phone"
 								   description:desc
-										 value:call
+										 value:value
 										 match:NO];
 }
 

@@ -8,6 +8,9 @@
 
 #import <Shion/ASDeviceController.h>
 
+#import "NSDictionary+BSJSONAdditions.h"
+#import "NSScanner+BSJSONAdditions.h"
+
 #import "XMPPManager.h"
 #import "XMPPIQCommand.h"
 #import "XMPPUserActivityCommand.h"
@@ -340,13 +343,16 @@ static XMPPManager * sharedInstance = nil;
 
 - (void)xmppClientDidUpdateRoster:(XMPPClient *)sender
 {
+/*	NSLog(@"ROSTER UPDATED!!!");
+	
+	[client fetchRoster]; */
 }
 
 - (void)xmppClient:(XMPPClient *)sender didReceiveIQ:(XMPPIQ *)iq
 {
 	BOOL authorized = NO;
 	
-	XMPPJID * from = [iq from];
+//	XMPPJID * from = [iq from];
 	
 	if ([[[iq attributeForName:@"type"] stringValue] isEqual:@"result"])
 	{
@@ -361,7 +367,7 @@ static XMPPManager * sharedInstance = nil;
 		authorized = YES;
 	}
 	
-	if (!authorized)
+/*	if (!authorized)
 	{
 		NSXMLElement * iq = [NSXMLElement elementWithName:@"iq"];
 		
@@ -377,7 +383,7 @@ static XMPPManager * sharedInstance = nil;
 		[iq addChild:error];
 		
 		[sender sendElement:iq];
-	}
+	} */
 }
 
 - (NSString *) responseForMessage:(NSString *) message
@@ -432,7 +438,6 @@ static XMPPManager * sharedInstance = nil;
 	
 	XMPPJID * from = [message from];
 	
-	[client fetchRoster];
 	NSArray * online = [[client unsortedUsers] arrayByAddingObject:[sender myUser]];
 	
 	NSEnumerator * iter = [online objectEnumerator];
@@ -455,7 +460,7 @@ static XMPPManager * sharedInstance = nil;
 		}
 	}
 	
-	if (!authorized)
+/*	if (!authorized)
 	{
 		NSXMLElement * myMessage = [NSXMLElement elementWithName:@"message"];
 		[myMessage addAttribute:[NSXMLNode attributeWithName:@"to" stringValue:[from bare]]];
@@ -470,7 +475,7 @@ static XMPPManager * sharedInstance = nil;
 		[myMessage addChild:error];
 		
 		[sender sendElement:myMessage];
-	}
+	} */
 }
 
 - (BOOL) sendEnvironmentToJid:(NSString *) jid
@@ -595,15 +600,16 @@ static XMPPManager * sharedInstance = nil;
 			NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 			[formatter setDateFormat:@"yyyy-MM-dd kk:mm.ssz"];
 
-			Event * event = [[EventManager sharedInstance] lastUpdateForIdentifier:@"Phone" event:@"device"];
+			NSManagedObject * event = [[EventManager sharedInstance] lastUpdateForIdentifier:@"Phone" event:@"device"];
 
 			if (event != nil)
 			{
-				NSMutableDictionary * call = [event value];
+				NSDictionary * jsonDict = [NSDictionary dictionaryWithJSONString:[event valueForKey:@"value"]];
+				NSMutableDictionary * call = [NSMutableDictionary dictionaryWithDictionary:jsonDict];
 				
 				[atts setValue:[call valueForKey:@"caller_name"] forKey:@"nm"];
 				[atts setValue:[call valueForKey:@"number"] forKey:@"nb"];
-				[atts setValue:[formatter stringFromDate:[event date]] forKey:@"dt"];
+				[atts setValue:[formatter stringFromDate:[event valueForKey:@"date"]] forKey:@"dt"];
 			}
 			
 			[formatter release];
@@ -749,17 +755,17 @@ static XMPPManager * sharedInstance = nil;
 				[events setAttributesAsDictionary:[NSDictionary dictionaryWithObject:[device identifier] forKey:@"d"]];
 				
 				NSEnumerator * eventIter = [controllerEvents objectEnumerator];
-				Event * event = nil;
+				NSManagedObject * event = nil;
 				while (event = [eventIter nextObject])
 				{
-					if ([[dayFormatter stringFromDate:[event date]] isEqual:dateString])
+					if ([[dayFormatter stringFromDate:[event valueForKey:@"date"]] isEqual:dateString])
 					{
 						NSXMLElement * eventElement = [NSXMLElement elementWithName:@"e"];
 						
 						NSMutableDictionary * atts = [NSMutableDictionary dictionary];
-						[atts setValue:[formatter stringFromDate:[event date]] forKey:@"dt"];
-						[atts setValue:[event value] forKey:@"v"];
-						[atts setValue:[event type] forKey:@"t"];
+						[atts setValue:[formatter stringFromDate:[event valueForKey:@"date"]] forKey:@"dt"];
+						[atts setValue:[event valueForKey:@"value"] forKey:@"v"];
+						[atts setValue:[event valueForKey:@"type"] forKey:@"t"];
 						
 						[eventElement setAttributesAsDictionary:atts];
 						
@@ -782,25 +788,24 @@ static XMPPManager * sharedInstance = nil;
 				[events setAttributesAsDictionary:[NSDictionary dictionaryWithObject:[device identifier] forKey:@"d"]];
 				
 				NSEnumerator * eventIter = [controllerEvents objectEnumerator];
-				Event * event = nil;
+				NSManagedObject * event = nil;
 				while (event = [eventIter nextObject])
 				{
-					if ([[dayFormatter stringFromDate:[event date]] isEqual:dateString])
+					if ([[dayFormatter stringFromDate:[event valueForKey:@"date"]] isEqual:dateString])
 					{
-						NSDictionary * call = [event value];
+						NSDictionary * jsonDict = [NSDictionary dictionaryWithJSONString:[event valueForKey:@"value"]];
+						NSMutableDictionary * call = [NSMutableDictionary dictionaryWithDictionary:jsonDict];
 						
 						NSXMLElement * eventElement = [NSXMLElement elementWithName:@"e"];
 						
 						NSMutableDictionary * atts = [NSMutableDictionary dictionary];
-						[atts setValue:[formatter stringFromDate:[event date]] forKey:@"dt"];
-						[atts setValue:[event type] forKey:@"t"];
+						[atts setValue:[formatter stringFromDate:[event valueForKey:@"date"]] forKey:@"dt"];
+						[atts setValue:[event valueForKey:@"type"] forKey:@"t"];
 						
 						[atts setValue:[call valueForKey:@"number"] forKey:@"nb"];
 						[atts setValue:[call valueForKey:@"caller_name"] forKey:@"nm"];
 						
 						[atts setValue:[NSNumber numberWithInt:((256 * 256) - 1)] forKey:@"v"];
-						
-						// [eventElement setStringValue:[event description]];
 						
 						[eventElement setAttributesAsDictionary:atts];
 						
@@ -821,24 +826,19 @@ static XMPPManager * sharedInstance = nil;
 				[events setAttributesAsDictionary:[NSDictionary dictionaryWithObject:[device identifier] forKey:@"d"]];
 				
 				NSEnumerator * eventIter = [[device events] objectEnumerator];
-				Event * event = nil;
+				NSManagedObject * event = nil;
 				while (event = [eventIter nextObject])
 				{
-					if ([[dayFormatter stringFromDate:[event date]] isEqual:dateString])
+					if ([[dayFormatter stringFromDate:[event valueForKey:@"date"]] isEqual:dateString])
 					{
 						NSXMLElement * eventElement = [NSXMLElement elementWithName:@"e"];
 						
-						id value = [event value];
-						
 						NSMutableDictionary * atts = [NSMutableDictionary dictionary];
-						[atts setValue:[formatter stringFromDate:[event date]] forKey:@"dt"];
+						[atts setValue:[formatter stringFromDate:[event valueForKey:@"date"]] forKey:@"dt"];
 
-						if ([value isKindOfClass:[NSNumber class]])
-							[atts setValue:[value stringValue] forKey:@"v"];
-						else
-							[atts setValue:[value description] forKey:@"v"];
+						[atts setValue:[event valueForKey:@"value"] forKey:@"v"];
 						
-						[atts setValue:[event type] forKey:@"t"];
+						[atts setValue:[event valueForKey:@"type"] forKey:@"t"];
 						
 						[eventElement setAttributesAsDictionary:atts];
 						
@@ -900,17 +900,17 @@ static XMPPManager * sharedInstance = nil;
 				[events setAttributesAsDictionary:[NSDictionary dictionaryWithObject:[device identifier] forKey:@"d"]];
 				
 				NSEnumerator * eventIter = [controllerEvents objectEnumerator];
-				Event * event = nil;
+				NSManagedObject * event = nil;
 				while (event = [eventIter nextObject])
 				{
-					if (fabs([[event date] timeIntervalSinceNow]) <= twoWeeks)
+					if (fabs([[event valueForKey:@"date"] timeIntervalSinceNow]) <= twoWeeks)
 					{
 						NSXMLElement * eventElement = [NSXMLElement elementWithName:@"e"];
 						
 						NSMutableDictionary * atts = [NSMutableDictionary dictionary];
-						[atts setValue:[formatter stringFromDate:[event date]] forKey:@"dt"];
-						[atts setValue:[event value] forKey:@"v"];
-						[atts setValue:[event type] forKey:@"t"];
+						[atts setValue:[formatter stringFromDate:[event valueForKey:@"date"]] forKey:@"dt"];
+						[atts setValue:[event valueForKey:@"value"] forKey:@"v"];
+						[atts setValue:[event valueForKey:@"type"] forKey:@"t"];
 						
 						[eventElement setAttributesAsDictionary:atts];
 						
@@ -933,18 +933,19 @@ static XMPPManager * sharedInstance = nil;
 				[events setAttributesAsDictionary:[NSDictionary dictionaryWithObject:[device identifier] forKey:@"d"]];
 				
 				NSEnumerator * eventIter = [controllerEvents objectEnumerator];
-				Event * event = nil;
+				NSManagedObject * event = nil;
 				while (event = [eventIter nextObject])
 				{
-					if (fabs([[event date] timeIntervalSinceNow]) <= twoWeeks)
+					if (fabs([[event valueForKey:@"date"] timeIntervalSinceNow]) <= twoWeeks)
 					{
-						NSDictionary * call = [event value];
+						NSDictionary * jsonDict = [NSDictionary dictionaryWithJSONString:[event valueForKey:@"value"]];
+						NSMutableDictionary * call = [NSMutableDictionary dictionaryWithDictionary:jsonDict];
 						
 						NSXMLElement * eventElement = [NSXMLElement elementWithName:@"e"];
 						
 						NSMutableDictionary * atts = [NSMutableDictionary dictionary];
-						[atts setValue:[formatter stringFromDate:[event date]] forKey:@"dt"];
-						[atts setValue:[event type] forKey:@"t"];
+						[atts setValue:[formatter stringFromDate:[event valueForKey:@"date"]] forKey:@"dt"];
+						[atts setValue:[event valueForKey:@"type"] forKey:@"t"];
 
 						[atts setValue:[call valueForKey:@"number"] forKey:@"nb"];
 						[atts setValue:[call valueForKey:@"caller_name"] forKey:@"nm"];
@@ -972,23 +973,20 @@ static XMPPManager * sharedInstance = nil;
 				[events setAttributesAsDictionary:[NSDictionary dictionaryWithObject:[device identifier] forKey:@"d"]];
 
 				NSEnumerator * eventIter = [[device events] objectEnumerator];
-				Event * event = nil;
+				NSManagedObject * event = nil;
 				while (event = [eventIter nextObject])
 				{
-					if (fabs([[event date] timeIntervalSinceNow]) <= twoWeeks)
+					if (fabs([[event valueForKey:@"date"] timeIntervalSinceNow]) <= twoWeeks)
 					{
 						NSXMLElement * eventElement = [NSXMLElement elementWithName:@"e"];
 
-						id value = [event value];
+						NSString * value = [event valueForKey:@"value"];
 						
 						NSMutableDictionary * atts = [NSMutableDictionary dictionary];
-						[atts setValue:[formatter stringFromDate:[event date]] forKey:@"dt"];
-						[atts setValue:[event type] forKey:@"t"];
+						[atts setValue:[formatter stringFromDate:[event valueForKey:@"date"]] forKey:@"dt"];
+						[atts setValue:[event valueForKey:@"type"] forKey:@"t"];
 
-						if ([value isKindOfClass:[NSNumber class]])
-							[atts setValue:[value stringValue] forKey:@"v"];
-						else
-							[atts setValue:[value description] forKey:@"v"];
+						[atts setValue:value forKey:@"v"];
 
 						[eventElement setAttributesAsDictionary:atts];
 						
@@ -1008,7 +1006,7 @@ static XMPPManager * sharedInstance = nil;
 	return YES;
 }
 
-- (void) broadcastEvent:(Event *) event forIdentifier:(NSString *) identifier
+- (void) broadcastEvent:(NSManagedObject *) event forIdentifier:(NSString *) identifier
 {
 	[NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehavior10_4];
 	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
@@ -1047,23 +1045,25 @@ static XMPPManager * sharedInstance = nil;
 		NSXMLElement * eventElement = [NSXMLElement elementWithName:@"event"];
 		
 		NSMutableDictionary * atts = [NSMutableDictionary dictionary];
-		[atts setValue:[formatter stringFromDate:[event date]] forKey:@"dt"];
+		[atts setValue:[formatter stringFromDate:[event valueForKey:@"date"]] forKey:@"dt"];
 
-		id value = [event value];
+		NSString * value = [event valueForKey:@"value"];
 		
-		if ([value isKindOfClass:[NSDictionary class]])
+		if ([[event valueForKey:@"value"] rangeOfString:@"{"].location == 0)
 		{
+			NSDictionary * jsonDict = [NSDictionary dictionaryWithJSONString:value];
+			
 			NSXMLElement * valueElement = [NSXMLElement elementWithName:@"dictionary"];
 			
-			[valueElement setAttributesAsDictionary:value];
+			[valueElement setAttributesAsDictionary:jsonDict];
 			
 			[eventElement addChild:valueElement];
 		}
 		else
-			[atts setValue:[value description] forKey:@"v"];
+			[atts setValue:value forKey:@"v"];
 
-		[atts setValue:[event description] forKey:@"description"];
-		[atts setValue:[event type] forKey:@"t"];
+		[atts setValue:[event valueForKey:@"description"] forKey:@"description"];
+		[atts setValue:[event valueForKey:@"type"] forKey:@"t"];
 		[atts setValue:identifier forKey:@"s"];
 		
 		[eventElement setAttributesAsDictionary:atts];

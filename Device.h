@@ -12,8 +12,6 @@
 
 #import "ASMutableDictionary.h"
 
-#import "Event.h"
-
 #define PLATFORM_X10 @"X10"
 #define PLATFORM_INSTEON @"Insteon"
 
@@ -49,7 +47,7 @@
 - (void) setAddress:(NSString *) address;
 
 - (NSArray *) events;
-- (void) addEvent:(Event *) event;
+- (void) addEvent:(NSManagedObject *) event;
 
 - (NSString *) platform;
 - (void) setPlatform:(NSString *) platform;

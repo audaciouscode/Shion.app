@@ -87,13 +87,13 @@
 	if (count > 0)
 	{
 		sum = sum / count;
-	
+
 		lastStatus = sum;
 		
 		[[EventManager sharedInstance] createEvent:@"device" source:@"Controller" initiator:@"Controller"
 									   description:[NSString stringWithFormat:@"The network (%@) is %0.0f%% responsive.", [self name],
 													(sum * 100)]
-											 value:[NSNumber numberWithFloat:(sum * 255)]];
+											 value:[NSString stringWithFormat:@"%f", (sum * 255)]];
 
 		NSNumber * threshold = [[NSUserDefaults standardUserDefaults] valueForKey:@"controller_reset_threshold"];
 		

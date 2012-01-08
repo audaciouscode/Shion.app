@@ -80,8 +80,6 @@
 			
 			NSNumber * level = [NSNumber numberWithInt:[powerNow intValue]];
 			
-			NSLog(@"POWER NOW: %f - %f", [level floatValue], lastUsage);
-			
 			if (fabs([level floatValue] - lastUsage) > 25 && fabs([level floatValue] - lastUsage) < 10000)
 			{
 				[self setCurrentPower:level];

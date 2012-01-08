@@ -6,6 +6,9 @@
 //  Copyright 2010 CASIS LLC. All rights reserved.
 //
 
+#import "NSDictionary+BSJSONAdditions.h"
+#import "NSScanner+BSJSONAdditions.h"
+
 #import "MobileClient.h"
 #import "ConsoleManager.h"
 #import "XMPPManager.h"
@@ -44,7 +47,7 @@
 {
 	[self willChangeValueForKey:@"mobile_duration"];
 	
-	if ([lastStatus timeIntervalSinceNow] < -20)
+	if ([lastStatus timeIntervalSinceNow] < -120)
 	{
 		[self setStatus:@"Offline"];
 //		[self setLatitude:nil longitude:nil];
@@ -83,7 +86,7 @@
 		
 		[[EventManager sharedInstance] createEvent:@"location" source:[self identifier] initiator:@"User"
 									   description:[NSString stringWithFormat:@"%@ is located at %@.", [self name], locationString]
-											 value:eventDict];
+											 value:[eventDict jsonStringValue]];
 		[lastFetch release];
 	
 		lastFetch = [now retain];
@@ -130,13 +133,13 @@
 			{
 				[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:@"User"
 											   description:[NSString stringWithFormat:@"%@ switched to private mode.", [self name]]
-													 value:eventDict];
+													 value:[eventDict jsonStringValue]];
 			}
 			else
 			{
 				[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:@"User"
 											   description:[NSString stringWithFormat:@"%@ switched to location-reporting mode.", [self name]]
-													 value:eventDict];
+													 value:[eventDict jsonStringValue]];
 			}
 		}
 		else if ([status isEqual:@"Offline"])
@@ -149,7 +152,7 @@
 			
 			[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:@"User"
 										   description:[NSString stringWithFormat:@"%@ went offline.", [self name]]
-												 value:eventDict];
+												 value:[eventDict jsonStringValue]];
 		}
 		
 		[self setValue:status forKey:@"mobile_status"];
@@ -177,7 +180,7 @@
 
 		[[EventManager sharedInstance] createEvent:@"last-caller" source:[self identifier] initiator:@"User"
 									   description:[NSString stringWithFormat:@"%@ was called by %@.", [self name], lastCaller]
-											 value:eventDict];
+											 value:[eventDict jsonStringValue]];
 	}
 	
 	[self didChangeValueForKey:@"mobile_caller"];
@@ -196,7 +199,7 @@
 	{
 		[[EventManager sharedInstance] createEvent:@"error" source:[self identifier] initiator:@"User"
 									   description:[NSString stringWithFormat:@"%@ encountered an error: %@.", [self name], error]
-											 value:[NSNumber numberWithInt:(256 * 256) - 1]];
+											 value:@"65535"];
 	}
 	
 	if (error == nil)
@@ -300,7 +303,7 @@
 {
 	[[EventManager sharedInstance] createEvent:@"device" source:[self identifier] initiator:@"User"
 								   description:[NSString stringWithFormat:@"The beacon of %@ was activated.", [self name]]
-										 value:[NSNumber numberWithInt:(256 * 256) - 1]];
+										 value:@"65535"];
 	
 	[[XMPPManager sharedInstance] beaconDevice:self];
 }

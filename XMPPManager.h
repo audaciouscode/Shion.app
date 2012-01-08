@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 #import <XMPP/XMPP.h>
 
-#import "Event.h"
 #import "Device.h"
 #import "Camera.h"
 #import "Tivo.h"
@@ -34,7 +33,7 @@
 - (void) updateStatus:(NSString *) status available:(BOOL) available;
 - (BOOL) sendEventsForDevice:(NSString *) device toJid:(NSString *) jid;
 - (BOOL) sendEventsForDevice:(NSString *) device toJid:(NSString *) jid forDateString:(NSString *) dateString;
-- (void) broadcastEvent:(Event *) event forIdentifier:(NSString *) identifier;
+- (void) broadcastEvent:(NSManagedObject *) event forIdentifier:(NSString *) identifier;
 - (void) beaconDevice:(Device *) device;
 
 - (void) transmitPhotoList:(NSArray *) photos forCamera:(Camera *) camera;

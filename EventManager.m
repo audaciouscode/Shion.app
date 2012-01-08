@@ -73,80 +73,110 @@ static EventManager * sharedInstance = nil;
     return self;
 }
 
-- (NSString *) eventStorageFolder 
+- (NSString *) applicationSupportDirectory 
 {
-	NSString * applicationSupportFolder = nil;
-	FSRef foundRef;
-	OSErr err = FSFindFolder (kUserDomain, kApplicationSupportFolderType, kCreateFolder, &foundRef);
+    NSArray * paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    NSString * basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : NSTemporaryDirectory();
+
+    return [basePath stringByAppendingPathComponent:@"Shion"];
+}
+
+- (NSManagedObjectModel *)managedObjectModel 
+{
+    if (managedObjectModel) 
+		return managedObjectModel;
 	
-	if (err != noErr) 
+    managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
+
+    return managedObjectModel;
+}
+
+- (NSPersistentStoreCoordinator *) persistentStoreCoordinator 
+{
+    if (persistentStoreCoordinator) 
+		return persistentStoreCoordinator;
+	
+    NSManagedObjectModel * mom = [self managedObjectModel];
+	
+    if (!mom) 
 	{
-		return nil;
-	}
-	else 
+        NSAssert(NO, @"Managed object model is nil");
+        NSLog(@"%@:%s No model to generate a store from", [self class], _cmd);
+        return nil;
+    }
+	
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    NSString * applicationSupportDirectory = [self applicationSupportDirectory];
+    NSError * error = nil;
+    
+    if (![fileManager fileExistsAtPath:applicationSupportDirectory isDirectory:NULL] )
 	{
-		unsigned char path[1024];
-		FSRefMakePath (&foundRef, path, sizeof(path));
-		applicationSupportFolder = [NSString stringWithUTF8String:(char *) path];
-		applicationSupportFolder = [applicationSupportFolder stringByAppendingPathComponent:@"Shion"];
-	}
+		if (![fileManager createDirectoryAtPath:applicationSupportDirectory attributes:[NSDictionary dictionary]])
+		{
+            NSAssert(NO, ([NSString stringWithFormat:@"Failed to create App Support directory %@ : %@", applicationSupportDirectory, error]));
+            NSLog(@"Error creating application support directory at %@ : %@", applicationSupportDirectory,error);
+            return nil;
+		}
+    }
+    
+    NSURL * url = [NSURL fileURLWithPath: [applicationSupportDirectory stringByAppendingPathComponent:@"storedata"]];
 	
-	BOOL isDir;
+    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
 	
-	if (![[NSFileManager defaultManager] fileExistsAtPath:applicationSupportFolder isDirectory:&isDir])
-		[[NSFileManager defaultManager] createDirectoryAtPath:applicationSupportFolder attributes:[NSDictionary dictionary]];
+    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+												  configuration:nil 
+															URL:url 
+														options:nil 
+														  error:&error])
+	{
+        [[NSApplication sharedApplication] presentError:error];
+        [persistentStoreCoordinator release];
+		persistentStoreCoordinator = nil;
+		
+        return nil;
+    }    
 	
-	return applicationSupportFolder;
+    return persistentStoreCoordinator;
+}
+
+- (NSManagedObjectContext *) managedObjectContext 
+{
+    if (managedObjectContext)
+		return managedObjectContext;
+	
+    NSPersistentStoreCoordinator * coordinator = [self persistentStoreCoordinator];
+
+    if (!coordinator) 
+	{
+        NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+        [dict setValue:@"Failed to initialize the store" forKey:NSLocalizedDescriptionKey];
+        [dict setValue:@"There was an error building up the data file." forKey:NSLocalizedFailureReasonErrorKey];
+        NSError *error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
+        [[NSApplication sharedApplication] presentError:error];
+
+        return nil;
+    }
+	
+    managedObjectContext = [[NSManagedObjectContext alloc] init];
+    [managedObjectContext setPersistentStoreCoordinator:coordinator];
+	
+    return managedObjectContext;
 }
 
 - (void) saveEvents
 {
 	if (dirty)
 	{
-		NSString * storageFolder = [self eventStorageFolder];
-	
-		NSString * file = [storageFolder stringByAppendingPathComponent:@"Events.events"];
-
-		NSData * data = [NSArchiver archivedDataWithRootObject:events];
+		NSError *error = nil;
 		
-		[data writeToFile:file atomically:YES];
-
+		if (![[self managedObjectContext] commitEditing])
+			NSLog(@"%@:%s unable to commit editing before saving", [self class], _cmd);
 		
-		//		[NSArchiver archiveRootObject:events toFile:file];
+		if (![[self managedObjectContext] save:&error])
+			[[NSApplication sharedApplication] presentError:error];
 		
 		dirty = NO;
 	}
-}
-
-- (void) loadEvents
-{
-	if ([events count] > 0)
-		[events removeAllObjects];
-	
-	NSString * storageFolder = [self eventStorageFolder];
-	
-	NSString * file = @"Events.events";
-
-	NSData * data = [NSData dataWithContentsOfFile:[storageFolder stringByAppendingPathComponent:file]];
-			
-	if (data)
-	{
-		NSArray * deviceEvents = [NSUnarchiver unarchiveObjectWithData:data];
-		
-		NSEnumerator * eventIter = [deviceEvents objectEnumerator];
-		NSDictionary * eventDict = nil;
-		while (eventDict = [eventIter nextObject])
-		{
-			Event * event = [Event dictionaryWithDictionary:eventDict];
-
-			[events addObject:event];
-		}
-	}
-	
-	NSSortDescriptor * sort = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
-	[events sortUsingDescriptors:[NSArray arrayWithObject:sort]];
-	
-	[sort release];
 }
 
 - (id) init
@@ -154,9 +184,8 @@ static EventManager * sharedInstance = nil;
 	if (self = [super init])
 	{
 		windowController = [[NSWindowController alloc] initWithWindowNibName:@"EventsWindow" owner:self];
-		events = [[NSMutableArray alloc] init];
 		cache = [[NSMutableDictionary dictionary] retain];
-		[self loadEvents];
+		_timelineCache = [[NSMutableDictionary alloc] init];
 		
 		cleanupTimer = [[NSTimer scheduledTimerWithTimeInterval:3600 target:self selector:@selector(cleanup:) userInfo:nil repeats:YES] retain];
 		
@@ -166,53 +195,79 @@ static EventManager * sharedInstance = nil;
 	return self;
 }
 
+- (NSMutableDictionary *) timelineCache
+{
+	return _timelineCache;
+}
+
 - (NSArray *) events
 {
-	return events;
+	NSEntityDescription * entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:[self managedObjectContext]];
+	NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
+	[request setEntity:entity];
+	
+	NSSortDescriptor * sort = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+	[request setSortDescriptors:[NSArray arrayWithObject:sort]];
+	[sort release];
+	
+	NSError * error = nil;
+	NSArray * array = [[self managedObjectContext] executeFetchRequest:request error:&error];
+	
+	if (array != nil)
+		return array;
+	
+	return [NSArray array];
 }
 
 - (void) cleanup:(NSTimer *) theTimer
 {
 	[self willChangeValueForKey:@"events"];
+
+	NSManagedObjectContext * context = [self managedObjectContext];
 	
 	NSNumber * days = [[PreferencesManager sharedInstance] valueForKey:@"log_days"];
 
-	NSMutableArray * toRemove = [NSMutableArray array];
+	NSDate * cutOff = [NSDate dateWithTimeIntervalSinceNow:(-60 * 60 * 24 * [days intValue])];
+
+	NSEntityDescription * entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:[self managedObjectContext]];
+	NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
+	[request setEntity:entity];
 	
-	NSEnumerator * iter = [events objectEnumerator];
-	Event * event = nil;
-	while (event = [iter nextObject])
+	NSPredicate * predicate = [NSPredicate predicateWithFormat:@"(date < %@)", cutOff];
+	[request setPredicate:predicate];
+	
+	NSError * error = nil;
+	NSArray * array = [[self managedObjectContext] executeFetchRequest:request error:&error];
+	
+	if (array != nil && [array count] > 0)
 	{
-		NSDate * date = [event date];
-		
-		if (abs([date timeIntervalSinceNow]) > (60 * 60 * 24 * [days intValue]))
-			[toRemove addObject:event];
-	}
-	
-	if ([toRemove count] > 500)
-		[toRemove setArray:[toRemove subarrayWithRange:NSMakeRange(0, 500)]];
-	
-	[events removeObjectsInArray:toRemove];
+		NSEnumerator * iter = [array objectEnumerator];
+		NSManagedObject * event = nil;
+		while (event = [iter nextObject])
+		{
+			[context deleteObject:event];
+		}
+	}	
 	
 	[self saveEvents];
 
 	[self didChangeValueForKey:@"events"];
 }
 
-- (Event *) createEvent:(NSString *) type source:(NSString *) sourceId initiator:(NSString *) initiator 
-			description:(NSString *) description value:(id) value;
+- (NSManagedObject *) createEvent:(NSString *) type source:(NSString *) sourceId initiator:(NSString *) initiator 
+			description:(NSString *) description value:(NSString *) value;
 {
 	return [self createEvent:type source:sourceId initiator:initiator description:description value:value match:YES];
 }
 
-- (Event *) createEvent:(NSString *) type source:(NSString *) sourceId initiator:(NSString *) initiator 
-			description:(NSString *) description value:(id) value match:(BOOL) matchCheck;
+- (NSManagedObject *) createEvent:(NSString *) type source:(NSString *) sourceId initiator:(NSString *) initiator 
+			description:(NSString *) description value:(NSString *) value match:(BOOL) matchCheck;
 {
-	Event * lastEvent = [self lastUpdateForIdentifier:sourceId event:type];
+	NSManagedObject * lastEvent = [self lastUpdateForIdentifier:sourceId event:type];
 	
-	if (matchCheck && [[lastEvent type] isEqual:type] && [[lastEvent source] isEqual:sourceId] && [[lastEvent initiator] isEqual:initiator]
-		&& [[lastEvent description] isEqual:description] && [[lastEvent value] isEqual:value] && ![type isEqual:@"snapshot"] && 
-		![type isEqual:@"trigger"])
+	if (matchCheck && [[lastEvent valueForKey:@"type"] isEqual:type] && [[lastEvent valueForKey:@"source"] isEqual:sourceId] && 
+		[[lastEvent valueForKey:@"initiator"] isEqual:initiator] && [[lastEvent valueForKey:@"event_description"] isEqual:description] && 
+		[[lastEvent valueForKey:@"value"] isEqual:value] && ![type isEqual:@"snapshot"] && ![type isEqual:@"trigger"])
 	{
 		
 	}
@@ -220,6 +275,14 @@ static EventManager * sharedInstance = nil;
 	{
 		[[ConsoleManager sharedInstance] willChangeValueForKey:NAV_TREE];
 		[self willChangeValueForKey:@"events"];
+		
+		NSEnumerator * iter = [[_timelineCache allKeys] objectEnumerator];
+		NSString * key = nil;
+		while (key = [iter nextObject])
+		{
+			if ([key rangeOfString:sourceId].location != NSNotFound)
+				[_timelineCache removeObjectForKey:key];
+		}
 
 		if ([initiator isEqual:@"User"])
 		{
@@ -236,8 +299,16 @@ static EventManager * sharedInstance = nil;
 			[[NSNotificationCenter defaultCenter] postNotificationName:@"Log Notification" object:nil userInfo:logDict];
 		}
 
-		Event * event = [Event eventWithType:type source:sourceId initiator:initiator description:description
-									   value:value date:[NSDate date]];
+		NSManagedObject * event = [NSEntityDescription insertNewObjectForEntityForName:@"Event"
+																inManagedObjectContext:[self managedObjectContext]];
+		[event setValue:type forKey:@"type"];
+		[event setValue:sourceId forKey:@"source"];
+		[event setValue:initiator forKey:@"initiator"];
+		[event setValue:description forKey:@"event_description"];
+		[event setValue:[NSDate date] forKey:@"date"];
+		[event setValue:value forKey:@"value"];
+
+		[self willChangeValueForKey:@"events" withSetMutation:NSKeyValueUnionSetMutation usingObjects:[NSSet setWithObject:event]];
 
 		NSString * title = @"Shion";
 		
@@ -267,10 +338,6 @@ static EventManager * sharedInstance = nil;
 		cacheKey = [NSString stringWithFormat:@"%@ - %@", sourceId, type];
 		[cache removeObjectForKey:cacheKey];
 		
-		[self willChangeValueForKey:@"events" withSetMutation:NSKeyValueUnionSetMutation usingObjects:[NSSet setWithObject:event]];
-		[events addObject:event];
-		[self didChangeValueForKey:@"events" withSetMutation:NSKeyValueUnionSetMutation usingObjects:[NSSet setWithObject:event]];
-
 //		[[XMPPManager sharedInstance] updateStatus:description available:YES];
 
 		[[NotificationManager sharedInstance] showMessage:description title:title icon:nil type:EVENT_NOTE];
@@ -282,64 +349,83 @@ static EventManager * sharedInstance = nil;
 		[self didChangeValueForKey:@"events"];
 		[[ConsoleManager sharedInstance] didChangeValueForKey:NAV_TREE];
 
+		[self didChangeValueForKey:@"events" withSetMutation:NSKeyValueUnionSetMutation usingObjects:[NSSet setWithObject:event]];
+
 		return event;
 	}
 	
 	return nil;
 }
 
-- (Event *) lastUpdateForIdentifier:(NSString *) identifier event:(NSString *) eventType
+- (NSManagedObject *) lastUpdateForIdentifier:(NSString *) identifier event:(NSString *) eventType
 {
-	NSArray * itemArray = [self eventsForIdentifier:identifier];
+	NSEntityDescription * entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:[self managedObjectContext]];
+	NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
+	[request setEntity:entity];
+	[request setFetchLimit:1];
+	
+	NSPredicate * predicate = [NSPredicate predicateWithFormat:@"(source == %@) AND (type == %@)", identifier, eventType];
+	
+	if (eventType == nil)
+		predicate = [NSPredicate predicateWithFormat:@"(source == %@)", identifier];
+	
+	[request setPredicate:predicate];
+	
+	NSSortDescriptor * sort = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+	[request setSortDescriptors:[NSArray arrayWithObject:sort]];
+	[sort release];
+	
+	NSError * error = nil;
+	NSArray * array = [[self managedObjectContext] executeFetchRequest:request error:&error];
 
-	// Assumes chronological storage...
-	
-	Event * finalEvent = nil;
-	
-	NSEnumerator * iter = [itemArray reverseObjectEnumerator];
-	Event * event = nil;
-	while (event = [iter nextObject])
-	{
-		if (finalEvent == nil && [[event source] isEqual:identifier] && (eventType == nil || [[event type] isEqual:eventType]))
-			finalEvent = event;
-	}
+	if (array != nil && [array count] > 0)
+		return [array objectAtIndex:0];
 		
-	return finalEvent;
+	return nil;
 }
 
 - (NSArray *) eventsForIdentifier:(NSString *) identifier
 {
-	return [self eventsForIdentifier:identifier event:nil];
+	NSEntityDescription * entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:[self managedObjectContext]];
+	NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
+	[request setEntity:entity];
+	
+	NSPredicate * predicate = [NSPredicate predicateWithFormat:@"(source == %@)", identifier];
+	[request setPredicate:predicate];
+	
+	NSSortDescriptor * sort = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
+	[request setSortDescriptors:[NSArray arrayWithObject:sort]];
+	[sort release];
+	
+	NSError * error = nil;
+	NSArray * array = [[self managedObjectContext] executeFetchRequest:request error:&error];
+	
+	if (array != nil)
+		return array;
+	
+	return [NSArray array];
 }
 
 - (NSArray *) eventsForIdentifier:(NSString *) identifier event:(NSString *) eventType
 {
-	NSString * cacheKey = [NSString stringWithFormat:@"%@ - %@", identifier, eventType];
-
-	NSArray * cachedArray = [cache valueForKey:cacheKey];
+	NSEntityDescription * entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:[self managedObjectContext]];
+	NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
+	[request setEntity:entity];
 	
-	if (cachedArray != nil)
-		return cachedArray;
-	
-	NSMutableArray * myEvents = [NSMutableArray array];
-
-	NSEnumerator * eventIter = [events objectEnumerator];
-	Event * event = nil;
-	while (event = [eventIter nextObject])
-	{
-		if ([[event source] isEqual:identifier] && (eventType == nil || [[event type] isEqual:eventType]))
-			[myEvents addObject:event];
-	}
+	NSPredicate * predicate = [NSPredicate predicateWithFormat:@"(source == %@) AND (type == %@)", identifier, eventType];
+	[request setPredicate:predicate];
 	
 	NSSortDescriptor * sort = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
-	
-	[myEvents sortUsingDescriptors:[NSArray arrayWithObject:sort]];
-	
+	[request setSortDescriptors:[NSArray arrayWithObject:sort]];
 	[sort release];
-
-	[cache setValue:myEvents forKey:cacheKey];
 	
-	return myEvents;
+	NSError * error = nil;
+	NSArray * array = [[self managedObjectContext] executeFetchRequest:request error:&error];
+	
+	if (array != nil)
+		return array;
+	
+	return [NSArray array];
 }
 
 - (NSArray *) eventsTree
@@ -352,7 +438,7 @@ static EventManager * sharedInstance = nil;
 	NSMutableDictionary * byDate = [NSMutableDictionary dictionaryWithObject:@"By Date" forKey:@"label"];
 	NSMutableArray * dateArray = [NSMutableArray array];
 	[byDate setValue:dateArray forKey:@"children"];
-	[byDate setValue:events forKey:EVENT_LIST];
+	[byDate setValue:[self events] forKey:EVENT_LIST];
 
 	NSMutableDictionary * allDevices = [NSMutableDictionary dictionary];
 	NSMutableDictionary * byDevice = [NSMutableDictionary dictionaryWithObject:@"By Device" forKey:@"label"];
@@ -375,20 +461,16 @@ static EventManager * sharedInstance = nil;
 	NSMutableArray * allTriggerEvents = [NSMutableArray array];
 	[byTrigger setValue:allTriggerEvents forKey:EVENT_LIST];
 
-	NSSortDescriptor * sort = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
-	
-	NSEnumerator * eventIter = [[events sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]] objectEnumerator];
-
-	[sort release];
+	NSEnumerator * eventIter = [[self events] objectEnumerator];
 	
 	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 	[formatter setTimeStyle:NSDateFormatterNoStyle];
 	[formatter setDateStyle:NSDateFormatterLongStyle];
 	
-	Event * event = nil;
+	NSManagedObject * event = nil;
 	while (event = [eventIter nextObject])
 	{
-		NSDate * date = [event date];
+		NSDate * date = [event valueForKey:@"date"];
 		
 		NSString * dateString = [formatter stringFromDate:date];
 		
@@ -404,7 +486,7 @@ static EventManager * sharedInstance = nil;
 		
 		[dateArray addObject:event];
 		
-		NSString * source = [event source];
+		NSString * source = [event valueForKey:@"source"];
 		
 		Device * device = [[DeviceManager sharedInstance] deviceWithIdentifier:source];
 		
