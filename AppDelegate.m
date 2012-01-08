@@ -47,7 +47,7 @@
 	{
 		[NSApp activateIgnoringOtherApps:YES];
 		
-		NSAlert * panel = [[[NSAlert alloc] init] autorelease];
+		NSAlert<NSAlertDeprecatedMethods> * panel = [[[NSAlert alloc] init] autorelease];
 		[panel setAlertStyle:NSWarningAlertStyle];
 		[panel setMessageText:NSLocalizedString(@"Quit Shion?", nil)];
 		[panel setInformativeText:NSLocalizedString(@"Are your sure you want to quit Shion? Active schedules will be interrupted.", nil)];

@@ -66,5 +66,15 @@
 
 #define TRIGGER @"trigger"
 
-SInt32 getVersion ();
+SInt32 getVersion();
+
+@protocol NSAlertDeprecatedMethods
+- (void) setShowsSuppressionButton:(BOOL) show;
+- (NSButton *) suppressionButton;
+@end
+
+@interface NSURLRequest (NSHiddenMethods)
++ (void) setAllowsAnyHTTPSCertificate:(BOOL) allow forHost:(NSString *) host;
+@end
+
 

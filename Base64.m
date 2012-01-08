@@ -8,6 +8,8 @@
 
 #import "Base64.h"
 
+#import "Shion.h"
+
 @implementation Base64
 
 /* Copied from http://www.cocoadev.com/index.pl?BaseSixtyFour (cyrus.najmabadi@gmail.com) */

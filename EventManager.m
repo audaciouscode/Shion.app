@@ -119,7 +119,7 @@ static EventManager * sharedInstance = nil;
 		}
     }
     
-    NSURL * url = [NSURL fileURLWithPath: [applicationSupportDirectory stringByAppendingPathComponent:@"storedata"]];
+    NSURL * url = [NSURL fileURLWithPath: [applicationSupportDirectory stringByAppendingPathComponent:@"Events.storedata"]];
 	
     persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
 	

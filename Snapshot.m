@@ -8,6 +8,8 @@
 
 #import "Snapshot.h"
 
+#import "Shion.h"
+
 #import "ConsoleManager.h"
 #import "DeviceManager.h"
 #import "EventManager.h"
@@ -219,7 +221,7 @@
 					if (confirm == nil)
 						[[PreferencesManager sharedInstance] setValue:[NSNumber numberWithBool:YES] forKey:@"confirm_snapshot_device_delete"];
 
-					NSAlert * panel = [[[NSAlert alloc] init] autorelease];
+					NSAlert<NSAlertDeprecatedMethods> * panel = [[[NSAlert alloc] init] autorelease];
 					[panel setAlertStyle:NSWarningAlertStyle];
 					[panel setMessageText:NSLocalizedString(@"Remove device from snapshot?", nil)];
 					[panel setInformativeText:[NSString stringWithFormat:@"Are you sure that you wish to remove %@ from the current snapshot?", [actualDevice name]]];

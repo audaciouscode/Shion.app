@@ -13,6 +13,9 @@
 
 #import "AMSerialPortList.h"
 #import "AMSerialPort.h"
+
+#import "Shion.h"
+
 #include "LoginItemsAE.h"
 
 #pragma mark -
@@ -300,7 +303,7 @@ static PreferencesManager * sharedInstance = nil;
 			
 			if ([show boolValue])
 			{
-				NSAlert * panel = [[[NSAlert alloc] init] autorelease];
+				NSAlert<NSAlertDeprecatedMethods> * panel = [[[NSAlert alloc] init] autorelease];
 				[panel setAlertStyle:NSWarningAlertStyle];
 				[panel setMessageText:NSLocalizedString(@"Please Restart Shion", nil)];
 				[panel setInformativeText:NSLocalizedString(@"Please restart Shion after making changes to the controller configuration.", nil)];
