@@ -13,8 +13,8 @@
 #import "Lamp.h"
 #import "Appliance.h"
 
-#import <Shion/ASHouseDevice.h>
-#import <Shion/ASDeviceController.h>
+#import "ASHouseDevice.h"
+#import "ASDeviceController.h"
 
 #define DEVICE_LIGHTS_ON @"device_lights_on"
 #define DEVICE_LIGHTS_OFF @"device_lights_off"

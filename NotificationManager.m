@@ -101,7 +101,7 @@ static NotificationManager * sharedInstance = nil;
 
 - (void) showMessage:(NSString *) message title:(NSString *) title icon:(NSImage *) icon type:(NSString *) type
 {
-	NSData * iconData = nil;
+/*	NSData * iconData = nil;
 	
 	if (icon != nil)
 	{
@@ -115,7 +115,7 @@ static NotificationManager * sharedInstance = nil;
 								   priority:0
 								   isSticky:NO
 							   clickContext:nil];
-
+*/
 	[[XMPPManager sharedInstance] updateStatus:message available:YES];
 }
 

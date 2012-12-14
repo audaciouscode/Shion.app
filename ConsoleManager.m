@@ -6,7 +6,7 @@
 //  Copyright 2010 CASIS LLC. All rights reserved.
 //
 
-#import <Shion/ASPowerLinc2412Controller.h>
+#import "ASPowerLinc2412Controller.h"
 
 #import "NSDictionary+BSJSONAdditions.h"
 #import "NSScanner+BSJSONAdditions.h"
@@ -855,19 +855,24 @@ static ConsoleManager * sharedInstance = nil;
 		NSMutableArray * array = [NSMutableArray array];
 		
 		NSArray * events = [[EventManager sharedInstance] eventsForIdentifier:@"Phone"];
-		
+
 		NSEnumerator * iter = [events objectEnumerator];
 		NSManagedObject * event = nil;
 		while (event = [iter nextObject])
 		{
-			NSDictionary * callDict = [NSDictionary dictionaryWithJSONString:[event valueForKey:@"value"]];
+			NSString * jsonValue = [event valueForKey:@"value"];
 			
-			NSMutableDictionary * call = [NSMutableDictionary dictionary];
-			[call setValue:[callDict valueForKey:@"caller_name"] forKey:@"caller"];
-			[call setValue:[callDict valueForKey:@"number"] forKey:@"number"];
-			[call setValue:[event valueForKey:@"date"] forKey:@"date"];
+			if (jsonValue && [jsonValue rangeOfString:@"\"\""].location == NSNotFound)
+			{
+				NSDictionary * callDict = [NSDictionary dictionaryWithJSONString:[event valueForKey:@"value"]];
 			
-			[array addObject:call];
+				NSMutableDictionary * call = [NSMutableDictionary dictionary];
+				[call setValue:[callDict valueForKey:@"caller_name"] forKey:@"caller"];
+				[call setValue:[callDict valueForKey:@"number"] forKey:@"number"];
+				[call setValue:[event valueForKey:@"date"] forKey:@"date"];
+				
+				[array addObject:call];
+			}
 		}
 		
 		/*

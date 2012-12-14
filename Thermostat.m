@@ -8,8 +8,8 @@
 
 #import "Thermostat.h"
 
-#import <Shion/ASDeviceController.h>
-#import <Shion/ASThermostatDevice.h>
+#import "ASDeviceController.h"
+#import "ASThermostatDevice.h"
 
 #import "Shion.h"
 #import "EventManager.h"

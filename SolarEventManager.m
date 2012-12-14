@@ -79,7 +79,8 @@
 	
 	ReadLocation (location);
 	
-	NSTimeZone * myTimeZone = [NSTimeZone localTimeZone];
+	[NSTimeZone resetSystemTimeZone];
+	NSTimeZone * myTimeZone = [NSTimeZone systemTimeZone];
 	
 	float latitude = 90 * FractToFloat (location->latitude);
 	float longitude = -90 * FractToFloat (location->longitude);
@@ -95,7 +96,8 @@
 	
 	ReadLocation (location);
 	
-	NSTimeZone * myTimeZone = [NSTimeZone localTimeZone];
+	[NSTimeZone resetSystemTimeZone];
+	NSTimeZone * myTimeZone = [NSTimeZone systemTimeZone];
 	
 	float latitude = 90 * FractToFloat (location->latitude);
 	float longitude = -90 * FractToFloat (location->longitude);

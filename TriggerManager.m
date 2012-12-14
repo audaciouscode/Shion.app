@@ -8,11 +8,11 @@
 
 #import "TriggerManager.h"
 
-#import <Shion/ASDevice.h>
-#import <Shion/ASDeviceController.h>
-#import <Shion/ASThermostatDevice.h>
-#import <Shion/ASSerialPortModemDevice.h>
-#import <Shion/ASX10Address.h>
+#import "ASDevice.h"
+#import "ASDeviceController.h"
+#import "ASThermostatDevice.h"
+#import "ASSerialPortModemDevice.h"
+#import "ASX10Address.h"
 
 #import "DeviceManager.h"
 #import "PreferencesManager.h"

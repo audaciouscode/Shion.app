@@ -88,11 +88,85 @@
 		3890C80013C293D800ECC913 /* PowerMeterSensor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890C7FF13C293D800ECC913 /* PowerMeterSensor.m */; };
 		3890C8FD13C2B11B00ECC913 /* PowerMeterSensorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890C8FC13C2B11B00ECC913 /* PowerMeterSensorView.m */; };
 		3890CAAF13C549E100ECC913 /* Lock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3890CAAE13C549E100ECC913 /* Lock.m */; };
+		38968DBF167AFFF400D6DE2A /* ASActivateCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D25167AFFF300D6DE2A /* ASActivateCommand.m */; };
+		38968DC0167AFFF400D6DE2A /* ASActivateFanCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D27167AFFF300D6DE2A /* ASActivateFanCommand.m */; };
+		38968DC1167AFFF400D6DE2A /* ASActivateThermostatStatusBroadcastCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D29167AFFF300D6DE2A /* ASActivateThermostatStatusBroadcastCommand.m */; };
+		38968DC2167AFFF400D6DE2A /* ASAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D2B167AFFF300D6DE2A /* ASAddress.m */; };
+		38968DC3167AFFF400D6DE2A /* ASAggregateCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D2D167AFFF300D6DE2A /* ASAggregateCommand.m */; };
+		38968DC4167AFFF400D6DE2A /* ASAllLightsOffCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D2F167AFFF300D6DE2A /* ASAllLightsOffCommand.m */; };
+		38968DC5167AFFF400D6DE2A /* ASAllLightsOnCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D31167AFFF300D6DE2A /* ASAllLightsOnCommand.m */; };
+		38968DC6167AFFF400D6DE2A /* ASAllOffCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D33167AFFF300D6DE2A /* ASAllOffCommand.m */; };
+		38968DC7167AFFF400D6DE2A /* ASChimeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D35167AFFF300D6DE2A /* ASChimeCommand.m */; };
+		38968DC8167AFFF400D6DE2A /* ASChimeDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D37167AFFF300D6DE2A /* ASChimeDevice.m */; };
+		38968DC9167AFFF400D6DE2A /* ASCM11AController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D39167AFFF300D6DE2A /* ASCM11AController.m */; };
+		38968DCA167AFFF400D6DE2A /* ASCM15AUSBController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D3B167AFFF300D6DE2A /* ASCM15AUSBController.m */; };
+		38968DCB167AFFF400D6DE2A /* ASCM17AController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D3D167AFFF300D6DE2A /* ASCM17AController.m */; };
+		38968DCC167AFFF400D6DE2A /* ASCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D3F167AFFF300D6DE2A /* ASCommand.m */; };
+		38968DCD167AFFF400D6DE2A /* ASContinuousDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D42167AFFF300D6DE2A /* ASContinuousDevice.m */; };
+		38968DCE167AFFF400D6DE2A /* ASDeactivateCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D44167AFFF300D6DE2A /* ASDeactivateCommand.m */; };
+		38968DCF167AFFF400D6DE2A /* ASDeactivateFanCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D46167AFFF300D6DE2A /* ASDeactivateFanCommand.m */; };
+		38968DD0167AFFF400D6DE2A /* ASDecreaseCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D48167AFFF300D6DE2A /* ASDecreaseCommand.m */; };
+		38968DD1167AFFF400D6DE2A /* ASDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D4A167AFFF300D6DE2A /* ASDevice.m */; };
+		38968DD2167AFFF400D6DE2A /* ASDeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D4C167AFFF300D6DE2A /* ASDeviceController.m */; };
+		38968DD3167AFFF400D6DE2A /* ASDisableStatusCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D4E167AFFF300D6DE2A /* ASDisableStatusCommand.m */; };
+		38968DD4167AFFF400D6DE2A /* ASEnableStatusCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D50167AFFF300D6DE2A /* ASEnableStatusCommand.m */; };
+		38968DD5167AFFF400D6DE2A /* ASEzSrveWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D52167AFFF300D6DE2A /* ASEzSrveWebController.m */; };
+		38968DD6167AFFF400D6DE2A /* ASGarageHawkClose.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D54167AFFF300D6DE2A /* ASGarageHawkClose.m */; };
+		38968DD7167AFFF400D6DE2A /* ASGarageHawkDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D56167AFFF300D6DE2A /* ASGarageHawkDevice.m */; };
+		38968DD8167AFFF400D6DE2A /* ASGetCoolPointCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D58167AFFF300D6DE2A /* ASGetCoolPointCommand.m */; };
+		38968DD9167AFFF400D6DE2A /* ASGetHeatPointCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D5A167AFFF300D6DE2A /* ASGetHeatPointCommand.m */; };
+		38968DDA167AFFF400D6DE2A /* ASGetInfoCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D5C167AFFF300D6DE2A /* ASGetInfoCommand.m */; };
+		38968DDB167AFFF400D6DE2A /* ASGetRampRateCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D5E167AFFF300D6DE2A /* ASGetRampRateCommand.m */; };
+		38968DDC167AFFF400D6DE2A /* ASGetTemperatureCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D60167AFFF300D6DE2A /* ASGetTemperatureCommand.m */; };
+		38968DDD167AFFF400D6DE2A /* ASGetThermostatModeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D62167AFFF300D6DE2A /* ASGetThermostatModeCommand.m */; };
+		38968DDE167AFFF400D6DE2A /* ASGetThermostatState.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D64167AFFF300D6DE2A /* ASGetThermostatState.m */; };
+		38968DDF167AFFF400D6DE2A /* ASHouseDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D66167AFFF300D6DE2A /* ASHouseDevice.m */; };
+		38968DE0167AFFF400D6DE2A /* ASHVACInfoCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D68167AFFF300D6DE2A /* ASHVACInfoCommand.m */; };
+		38968DE1167AFFF400D6DE2A /* ASIncreaseCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D6A167AFFF300D6DE2A /* ASIncreaseCommand.m */; };
+		38968DE2167AFFF400D6DE2A /* ASInsteonAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D6C167AFFF300D6DE2A /* ASInsteonAddress.m */; };
+		38968DE3167AFFF400D6DE2A /* ASInsteonDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D6E167AFFF300D6DE2A /* ASInsteonDatabase.m */; };
+		38968DE4167AFFF400D6DE2A /* ASInsteonTransmitCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D70167AFFF300D6DE2A /* ASInsteonTransmitCommand.m */; };
+		38968DE5167AFFF400D6DE2A /* ASLockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D72167AFFF400D6DE2A /* ASLockCommand.m */; };
+		38968DE6167AFFF400D6DE2A /* ASLockDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D74167AFFF400D6DE2A /* ASLockDevice.m */; };
+		38968DE7167AFFF400D6DE2A /* ASMotionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D76167AFFF400D6DE2A /* ASMotionDetector.m */; };
+		38968DE8167AFFF400D6DE2A /* ASPowerLinc1132Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D78167AFFF400D6DE2A /* ASPowerLinc1132Controller.m */; };
+		38968DE9167AFFF400D6DE2A /* ASPowerLinc2412Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D7A167AFFF400D6DE2A /* ASPowerLinc2412Controller.m */; };
+		38968DEA167AFFF400D6DE2A /* ASPowerLinc2414Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D7C167AFFF400D6DE2A /* ASPowerLinc2414Controller.m */; };
+		38968DEB167AFFF400D6DE2A /* ASPowerLincController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D7E167AFFF400D6DE2A /* ASPowerLincController.m */; };
+		38968DEC167AFFF400D6DE2A /* ASPowerLincSerialRFController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D80167AFFF400D6DE2A /* ASPowerLincSerialRFController.m */; };
+		38968DED167AFFF400D6DE2A /* ASPowerMeterDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D82167AFFF400D6DE2A /* ASPowerMeterDevice.m */; };
+		38968DEE167AFFF400D6DE2A /* ASResetPowerMeterCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D84167AFFF400D6DE2A /* ASResetPowerMeterCommand.m */; };
+		38968DEF167AFFF400D6DE2A /* ASSerialPortAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D86167AFFF400D6DE2A /* ASSerialPortAddress.m */; };
+		38968DF0167AFFF400D6DE2A /* ASSerialPortModemDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D88167AFFF400D6DE2A /* ASSerialPortModemDevice.m */; };
+		38968DF1167AFFF400D6DE2A /* ASSetCoolPointCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D8A167AFFF400D6DE2A /* ASSetCoolPointCommand.m */; };
+		38968DF2167AFFF400D6DE2A /* ASSetHeatPointCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D8C167AFFF400D6DE2A /* ASSetHeatPointCommand.m */; };
+		38968DF3167AFFF400D6DE2A /* ASSetLevelCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D8E167AFFF400D6DE2A /* ASSetLevelCommand.m */; };
+		38968DF4167AFFF400D6DE2A /* ASSetRampRateCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D90167AFFF400D6DE2A /* ASSetRampRateCommand.m */; };
+		38968DF5167AFFF400D6DE2A /* ASSetThermostatModeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D92167AFFF400D6DE2A /* ASSetThermostatModeCommand.m */; };
+		38968DF6167AFFF400D6DE2A /* ASSmartLincDirectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D94167AFFF400D6DE2A /* ASSmartLincDirectController.m */; };
+		38968DF7167AFFF400D6DE2A /* ASSmartLincWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D96167AFFF400D6DE2A /* ASSmartLincWebController.m */; };
+		38968DF8167AFFF400D6DE2A /* ASSprinklerDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D98167AFFF400D6DE2A /* ASSprinklerDevice.m */; };
+		38968DF9167AFFF400D6DE2A /* ASSprinklerFetchConfigurationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D9A167AFFF400D6DE2A /* ASSprinklerFetchConfigurationCommand.m */; };
+		38968DFA167AFFF400D6DE2A /* ASSprinklerOffCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D9C167AFFF400D6DE2A /* ASSprinklerOffCommand.m */; };
+		38968DFB167AFFF400D6DE2A /* ASSprinklerOnCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968D9E167AFFF400D6DE2A /* ASSprinklerOnCommand.m */; };
+		38968DFC167AFFF400D6DE2A /* ASSprinklerSetConfigurationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968DA0167AFFF400D6DE2A /* ASSprinklerSetConfigurationCommand.m */; };
+		38968DFD167AFFF400D6DE2A /* ASSprinklerSetDiagnosticsConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968DA2167AFFF400D6DE2A /* ASSprinklerSetDiagnosticsConfiguration.m */; };
+		38968DFE167AFFF400D6DE2A /* ASSprinklerSetPumpConfigurationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968DA4167AFFF400D6DE2A /* ASSprinklerSetPumpConfigurationCommand.m */; };
+		38968DFF167AFFF400D6DE2A /* ASSprinklerSetRainSensorConfigurationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968DA6167AFFF400D6DE2A /* ASSprinklerSetRainSensorConfigurationCommand.m */; };
+		38968E00167AFFF400D6DE2A /* ASSprinklerValveStatusCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968DA8167AFFF400D6DE2A /* ASSprinklerValveStatusCommand.m */; };
+		38968E01167AFFF400D6DE2A /* ASStatusCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968DAA167AFFF400D6DE2A /* ASStatusCommand.m */; };
+		38968E02167AFFF400D6DE2A /* ASThermostatDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968DAC167AFFF400D6DE2A /* ASThermostatDevice.m */; };
+		38968E03167AFFF400D6DE2A /* ASToggleDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968DAE167AFFF400D6DE2A /* ASToggleDevice.m */; };
+		38968E04167AFFF400D6DE2A /* ASUnlockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968DB0167AFFF400D6DE2A /* ASUnlockCommand.m */; };
+		38968E05167AFFF400D6DE2A /* ASVirtualAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968DB2167AFFF400D6DE2A /* ASVirtualAddress.m */; };
+		38968E06167AFFF400D6DE2A /* ASVirtualDeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968DB4167AFFF400D6DE2A /* ASVirtualDeviceController.m */; };
+		38968E08167AFFF400D6DE2A /* ASX10Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968DB8167AFFF400D6DE2A /* ASX10Address.m */; };
+		38968E09167AFFF400D6DE2A /* ASX10Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968DBA167AFFF400D6DE2A /* ASX10Controller.m */; };
+		38968E0B167AFFF400D6DE2A /* ShionLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 38968DBE167AFFF400D6DE2A /* ShionLog.m */; };
+		38968E2C167B00C300D6DE2A /* Insteon-Devices.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38968E2B167B00C300D6DE2A /* Insteon-Devices.plist */; };
 		3898120C100E98E00056A396 /* Growl-WithInstaller.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38981208100E98DF0056A396 /* Growl-WithInstaller.framework */; };
-		3898120D100E98E00056A396 /* Shion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38981209100E98DF0056A396 /* Shion.framework */; };
 		3898120E100E98E00056A396 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3898120A100E98E00056A396 /* Sparkle.framework */; };
 		38981249100E98E50056A396 /* Growl-WithInstaller.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38981208100E98DF0056A396 /* Growl-WithInstaller.framework */; };
-		3898124A100E98E50056A396 /* Shion.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38981209100E98DF0056A396 /* Shion.framework */; };
 		3898124B100E98E50056A396 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3898120A100E98E00056A396 /* Sparkle.framework */; };
 		3898B9520FD18DCF00312FF6 /* cache-menu-error.png in Resources */ = {isa = PBXBuildFile; fileRef = 3898B9510FD18DCF00312FF6 /* cache-menu-error.png */; };
 		389AC45F11C04965001AA240 /* BrightenDeviceCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 389AC45E11C04965001AA240 /* BrightenDeviceCommand.m */; };
@@ -177,7 +251,6 @@
 				382F5BE1117CC15800BD3E2F /* LuaCore.framework in CopyFiles */,
 				383F5432103CA21800A26A9A /* SSCrypto.framework in CopyFiles */,
 				38981249100E98E50056A396 /* Growl-WithInstaller.framework in CopyFiles */,
-				3898124A100E98E50056A396 /* Shion.framework in CopyFiles */,
 				3898124B100E98E50056A396 /* Sparkle.framework in CopyFiles */,
 				3849FEFF101E8EE500FC39E3 /* XMPP.framework in CopyFiles */,
 			);
@@ -330,8 +403,159 @@
 		3890C8FC13C2B11B00ECC913 /* PowerMeterSensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerMeterSensorView.m; sourceTree = "<group>"; };
 		3890CAAD13C549E100ECC913 /* Lock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lock.h; sourceTree = "<group>"; };
 		3890CAAE13C549E100ECC913 /* Lock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lock.m; sourceTree = "<group>"; };
+		38968D24167AFFF300D6DE2A /* ASActivateCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASActivateCommand.h; sourceTree = "<group>"; };
+		38968D25167AFFF300D6DE2A /* ASActivateCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASActivateCommand.m; sourceTree = "<group>"; };
+		38968D26167AFFF300D6DE2A /* ASActivateFanCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASActivateFanCommand.h; sourceTree = "<group>"; };
+		38968D27167AFFF300D6DE2A /* ASActivateFanCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASActivateFanCommand.m; sourceTree = "<group>"; };
+		38968D28167AFFF300D6DE2A /* ASActivateThermostatStatusBroadcastCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASActivateThermostatStatusBroadcastCommand.h; sourceTree = "<group>"; };
+		38968D29167AFFF300D6DE2A /* ASActivateThermostatStatusBroadcastCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASActivateThermostatStatusBroadcastCommand.m; sourceTree = "<group>"; };
+		38968D2A167AFFF300D6DE2A /* ASAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASAddress.h; sourceTree = "<group>"; };
+		38968D2B167AFFF300D6DE2A /* ASAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASAddress.m; sourceTree = "<group>"; };
+		38968D2C167AFFF300D6DE2A /* ASAggregateCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASAggregateCommand.h; sourceTree = "<group>"; };
+		38968D2D167AFFF300D6DE2A /* ASAggregateCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASAggregateCommand.m; sourceTree = "<group>"; };
+		38968D2E167AFFF300D6DE2A /* ASAllLightsOffCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASAllLightsOffCommand.h; sourceTree = "<group>"; };
+		38968D2F167AFFF300D6DE2A /* ASAllLightsOffCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASAllLightsOffCommand.m; sourceTree = "<group>"; };
+		38968D30167AFFF300D6DE2A /* ASAllLightsOnCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASAllLightsOnCommand.h; sourceTree = "<group>"; };
+		38968D31167AFFF300D6DE2A /* ASAllLightsOnCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASAllLightsOnCommand.m; sourceTree = "<group>"; };
+		38968D32167AFFF300D6DE2A /* ASAllOffCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASAllOffCommand.h; sourceTree = "<group>"; };
+		38968D33167AFFF300D6DE2A /* ASAllOffCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASAllOffCommand.m; sourceTree = "<group>"; };
+		38968D34167AFFF300D6DE2A /* ASChimeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASChimeCommand.h; sourceTree = "<group>"; };
+		38968D35167AFFF300D6DE2A /* ASChimeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASChimeCommand.m; sourceTree = "<group>"; };
+		38968D36167AFFF300D6DE2A /* ASChimeDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASChimeDevice.h; sourceTree = "<group>"; };
+		38968D37167AFFF300D6DE2A /* ASChimeDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASChimeDevice.m; sourceTree = "<group>"; };
+		38968D38167AFFF300D6DE2A /* ASCM11AController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASCM11AController.h; sourceTree = "<group>"; };
+		38968D39167AFFF300D6DE2A /* ASCM11AController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASCM11AController.m; sourceTree = "<group>"; };
+		38968D3A167AFFF300D6DE2A /* ASCM15AUSBController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASCM15AUSBController.h; sourceTree = "<group>"; };
+		38968D3B167AFFF300D6DE2A /* ASCM15AUSBController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASCM15AUSBController.m; sourceTree = "<group>"; };
+		38968D3C167AFFF300D6DE2A /* ASCM17AController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASCM17AController.h; sourceTree = "<group>"; };
+		38968D3D167AFFF300D6DE2A /* ASCM17AController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASCM17AController.m; sourceTree = "<group>"; };
+		38968D3E167AFFF300D6DE2A /* ASCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASCommand.h; sourceTree = "<group>"; };
+		38968D3F167AFFF300D6DE2A /* ASCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASCommand.m; sourceTree = "<group>"; };
+		38968D40167AFFF300D6DE2A /* ASCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASCommands.h; sourceTree = "<group>"; };
+		38968D41167AFFF300D6DE2A /* ASContinuousDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASContinuousDevice.h; sourceTree = "<group>"; };
+		38968D42167AFFF300D6DE2A /* ASContinuousDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASContinuousDevice.m; sourceTree = "<group>"; };
+		38968D43167AFFF300D6DE2A /* ASDeactivateCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDeactivateCommand.h; sourceTree = "<group>"; };
+		38968D44167AFFF300D6DE2A /* ASDeactivateCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDeactivateCommand.m; sourceTree = "<group>"; };
+		38968D45167AFFF300D6DE2A /* ASDeactivateFanCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDeactivateFanCommand.h; sourceTree = "<group>"; };
+		38968D46167AFFF300D6DE2A /* ASDeactivateFanCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDeactivateFanCommand.m; sourceTree = "<group>"; };
+		38968D47167AFFF300D6DE2A /* ASDecreaseCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDecreaseCommand.h; sourceTree = "<group>"; };
+		38968D48167AFFF300D6DE2A /* ASDecreaseCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDecreaseCommand.m; sourceTree = "<group>"; };
+		38968D49167AFFF300D6DE2A /* ASDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDevice.h; sourceTree = "<group>"; };
+		38968D4A167AFFF300D6DE2A /* ASDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDevice.m; sourceTree = "<group>"; };
+		38968D4B167AFFF300D6DE2A /* ASDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDeviceController.h; sourceTree = "<group>"; };
+		38968D4C167AFFF300D6DE2A /* ASDeviceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDeviceController.m; sourceTree = "<group>"; };
+		38968D4D167AFFF300D6DE2A /* ASDisableStatusCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDisableStatusCommand.h; sourceTree = "<group>"; };
+		38968D4E167AFFF300D6DE2A /* ASDisableStatusCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDisableStatusCommand.m; sourceTree = "<group>"; };
+		38968D4F167AFFF300D6DE2A /* ASEnableStatusCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASEnableStatusCommand.h; sourceTree = "<group>"; };
+		38968D50167AFFF300D6DE2A /* ASEnableStatusCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASEnableStatusCommand.m; sourceTree = "<group>"; };
+		38968D51167AFFF300D6DE2A /* ASEzSrveWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASEzSrveWebController.h; sourceTree = "<group>"; };
+		38968D52167AFFF300D6DE2A /* ASEzSrveWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASEzSrveWebController.m; sourceTree = "<group>"; };
+		38968D53167AFFF300D6DE2A /* ASGarageHawkClose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGarageHawkClose.h; sourceTree = "<group>"; };
+		38968D54167AFFF300D6DE2A /* ASGarageHawkClose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGarageHawkClose.m; sourceTree = "<group>"; };
+		38968D55167AFFF300D6DE2A /* ASGarageHawkDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGarageHawkDevice.h; sourceTree = "<group>"; };
+		38968D56167AFFF300D6DE2A /* ASGarageHawkDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGarageHawkDevice.m; sourceTree = "<group>"; };
+		38968D57167AFFF300D6DE2A /* ASGetCoolPointCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGetCoolPointCommand.h; sourceTree = "<group>"; };
+		38968D58167AFFF300D6DE2A /* ASGetCoolPointCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGetCoolPointCommand.m; sourceTree = "<group>"; };
+		38968D59167AFFF300D6DE2A /* ASGetHeatPointCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGetHeatPointCommand.h; sourceTree = "<group>"; };
+		38968D5A167AFFF300D6DE2A /* ASGetHeatPointCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGetHeatPointCommand.m; sourceTree = "<group>"; };
+		38968D5B167AFFF300D6DE2A /* ASGetInfoCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGetInfoCommand.h; sourceTree = "<group>"; };
+		38968D5C167AFFF300D6DE2A /* ASGetInfoCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGetInfoCommand.m; sourceTree = "<group>"; };
+		38968D5D167AFFF300D6DE2A /* ASGetRampRateCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGetRampRateCommand.h; sourceTree = "<group>"; };
+		38968D5E167AFFF300D6DE2A /* ASGetRampRateCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGetRampRateCommand.m; sourceTree = "<group>"; };
+		38968D5F167AFFF300D6DE2A /* ASGetTemperatureCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGetTemperatureCommand.h; sourceTree = "<group>"; };
+		38968D60167AFFF300D6DE2A /* ASGetTemperatureCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGetTemperatureCommand.m; sourceTree = "<group>"; };
+		38968D61167AFFF300D6DE2A /* ASGetThermostatModeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGetThermostatModeCommand.h; sourceTree = "<group>"; };
+		38968D62167AFFF300D6DE2A /* ASGetThermostatModeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGetThermostatModeCommand.m; sourceTree = "<group>"; };
+		38968D63167AFFF300D6DE2A /* ASGetThermostatState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASGetThermostatState.h; sourceTree = "<group>"; };
+		38968D64167AFFF300D6DE2A /* ASGetThermostatState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASGetThermostatState.m; sourceTree = "<group>"; };
+		38968D65167AFFF300D6DE2A /* ASHouseDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASHouseDevice.h; sourceTree = "<group>"; };
+		38968D66167AFFF300D6DE2A /* ASHouseDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASHouseDevice.m; sourceTree = "<group>"; };
+		38968D67167AFFF300D6DE2A /* ASHVACInfoCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASHVACInfoCommand.h; sourceTree = "<group>"; };
+		38968D68167AFFF300D6DE2A /* ASHVACInfoCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASHVACInfoCommand.m; sourceTree = "<group>"; };
+		38968D69167AFFF300D6DE2A /* ASIncreaseCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIncreaseCommand.h; sourceTree = "<group>"; };
+		38968D6A167AFFF300D6DE2A /* ASIncreaseCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIncreaseCommand.m; sourceTree = "<group>"; };
+		38968D6B167AFFF300D6DE2A /* ASInsteonAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASInsteonAddress.h; sourceTree = "<group>"; };
+		38968D6C167AFFF300D6DE2A /* ASInsteonAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASInsteonAddress.m; sourceTree = "<group>"; };
+		38968D6D167AFFF300D6DE2A /* ASInsteonDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASInsteonDatabase.h; sourceTree = "<group>"; };
+		38968D6E167AFFF300D6DE2A /* ASInsteonDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASInsteonDatabase.m; sourceTree = "<group>"; };
+		38968D6F167AFFF300D6DE2A /* ASInsteonTransmitCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASInsteonTransmitCommand.h; sourceTree = "<group>"; };
+		38968D70167AFFF300D6DE2A /* ASInsteonTransmitCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASInsteonTransmitCommand.m; sourceTree = "<group>"; };
+		38968D71167AFFF400D6DE2A /* ASLockCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASLockCommand.h; sourceTree = "<group>"; };
+		38968D72167AFFF400D6DE2A /* ASLockCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASLockCommand.m; sourceTree = "<group>"; };
+		38968D73167AFFF400D6DE2A /* ASLockDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASLockDevice.h; sourceTree = "<group>"; };
+		38968D74167AFFF400D6DE2A /* ASLockDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASLockDevice.m; sourceTree = "<group>"; };
+		38968D75167AFFF400D6DE2A /* ASMotionDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMotionDetector.h; sourceTree = "<group>"; };
+		38968D76167AFFF400D6DE2A /* ASMotionDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMotionDetector.m; sourceTree = "<group>"; };
+		38968D77167AFFF400D6DE2A /* ASPowerLinc1132Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASPowerLinc1132Controller.h; sourceTree = "<group>"; };
+		38968D78167AFFF400D6DE2A /* ASPowerLinc1132Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASPowerLinc1132Controller.m; sourceTree = "<group>"; };
+		38968D79167AFFF400D6DE2A /* ASPowerLinc2412Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASPowerLinc2412Controller.h; sourceTree = "<group>"; };
+		38968D7A167AFFF400D6DE2A /* ASPowerLinc2412Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASPowerLinc2412Controller.m; sourceTree = "<group>"; };
+		38968D7B167AFFF400D6DE2A /* ASPowerLinc2414Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASPowerLinc2414Controller.h; sourceTree = "<group>"; };
+		38968D7C167AFFF400D6DE2A /* ASPowerLinc2414Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASPowerLinc2414Controller.m; sourceTree = "<group>"; };
+		38968D7D167AFFF400D6DE2A /* ASPowerLincController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASPowerLincController.h; sourceTree = "<group>"; };
+		38968D7E167AFFF400D6DE2A /* ASPowerLincController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASPowerLincController.m; sourceTree = "<group>"; };
+		38968D7F167AFFF400D6DE2A /* ASPowerLincSerialRFController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASPowerLincSerialRFController.h; sourceTree = "<group>"; };
+		38968D80167AFFF400D6DE2A /* ASPowerLincSerialRFController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASPowerLincSerialRFController.m; sourceTree = "<group>"; };
+		38968D81167AFFF400D6DE2A /* ASPowerMeterDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASPowerMeterDevice.h; sourceTree = "<group>"; };
+		38968D82167AFFF400D6DE2A /* ASPowerMeterDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASPowerMeterDevice.m; sourceTree = "<group>"; };
+		38968D83167AFFF400D6DE2A /* ASResetPowerMeterCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASResetPowerMeterCommand.h; sourceTree = "<group>"; };
+		38968D84167AFFF400D6DE2A /* ASResetPowerMeterCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASResetPowerMeterCommand.m; sourceTree = "<group>"; };
+		38968D85167AFFF400D6DE2A /* ASSerialPortAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSerialPortAddress.h; sourceTree = "<group>"; };
+		38968D86167AFFF400D6DE2A /* ASSerialPortAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSerialPortAddress.m; sourceTree = "<group>"; };
+		38968D87167AFFF400D6DE2A /* ASSerialPortModemDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSerialPortModemDevice.h; sourceTree = "<group>"; };
+		38968D88167AFFF400D6DE2A /* ASSerialPortModemDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSerialPortModemDevice.m; sourceTree = "<group>"; };
+		38968D89167AFFF400D6DE2A /* ASSetCoolPointCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSetCoolPointCommand.h; sourceTree = "<group>"; };
+		38968D8A167AFFF400D6DE2A /* ASSetCoolPointCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSetCoolPointCommand.m; sourceTree = "<group>"; };
+		38968D8B167AFFF400D6DE2A /* ASSetHeatPointCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSetHeatPointCommand.h; sourceTree = "<group>"; };
+		38968D8C167AFFF400D6DE2A /* ASSetHeatPointCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSetHeatPointCommand.m; sourceTree = "<group>"; };
+		38968D8D167AFFF400D6DE2A /* ASSetLevelCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSetLevelCommand.h; sourceTree = "<group>"; };
+		38968D8E167AFFF400D6DE2A /* ASSetLevelCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSetLevelCommand.m; sourceTree = "<group>"; };
+		38968D8F167AFFF400D6DE2A /* ASSetRampRateCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSetRampRateCommand.h; sourceTree = "<group>"; };
+		38968D90167AFFF400D6DE2A /* ASSetRampRateCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSetRampRateCommand.m; sourceTree = "<group>"; };
+		38968D91167AFFF400D6DE2A /* ASSetThermostatModeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSetThermostatModeCommand.h; sourceTree = "<group>"; };
+		38968D92167AFFF400D6DE2A /* ASSetThermostatModeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSetThermostatModeCommand.m; sourceTree = "<group>"; };
+		38968D93167AFFF400D6DE2A /* ASSmartLincDirectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSmartLincDirectController.h; sourceTree = "<group>"; };
+		38968D94167AFFF400D6DE2A /* ASSmartLincDirectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSmartLincDirectController.m; sourceTree = "<group>"; };
+		38968D95167AFFF400D6DE2A /* ASSmartLincWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSmartLincWebController.h; sourceTree = "<group>"; };
+		38968D96167AFFF400D6DE2A /* ASSmartLincWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSmartLincWebController.m; sourceTree = "<group>"; };
+		38968D97167AFFF400D6DE2A /* ASSprinklerDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSprinklerDevice.h; sourceTree = "<group>"; };
+		38968D98167AFFF400D6DE2A /* ASSprinklerDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSprinklerDevice.m; sourceTree = "<group>"; };
+		38968D99167AFFF400D6DE2A /* ASSprinklerFetchConfigurationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSprinklerFetchConfigurationCommand.h; sourceTree = "<group>"; };
+		38968D9A167AFFF400D6DE2A /* ASSprinklerFetchConfigurationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSprinklerFetchConfigurationCommand.m; sourceTree = "<group>"; };
+		38968D9B167AFFF400D6DE2A /* ASSprinklerOffCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSprinklerOffCommand.h; sourceTree = "<group>"; };
+		38968D9C167AFFF400D6DE2A /* ASSprinklerOffCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSprinklerOffCommand.m; sourceTree = "<group>"; };
+		38968D9D167AFFF400D6DE2A /* ASSprinklerOnCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSprinklerOnCommand.h; sourceTree = "<group>"; };
+		38968D9E167AFFF400D6DE2A /* ASSprinklerOnCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSprinklerOnCommand.m; sourceTree = "<group>"; };
+		38968D9F167AFFF400D6DE2A /* ASSprinklerSetConfigurationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSprinklerSetConfigurationCommand.h; sourceTree = "<group>"; };
+		38968DA0167AFFF400D6DE2A /* ASSprinklerSetConfigurationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSprinklerSetConfigurationCommand.m; sourceTree = "<group>"; };
+		38968DA1167AFFF400D6DE2A /* ASSprinklerSetDiagnosticsConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSprinklerSetDiagnosticsConfiguration.h; sourceTree = "<group>"; };
+		38968DA2167AFFF400D6DE2A /* ASSprinklerSetDiagnosticsConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSprinklerSetDiagnosticsConfiguration.m; sourceTree = "<group>"; };
+		38968DA3167AFFF400D6DE2A /* ASSprinklerSetPumpConfigurationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSprinklerSetPumpConfigurationCommand.h; sourceTree = "<group>"; };
+		38968DA4167AFFF400D6DE2A /* ASSprinklerSetPumpConfigurationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSprinklerSetPumpConfigurationCommand.m; sourceTree = "<group>"; };
+		38968DA5167AFFF400D6DE2A /* ASSprinklerSetRainSensorConfigurationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSprinklerSetRainSensorConfigurationCommand.h; sourceTree = "<group>"; };
+		38968DA6167AFFF400D6DE2A /* ASSprinklerSetRainSensorConfigurationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSprinklerSetRainSensorConfigurationCommand.m; sourceTree = "<group>"; };
+		38968DA7167AFFF400D6DE2A /* ASSprinklerValveStatusCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASSprinklerValveStatusCommand.h; sourceTree = "<group>"; };
+		38968DA8167AFFF400D6DE2A /* ASSprinklerValveStatusCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASSprinklerValveStatusCommand.m; sourceTree = "<group>"; };
+		38968DA9167AFFF400D6DE2A /* ASStatusCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASStatusCommand.h; sourceTree = "<group>"; };
+		38968DAA167AFFF400D6DE2A /* ASStatusCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASStatusCommand.m; sourceTree = "<group>"; };
+		38968DAB167AFFF400D6DE2A /* ASThermostatDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASThermostatDevice.h; sourceTree = "<group>"; };
+		38968DAC167AFFF400D6DE2A /* ASThermostatDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASThermostatDevice.m; sourceTree = "<group>"; };
+		38968DAD167AFFF400D6DE2A /* ASToggleDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASToggleDevice.h; sourceTree = "<group>"; };
+		38968DAE167AFFF400D6DE2A /* ASToggleDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASToggleDevice.m; sourceTree = "<group>"; };
+		38968DAF167AFFF400D6DE2A /* ASUnlockCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASUnlockCommand.h; sourceTree = "<group>"; };
+		38968DB0167AFFF400D6DE2A /* ASUnlockCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASUnlockCommand.m; sourceTree = "<group>"; };
+		38968DB1167AFFF400D6DE2A /* ASVirtualAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVirtualAddress.h; sourceTree = "<group>"; };
+		38968DB2167AFFF400D6DE2A /* ASVirtualAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVirtualAddress.m; sourceTree = "<group>"; };
+		38968DB3167AFFF400D6DE2A /* ASVirtualDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVirtualDeviceController.h; sourceTree = "<group>"; };
+		38968DB4167AFFF400D6DE2A /* ASVirtualDeviceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVirtualDeviceController.m; sourceTree = "<group>"; };
+		38968DB7167AFFF400D6DE2A /* ASX10Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASX10Address.h; sourceTree = "<group>"; };
+		38968DB8167AFFF400D6DE2A /* ASX10Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASX10Address.m; sourceTree = "<group>"; };
+		38968DB9167AFFF400D6DE2A /* ASX10Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASX10Controller.h; sourceTree = "<group>"; };
+		38968DBA167AFFF400D6DE2A /* ASX10Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASX10Controller.m; sourceTree = "<group>"; };
+		38968DBD167AFFF400D6DE2A /* ShionLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShionLog.h; sourceTree = "<group>"; };
+		38968DBE167AFFF400D6DE2A /* ShionLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShionLog.m; sourceTree = "<group>"; };
+		38968E2B167B00C300D6DE2A /* Insteon-Devices.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Insteon-Devices.plist"; sourceTree = "<group>"; };
 		38981208100E98DF0056A396 /* Growl-WithInstaller.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "Growl-WithInstaller.framework"; sourceTree = "<group>"; };
-		38981209100E98DF0056A396 /* Shion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Shion.framework; sourceTree = "<group>"; };
 		3898120A100E98E00056A396 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		3898B9510FD18DCF00312FF6 /* cache-menu-error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cache-menu-error.png"; sourceTree = "<group>"; };
 		389AC45D11C04965001AA240 /* BrightenDeviceCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrightenDeviceCommand.h; sourceTree = "<group>"; };
@@ -459,7 +683,6 @@
 				38B3D2EF0F1E0F51003F968F /* CoreServices.framework in Frameworks */,
 				38FEE9A00FA2022E00A232A4 /* AddressBook.framework in Frameworks */,
 				3898120C100E98E00056A396 /* Growl-WithInstaller.framework in Frameworks */,
-				3898120D100E98E00056A396 /* Shion.framework in Frameworks */,
 				3898120E100E98E00056A396 /* Sparkle.framework in Frameworks */,
 				3849FE53101E8AA300FC39E3 /* XMPP.framework in Frameworks */,
 				3849FE64101E8AC000FC39E3 /* libidn.a in Frameworks */,
@@ -478,6 +701,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				38968D23167AFFC400D6DE2A /* Framework */,
 				382F6015117E256B00BD3E2F /* Commands */,
 				382F5BE4117CC18200BD3E2F /* Scripting */,
 				382F5B37117CA75000BD3E2F /* XMPP */,
@@ -505,7 +729,6 @@
 				3849FE63101E8AC000FC39E3 /* libidn.a */,
 				3849FE52101E8AA300FC39E3 /* XMPP.framework */,
 				38981208100E98DF0056A396 /* Growl-WithInstaller.framework */,
-				38981209100E98DF0056A396 /* Shion.framework */,
 				3898120A100E98E00056A396 /* Sparkle.framework */,
 				38FEE99F0FA2022E00A232A4 /* AddressBook.framework */,
 				38B3D2EE0F1E0F51003F968F /* CoreServices.framework */,
@@ -558,6 +781,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				38968E2B167B00C300D6DE2A /* Insteon-Devices.plist */,
 				3853704712AEF1390082D2D9 /* Tips */,
 				389EAE541243F28B00CD48FA /* camera.m4a */,
 				38ED16E4116A2CDB00673F97 /* User Interface */,
@@ -785,6 +1009,164 @@
 				3876202113E480780014D34C /* WeatherUndergroundStation.m */,
 			);
 			name = Weather;
+			sourceTree = "<group>";
+		};
+		38968D23167AFFC400D6DE2A /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				38968D24167AFFF300D6DE2A /* ASActivateCommand.h */,
+				38968D25167AFFF300D6DE2A /* ASActivateCommand.m */,
+				38968D26167AFFF300D6DE2A /* ASActivateFanCommand.h */,
+				38968D27167AFFF300D6DE2A /* ASActivateFanCommand.m */,
+				38968D28167AFFF300D6DE2A /* ASActivateThermostatStatusBroadcastCommand.h */,
+				38968D29167AFFF300D6DE2A /* ASActivateThermostatStatusBroadcastCommand.m */,
+				38968D2A167AFFF300D6DE2A /* ASAddress.h */,
+				38968D2B167AFFF300D6DE2A /* ASAddress.m */,
+				38968D2C167AFFF300D6DE2A /* ASAggregateCommand.h */,
+				38968D2D167AFFF300D6DE2A /* ASAggregateCommand.m */,
+				38968D2E167AFFF300D6DE2A /* ASAllLightsOffCommand.h */,
+				38968D2F167AFFF300D6DE2A /* ASAllLightsOffCommand.m */,
+				38968D30167AFFF300D6DE2A /* ASAllLightsOnCommand.h */,
+				38968D31167AFFF300D6DE2A /* ASAllLightsOnCommand.m */,
+				38968D32167AFFF300D6DE2A /* ASAllOffCommand.h */,
+				38968D33167AFFF300D6DE2A /* ASAllOffCommand.m */,
+				38968D34167AFFF300D6DE2A /* ASChimeCommand.h */,
+				38968D35167AFFF300D6DE2A /* ASChimeCommand.m */,
+				38968D36167AFFF300D6DE2A /* ASChimeDevice.h */,
+				38968D37167AFFF300D6DE2A /* ASChimeDevice.m */,
+				38968D38167AFFF300D6DE2A /* ASCM11AController.h */,
+				38968D39167AFFF300D6DE2A /* ASCM11AController.m */,
+				38968D3A167AFFF300D6DE2A /* ASCM15AUSBController.h */,
+				38968D3B167AFFF300D6DE2A /* ASCM15AUSBController.m */,
+				38968D3C167AFFF300D6DE2A /* ASCM17AController.h */,
+				38968D3D167AFFF300D6DE2A /* ASCM17AController.m */,
+				38968D3E167AFFF300D6DE2A /* ASCommand.h */,
+				38968D3F167AFFF300D6DE2A /* ASCommand.m */,
+				38968D40167AFFF300D6DE2A /* ASCommands.h */,
+				38968D41167AFFF300D6DE2A /* ASContinuousDevice.h */,
+				38968D42167AFFF300D6DE2A /* ASContinuousDevice.m */,
+				38968D43167AFFF300D6DE2A /* ASDeactivateCommand.h */,
+				38968D44167AFFF300D6DE2A /* ASDeactivateCommand.m */,
+				38968D45167AFFF300D6DE2A /* ASDeactivateFanCommand.h */,
+				38968D46167AFFF300D6DE2A /* ASDeactivateFanCommand.m */,
+				38968D47167AFFF300D6DE2A /* ASDecreaseCommand.h */,
+				38968D48167AFFF300D6DE2A /* ASDecreaseCommand.m */,
+				38968D49167AFFF300D6DE2A /* ASDevice.h */,
+				38968D4A167AFFF300D6DE2A /* ASDevice.m */,
+				38968D4B167AFFF300D6DE2A /* ASDeviceController.h */,
+				38968D4C167AFFF300D6DE2A /* ASDeviceController.m */,
+				38968D4D167AFFF300D6DE2A /* ASDisableStatusCommand.h */,
+				38968D4E167AFFF300D6DE2A /* ASDisableStatusCommand.m */,
+				38968D4F167AFFF300D6DE2A /* ASEnableStatusCommand.h */,
+				38968D50167AFFF300D6DE2A /* ASEnableStatusCommand.m */,
+				38968D51167AFFF300D6DE2A /* ASEzSrveWebController.h */,
+				38968D52167AFFF300D6DE2A /* ASEzSrveWebController.m */,
+				38968D53167AFFF300D6DE2A /* ASGarageHawkClose.h */,
+				38968D54167AFFF300D6DE2A /* ASGarageHawkClose.m */,
+				38968D55167AFFF300D6DE2A /* ASGarageHawkDevice.h */,
+				38968D56167AFFF300D6DE2A /* ASGarageHawkDevice.m */,
+				38968D57167AFFF300D6DE2A /* ASGetCoolPointCommand.h */,
+				38968D58167AFFF300D6DE2A /* ASGetCoolPointCommand.m */,
+				38968D59167AFFF300D6DE2A /* ASGetHeatPointCommand.h */,
+				38968D5A167AFFF300D6DE2A /* ASGetHeatPointCommand.m */,
+				38968D5B167AFFF300D6DE2A /* ASGetInfoCommand.h */,
+				38968D5C167AFFF300D6DE2A /* ASGetInfoCommand.m */,
+				38968D5D167AFFF300D6DE2A /* ASGetRampRateCommand.h */,
+				38968D5E167AFFF300D6DE2A /* ASGetRampRateCommand.m */,
+				38968D5F167AFFF300D6DE2A /* ASGetTemperatureCommand.h */,
+				38968D60167AFFF300D6DE2A /* ASGetTemperatureCommand.m */,
+				38968D61167AFFF300D6DE2A /* ASGetThermostatModeCommand.h */,
+				38968D62167AFFF300D6DE2A /* ASGetThermostatModeCommand.m */,
+				38968D63167AFFF300D6DE2A /* ASGetThermostatState.h */,
+				38968D64167AFFF300D6DE2A /* ASGetThermostatState.m */,
+				38968D65167AFFF300D6DE2A /* ASHouseDevice.h */,
+				38968D66167AFFF300D6DE2A /* ASHouseDevice.m */,
+				38968D67167AFFF300D6DE2A /* ASHVACInfoCommand.h */,
+				38968D68167AFFF300D6DE2A /* ASHVACInfoCommand.m */,
+				38968D69167AFFF300D6DE2A /* ASIncreaseCommand.h */,
+				38968D6A167AFFF300D6DE2A /* ASIncreaseCommand.m */,
+				38968D6B167AFFF300D6DE2A /* ASInsteonAddress.h */,
+				38968D6C167AFFF300D6DE2A /* ASInsteonAddress.m */,
+				38968D6D167AFFF300D6DE2A /* ASInsteonDatabase.h */,
+				38968D6E167AFFF300D6DE2A /* ASInsteonDatabase.m */,
+				38968D6F167AFFF300D6DE2A /* ASInsteonTransmitCommand.h */,
+				38968D70167AFFF300D6DE2A /* ASInsteonTransmitCommand.m */,
+				38968D71167AFFF400D6DE2A /* ASLockCommand.h */,
+				38968D72167AFFF400D6DE2A /* ASLockCommand.m */,
+				38968D73167AFFF400D6DE2A /* ASLockDevice.h */,
+				38968D74167AFFF400D6DE2A /* ASLockDevice.m */,
+				38968D75167AFFF400D6DE2A /* ASMotionDetector.h */,
+				38968D76167AFFF400D6DE2A /* ASMotionDetector.m */,
+				38968D77167AFFF400D6DE2A /* ASPowerLinc1132Controller.h */,
+				38968D78167AFFF400D6DE2A /* ASPowerLinc1132Controller.m */,
+				38968D79167AFFF400D6DE2A /* ASPowerLinc2412Controller.h */,
+				38968D7A167AFFF400D6DE2A /* ASPowerLinc2412Controller.m */,
+				38968D7B167AFFF400D6DE2A /* ASPowerLinc2414Controller.h */,
+				38968D7C167AFFF400D6DE2A /* ASPowerLinc2414Controller.m */,
+				38968D7D167AFFF400D6DE2A /* ASPowerLincController.h */,
+				38968D7E167AFFF400D6DE2A /* ASPowerLincController.m */,
+				38968D7F167AFFF400D6DE2A /* ASPowerLincSerialRFController.h */,
+				38968D80167AFFF400D6DE2A /* ASPowerLincSerialRFController.m */,
+				38968D81167AFFF400D6DE2A /* ASPowerMeterDevice.h */,
+				38968D82167AFFF400D6DE2A /* ASPowerMeterDevice.m */,
+				38968D83167AFFF400D6DE2A /* ASResetPowerMeterCommand.h */,
+				38968D84167AFFF400D6DE2A /* ASResetPowerMeterCommand.m */,
+				38968D85167AFFF400D6DE2A /* ASSerialPortAddress.h */,
+				38968D86167AFFF400D6DE2A /* ASSerialPortAddress.m */,
+				38968D87167AFFF400D6DE2A /* ASSerialPortModemDevice.h */,
+				38968D88167AFFF400D6DE2A /* ASSerialPortModemDevice.m */,
+				38968D89167AFFF400D6DE2A /* ASSetCoolPointCommand.h */,
+				38968D8A167AFFF400D6DE2A /* ASSetCoolPointCommand.m */,
+				38968D8B167AFFF400D6DE2A /* ASSetHeatPointCommand.h */,
+				38968D8C167AFFF400D6DE2A /* ASSetHeatPointCommand.m */,
+				38968D8D167AFFF400D6DE2A /* ASSetLevelCommand.h */,
+				38968D8E167AFFF400D6DE2A /* ASSetLevelCommand.m */,
+				38968D8F167AFFF400D6DE2A /* ASSetRampRateCommand.h */,
+				38968D90167AFFF400D6DE2A /* ASSetRampRateCommand.m */,
+				38968D91167AFFF400D6DE2A /* ASSetThermostatModeCommand.h */,
+				38968D92167AFFF400D6DE2A /* ASSetThermostatModeCommand.m */,
+				38968D93167AFFF400D6DE2A /* ASSmartLincDirectController.h */,
+				38968D94167AFFF400D6DE2A /* ASSmartLincDirectController.m */,
+				38968D95167AFFF400D6DE2A /* ASSmartLincWebController.h */,
+				38968D96167AFFF400D6DE2A /* ASSmartLincWebController.m */,
+				38968D97167AFFF400D6DE2A /* ASSprinklerDevice.h */,
+				38968D98167AFFF400D6DE2A /* ASSprinklerDevice.m */,
+				38968D99167AFFF400D6DE2A /* ASSprinklerFetchConfigurationCommand.h */,
+				38968D9A167AFFF400D6DE2A /* ASSprinklerFetchConfigurationCommand.m */,
+				38968D9B167AFFF400D6DE2A /* ASSprinklerOffCommand.h */,
+				38968D9C167AFFF400D6DE2A /* ASSprinklerOffCommand.m */,
+				38968D9D167AFFF400D6DE2A /* ASSprinklerOnCommand.h */,
+				38968D9E167AFFF400D6DE2A /* ASSprinklerOnCommand.m */,
+				38968D9F167AFFF400D6DE2A /* ASSprinklerSetConfigurationCommand.h */,
+				38968DA0167AFFF400D6DE2A /* ASSprinklerSetConfigurationCommand.m */,
+				38968DA1167AFFF400D6DE2A /* ASSprinklerSetDiagnosticsConfiguration.h */,
+				38968DA2167AFFF400D6DE2A /* ASSprinklerSetDiagnosticsConfiguration.m */,
+				38968DA3167AFFF400D6DE2A /* ASSprinklerSetPumpConfigurationCommand.h */,
+				38968DA4167AFFF400D6DE2A /* ASSprinklerSetPumpConfigurationCommand.m */,
+				38968DA5167AFFF400D6DE2A /* ASSprinklerSetRainSensorConfigurationCommand.h */,
+				38968DA6167AFFF400D6DE2A /* ASSprinklerSetRainSensorConfigurationCommand.m */,
+				38968DA7167AFFF400D6DE2A /* ASSprinklerValveStatusCommand.h */,
+				38968DA8167AFFF400D6DE2A /* ASSprinklerValveStatusCommand.m */,
+				38968DA9167AFFF400D6DE2A /* ASStatusCommand.h */,
+				38968DAA167AFFF400D6DE2A /* ASStatusCommand.m */,
+				38968DAB167AFFF400D6DE2A /* ASThermostatDevice.h */,
+				38968DAC167AFFF400D6DE2A /* ASThermostatDevice.m */,
+				38968DAD167AFFF400D6DE2A /* ASToggleDevice.h */,
+				38968DAE167AFFF400D6DE2A /* ASToggleDevice.m */,
+				38968DAF167AFFF400D6DE2A /* ASUnlockCommand.h */,
+				38968DB0167AFFF400D6DE2A /* ASUnlockCommand.m */,
+				38968DB1167AFFF400D6DE2A /* ASVirtualAddress.h */,
+				38968DB2167AFFF400D6DE2A /* ASVirtualAddress.m */,
+				38968DB3167AFFF400D6DE2A /* ASVirtualDeviceController.h */,
+				38968DB4167AFFF400D6DE2A /* ASVirtualDeviceController.m */,
+				38968DB7167AFFF400D6DE2A /* ASX10Address.h */,
+				38968DB8167AFFF400D6DE2A /* ASX10Address.m */,
+				38968DB9167AFFF400D6DE2A /* ASX10Controller.h */,
+				38968DBA167AFFF400D6DE2A /* ASX10Controller.m */,
+				38968DBD167AFFF400D6DE2A /* ShionLog.h */,
+				38968DBE167AFFF400D6DE2A /* ShionLog.m */,
+			);
+			name = Framework;
 			sourceTree = "<group>";
 		};
 		38A01D390F0EDF8C00CEADED /* Third Party Libraries */ = {
@@ -1107,6 +1489,7 @@
 				384D55FD1353921A0059786A /* select_btn.png in Resources */,
 				384D5600135392C70059786A /* fwd_btn.png in Resources */,
 				384D5601135392C70059786A /* back_btn.png in Resources */,
+				38968E2C167B00C300D6DE2A /* Insteon-Devices.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1219,6 +1602,81 @@
 				386454D414B943B2001A6036 /* Shion.xcdatamodel in Sources */,
 				38CD572914B965F20079270D /* NSDictionary+BSJSONAdditions.m in Sources */,
 				38CD572C14B966060079270D /* NSScanner+BSJSONAdditions.m in Sources */,
+				38968DBF167AFFF400D6DE2A /* ASActivateCommand.m in Sources */,
+				38968DC0167AFFF400D6DE2A /* ASActivateFanCommand.m in Sources */,
+				38968DC1167AFFF400D6DE2A /* ASActivateThermostatStatusBroadcastCommand.m in Sources */,
+				38968DC2167AFFF400D6DE2A /* ASAddress.m in Sources */,
+				38968DC3167AFFF400D6DE2A /* ASAggregateCommand.m in Sources */,
+				38968DC4167AFFF400D6DE2A /* ASAllLightsOffCommand.m in Sources */,
+				38968DC5167AFFF400D6DE2A /* ASAllLightsOnCommand.m in Sources */,
+				38968DC6167AFFF400D6DE2A /* ASAllOffCommand.m in Sources */,
+				38968DC7167AFFF400D6DE2A /* ASChimeCommand.m in Sources */,
+				38968DC8167AFFF400D6DE2A /* ASChimeDevice.m in Sources */,
+				38968DC9167AFFF400D6DE2A /* ASCM11AController.m in Sources */,
+				38968DCA167AFFF400D6DE2A /* ASCM15AUSBController.m in Sources */,
+				38968DCB167AFFF400D6DE2A /* ASCM17AController.m in Sources */,
+				38968DCC167AFFF400D6DE2A /* ASCommand.m in Sources */,
+				38968DCD167AFFF400D6DE2A /* ASContinuousDevice.m in Sources */,
+				38968DCE167AFFF400D6DE2A /* ASDeactivateCommand.m in Sources */,
+				38968DCF167AFFF400D6DE2A /* ASDeactivateFanCommand.m in Sources */,
+				38968DD0167AFFF400D6DE2A /* ASDecreaseCommand.m in Sources */,
+				38968DD1167AFFF400D6DE2A /* ASDevice.m in Sources */,
+				38968DD2167AFFF400D6DE2A /* ASDeviceController.m in Sources */,
+				38968DD3167AFFF400D6DE2A /* ASDisableStatusCommand.m in Sources */,
+				38968DD4167AFFF400D6DE2A /* ASEnableStatusCommand.m in Sources */,
+				38968DD5167AFFF400D6DE2A /* ASEzSrveWebController.m in Sources */,
+				38968DD6167AFFF400D6DE2A /* ASGarageHawkClose.m in Sources */,
+				38968DD7167AFFF400D6DE2A /* ASGarageHawkDevice.m in Sources */,
+				38968DD8167AFFF400D6DE2A /* ASGetCoolPointCommand.m in Sources */,
+				38968DD9167AFFF400D6DE2A /* ASGetHeatPointCommand.m in Sources */,
+				38968DDA167AFFF400D6DE2A /* ASGetInfoCommand.m in Sources */,
+				38968DDB167AFFF400D6DE2A /* ASGetRampRateCommand.m in Sources */,
+				38968DDC167AFFF400D6DE2A /* ASGetTemperatureCommand.m in Sources */,
+				38968DDD167AFFF400D6DE2A /* ASGetThermostatModeCommand.m in Sources */,
+				38968DDE167AFFF400D6DE2A /* ASGetThermostatState.m in Sources */,
+				38968DDF167AFFF400D6DE2A /* ASHouseDevice.m in Sources */,
+				38968DE0167AFFF400D6DE2A /* ASHVACInfoCommand.m in Sources */,
+				38968DE1167AFFF400D6DE2A /* ASIncreaseCommand.m in Sources */,
+				38968DE2167AFFF400D6DE2A /* ASInsteonAddress.m in Sources */,
+				38968DE3167AFFF400D6DE2A /* ASInsteonDatabase.m in Sources */,
+				38968DE4167AFFF400D6DE2A /* ASInsteonTransmitCommand.m in Sources */,
+				38968DE5167AFFF400D6DE2A /* ASLockCommand.m in Sources */,
+				38968DE6167AFFF400D6DE2A /* ASLockDevice.m in Sources */,
+				38968DE7167AFFF400D6DE2A /* ASMotionDetector.m in Sources */,
+				38968DE8167AFFF400D6DE2A /* ASPowerLinc1132Controller.m in Sources */,
+				38968DE9167AFFF400D6DE2A /* ASPowerLinc2412Controller.m in Sources */,
+				38968DEA167AFFF400D6DE2A /* ASPowerLinc2414Controller.m in Sources */,
+				38968DEB167AFFF400D6DE2A /* ASPowerLincController.m in Sources */,
+				38968DEC167AFFF400D6DE2A /* ASPowerLincSerialRFController.m in Sources */,
+				38968DED167AFFF400D6DE2A /* ASPowerMeterDevice.m in Sources */,
+				38968DEE167AFFF400D6DE2A /* ASResetPowerMeterCommand.m in Sources */,
+				38968DEF167AFFF400D6DE2A /* ASSerialPortAddress.m in Sources */,
+				38968DF0167AFFF400D6DE2A /* ASSerialPortModemDevice.m in Sources */,
+				38968DF1167AFFF400D6DE2A /* ASSetCoolPointCommand.m in Sources */,
+				38968DF2167AFFF400D6DE2A /* ASSetHeatPointCommand.m in Sources */,
+				38968DF3167AFFF400D6DE2A /* ASSetLevelCommand.m in Sources */,
+				38968DF4167AFFF400D6DE2A /* ASSetRampRateCommand.m in Sources */,
+				38968DF5167AFFF400D6DE2A /* ASSetThermostatModeCommand.m in Sources */,
+				38968DF6167AFFF400D6DE2A /* ASSmartLincDirectController.m in Sources */,
+				38968DF7167AFFF400D6DE2A /* ASSmartLincWebController.m in Sources */,
+				38968DF8167AFFF400D6DE2A /* ASSprinklerDevice.m in Sources */,
+				38968DF9167AFFF400D6DE2A /* ASSprinklerFetchConfigurationCommand.m in Sources */,
+				38968DFA167AFFF400D6DE2A /* ASSprinklerOffCommand.m in Sources */,
+				38968DFB167AFFF400D6DE2A /* ASSprinklerOnCommand.m in Sources */,
+				38968DFC167AFFF400D6DE2A /* ASSprinklerSetConfigurationCommand.m in Sources */,
+				38968DFD167AFFF400D6DE2A /* ASSprinklerSetDiagnosticsConfiguration.m in Sources */,
+				38968DFE167AFFF400D6DE2A /* ASSprinklerSetPumpConfigurationCommand.m in Sources */,
+				38968DFF167AFFF400D6DE2A /* ASSprinklerSetRainSensorConfigurationCommand.m in Sources */,
+				38968E00167AFFF400D6DE2A /* ASSprinklerValveStatusCommand.m in Sources */,
+				38968E01167AFFF400D6DE2A /* ASStatusCommand.m in Sources */,
+				38968E02167AFFF400D6DE2A /* ASThermostatDevice.m in Sources */,
+				38968E03167AFFF400D6DE2A /* ASToggleDevice.m in Sources */,
+				38968E04167AFFF400D6DE2A /* ASUnlockCommand.m in Sources */,
+				38968E05167AFFF400D6DE2A /* ASVirtualAddress.m in Sources */,
+				38968E06167AFFF400D6DE2A /* ASVirtualDeviceController.m in Sources */,
+				38968E08167AFFF400D6DE2A /* ASX10Address.m in Sources */,
+				38968E09167AFFF400D6DE2A /* ASX10Controller.m in Sources */,
+				38968E0B167AFFF400D6DE2A /* ShionLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1311,10 +1769,7 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = 4.0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;

@@ -8,8 +8,8 @@
 
 #import "GarageHawk.h"
 
-#import <Shion/ASDeviceController.h>
-#import <Shion/ASGarageHawkDevice.h>
+#import "ASDeviceController.h"
+#import "ASGarageHawkDevice.h"
 
 #import "Shion.h"
 #import "DeviceManager.h"

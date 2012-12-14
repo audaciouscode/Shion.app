@@ -8,8 +8,8 @@
 
 #import "Lock.h"
 
-#import <Shion/ASDeviceController.h>
-#import <Shion/ASLockDevice.h>
+#import "ASDeviceController.h"
+#import "ASLockDevice.h"
 
 #import "Shion.h"
 #import "DeviceManager.h"

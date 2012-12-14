@@ -7,8 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <Shion/ASDeviceController.h>
 
+#import "ASDeviceController.h"
 #import "Device.h"
 
 @interface Controller : Device 

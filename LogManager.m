@@ -7,7 +7,7 @@
 //
 
 #import "LogManager.h"
-#import <Shion/ASDeviceController.h>
+#import "ASDeviceController.h"
 
 #define ENABLE_LOGGING @"enable_logging"
 

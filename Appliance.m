@@ -11,8 +11,8 @@
 #import "DeviceManager.h"
 
 #import "Shion.h"
-#import <Shion/ASToggleDevice.h>
-#import <Shion/ASDeviceController.h>
+#import "ASToggleDevice.h"
+#import "ASDeviceController.h"
 
 #import "EventManager.h"
 

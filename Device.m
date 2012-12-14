@@ -38,9 +38,9 @@
 
 #import "Shion.h"
 
-#import <Shion/ASDeviceController.h>
-#import <Shion/ASInsteonAddress.h>
-#import <Shion/ASX10Address.h>
+#import "ASDeviceController.h"
+#import "ASInsteonAddress.h"
+#import "ASX10Address.h"
 
 #define CHECK_STATUS @"check_status"
 #define TWOWAY @"twoway"

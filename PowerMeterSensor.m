@@ -8,8 +8,8 @@
 
 #import "PowerMeterSensor.h"
 
-#import <Shion/ASDeviceController.h>
-#import <Shion/ASPowerMeterDevice.h>
+#import "ASDeviceController.h"
+#import "ASPowerMeterDevice.h"
 
 #import "Shion.h"
 

@@ -40,6 +40,15 @@
 			<property name="fan activity" code="tmfs" description="thermostat fan state" type="boolean">
 				<cocoa key="thermostat_fan"/>
 			</property>
+			<property name="outside temperature" code="wstp" description="temperature at weather station" type="number">
+				<cocoa key="temperature"/>
+			</property>
+			<property name="current power" code="smcp" description="current power draw of power meter" type="number">
+				<cocoa key="level"/>
+			</property>
+			<property name="accumulated power" code="smap" description="accumulated power usage measured by power meter" type="number">
+				<cocoa key="total"/>
+			</property>
 			<responds-to command="activate">
 				<cocoa method="activate:"/>
 			</responds-to>

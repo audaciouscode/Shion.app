@@ -12,8 +12,8 @@
 #import "DeviceManager.h"
 #import "EventManager.h"
 
-#import <Shion/ASDeviceController.h>
-#import <Shion/ASContinuousDevice.h>
+#import "ASDeviceController.h"
+#import "ASContinuousDevice.h"
 
 #define LAMP_DIM @"lamp_dim"
 #define LAMP_BRIGHTEN @"lamp_brighten"

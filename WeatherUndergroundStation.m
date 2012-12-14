@@ -25,7 +25,7 @@
 #define CREDIT @"credit"
 #define STATION_ID @"station_id"
 
-#import <Shion/ASThermostatDevice.h>
+#import "ASThermostatDevice.h"
 
 #import "TriggerManager.h"
 

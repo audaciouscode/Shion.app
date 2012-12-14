@@ -6,7 +6,7 @@
 //  Copyright 2010 CASIS LLC. All rights reserved.
 //
 
-#import <Shion/ASPowerLinc2412Controller.h>
+#import "ASPowerLinc2412Controller.h"
 
 #import "Controller.h"
 #import "DeviceManager.h"

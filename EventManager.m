@@ -189,6 +189,9 @@ static EventManager * sharedInstance = nil;
 		
 		cleanupTimer = [[NSTimer scheduledTimerWithTimeInterval:3600 target:self selector:@selector(cleanup:) userInfo:nil repeats:YES] retain];
 		
+		cachedEventsTree = nil;
+		treeInvalidator = nil;
+
 		dirty = NO;
 	}
 	
@@ -260,9 +263,31 @@ static EventManager * sharedInstance = nil;
 	return [self createEvent:type source:sourceId initiator:initiator description:description value:value match:YES];
 }
 
+- (void) invalidateEventsTree:(NSTimer *) theTimer
+{
+	treeInvalidator = nil;
+	
+	if (cachedEventsTree != nil)
+	{
+		[cachedEventsTree release];
+		cachedEventsTree = nil;
+	}
+	
+	[self eventsTree];
+}
+
 - (NSManagedObject *) createEvent:(NSString *) type source:(NSString *) sourceId initiator:(NSString *) initiator 
 			description:(NSString *) description value:(NSString *) value match:(BOOL) matchCheck;
 {
+	if (treeInvalidator != nil)
+	{
+		[treeInvalidator invalidate];
+		treeInvalidator = nil;
+	}
+	
+	treeInvalidator = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(invalidateEventsTree:)
+													  userInfo:nil repeats:NO];
+	
 	NSManagedObject * lastEvent = [self lastUpdateForIdentifier:sourceId event:type];
 	
 	if (matchCheck && [[lastEvent valueForKey:@"type"] isEqual:type] && [[lastEvent valueForKey:@"source"] isEqual:sourceId] && 
@@ -430,183 +455,186 @@ static EventManager * sharedInstance = nil;
 
 - (NSArray *) eventsTree
 {
-	NSMutableArray * tree = [NSMutableArray array];
-
-	NSMutableDictionary * allDates = [NSMutableDictionary dictionary];
-	NSMutableArray * dateStrings = [NSMutableArray array];
-	
-	NSMutableDictionary * byDate = [NSMutableDictionary dictionaryWithObject:@"By Date" forKey:@"label"];
-	NSMutableArray * dateArray = [NSMutableArray array];
-	[byDate setValue:dateArray forKey:@"children"];
-	[byDate setValue:[self events] forKey:EVENT_LIST];
-
-	NSMutableDictionary * allDevices = [NSMutableDictionary dictionary];
-	NSMutableDictionary * byDevice = [NSMutableDictionary dictionaryWithObject:@"By Device" forKey:@"label"];
-	NSMutableArray * deviceArray = [NSMutableArray array];
-	[byDevice setValue:deviceArray forKey:@"children"];
-	NSMutableArray * allDeviceEvents = [NSMutableArray array];
-	[byDevice setValue:allDeviceEvents forKey:EVENT_LIST];
-	
-	NSMutableDictionary * allSnapshots = [NSMutableDictionary dictionary];
-	NSMutableDictionary * bySnapshot = [NSMutableDictionary dictionaryWithObject:@"By Snapshot" forKey:@"label"];
-	NSMutableArray * snapshotArray = [NSMutableArray array];
-	[bySnapshot setValue:snapshotArray forKey:@"children"];
-	NSMutableArray * allSnapshotEvents = [NSMutableArray array];
-	[bySnapshot setValue:allSnapshotEvents forKey:EVENT_LIST];
-
-	NSMutableDictionary * allTriggers = [NSMutableDictionary dictionary];
-	NSMutableDictionary * byTrigger = [NSMutableDictionary dictionaryWithObject:@"By Trigger" forKey:@"label"];
-	NSMutableArray * triggerArray = [NSMutableArray array];
-	[byTrigger setValue:triggerArray forKey:@"children"];
-	NSMutableArray * allTriggerEvents = [NSMutableArray array];
-	[byTrigger setValue:allTriggerEvents forKey:EVENT_LIST];
-
-	NSEnumerator * eventIter = [[self events] objectEnumerator];
-	
-	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-	[formatter setTimeStyle:NSDateFormatterNoStyle];
-	[formatter setDateStyle:NSDateFormatterLongStyle];
-	
-	NSManagedObject * event = nil;
-	while (event = [eventIter nextObject])
+	if (cachedEventsTree == nil)
 	{
-		NSDate * date = [event valueForKey:@"date"];
+		cachedEventsTree = [[NSMutableArray alloc] init];
 		
-		NSString * dateString = [formatter stringFromDate:date];
+		NSMutableDictionary * allDates = [NSMutableDictionary dictionary];
+		NSMutableArray * dateStrings = [NSMutableArray array];
 		
-		NSMutableArray * dateArray = [allDates valueForKey:dateString];
-	
-		if (dateArray == nil)
+		NSMutableDictionary * byDate = [NSMutableDictionary dictionaryWithObject:@"By Date" forKey:@"label"];
+		NSMutableArray * dateArray = [NSMutableArray array];
+		[byDate setValue:dateArray forKey:@"children"];
+		[byDate setValue:[self events] forKey:EVENT_LIST];
+		
+		NSMutableDictionary * allDevices = [NSMutableDictionary dictionary];
+		NSMutableDictionary * byDevice = [NSMutableDictionary dictionaryWithObject:@"By Device" forKey:@"label"];
+		NSMutableArray * deviceArray = [NSMutableArray array];
+		[byDevice setValue:deviceArray forKey:@"children"];
+		NSMutableArray * allDeviceEvents = [NSMutableArray array];
+		[byDevice setValue:allDeviceEvents forKey:EVENT_LIST];
+		
+		NSMutableDictionary * allSnapshots = [NSMutableDictionary dictionary];
+		NSMutableDictionary * bySnapshot = [NSMutableDictionary dictionaryWithObject:@"By Snapshot" forKey:@"label"];
+		NSMutableArray * snapshotArray = [NSMutableArray array];
+		[bySnapshot setValue:snapshotArray forKey:@"children"];
+		NSMutableArray * allSnapshotEvents = [NSMutableArray array];
+		[bySnapshot setValue:allSnapshotEvents forKey:EVENT_LIST];
+		
+		NSMutableDictionary * allTriggers = [NSMutableDictionary dictionary];
+		NSMutableDictionary * byTrigger = [NSMutableDictionary dictionaryWithObject:@"By Trigger" forKey:@"label"];
+		NSMutableArray * triggerArray = [NSMutableArray array];
+		[byTrigger setValue:triggerArray forKey:@"children"];
+		NSMutableArray * allTriggerEvents = [NSMutableArray array];
+		[byTrigger setValue:allTriggerEvents forKey:EVENT_LIST];
+		
+		NSEnumerator * eventIter = [[self events] objectEnumerator];
+		
+		NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+		[formatter setTimeStyle:NSDateFormatterNoStyle];
+		[formatter setDateStyle:NSDateFormatterLongStyle];
+		
+		NSManagedObject * event = nil;
+		while (event = [eventIter nextObject])
 		{
-			dateArray = [NSMutableArray array];
-			[allDates setValue:dateArray forKey:dateString];
+			NSDate * date = [event valueForKey:@"date"];
 			
-			[dateStrings addObject:dateString];
-		}
-		
-		[dateArray addObject:event];
-		
-		NSString * source = [event valueForKey:@"source"];
-		
-		Device * device = [[DeviceManager sharedInstance] deviceWithIdentifier:source];
-		
-		if (device != nil)
-		{
-			NSMutableArray * deviceArray = [allDevices valueForKey:[device identifier]];
+			NSString * dateString = [formatter stringFromDate:date];
 			
-			if (deviceArray == nil)
+			NSMutableArray * dateArray = [allDates valueForKey:dateString];
+			
+			if (dateArray == nil)
 			{
-				deviceArray = [NSMutableArray array];
-				[allDevices setValue:deviceArray forKey:[device identifier]];
+				dateArray = [NSMutableArray array];
+				[allDates setValue:dateArray forKey:dateString];
+				
+				[dateStrings addObject:dateString];
 			}
 			
-			[deviceArray addObject:event];
-			[allDeviceEvents addObject:event];
-		}
-
-		Snapshot * snapshot = [[SnapshotManager sharedInstance] snapshotWithIdentifier:source];
-		
-		if (snapshot != nil)
-		{
-			NSMutableArray * snapArray = [allSnapshots valueForKey:[snapshot identifier]];
+			[dateArray addObject:event];
 			
-			if (snapArray == nil)
+			NSString * source = [event valueForKey:@"source"];
+			
+			Device * device = [[DeviceManager sharedInstance] deviceWithIdentifier:source];
+			
+			if (device != nil)
 			{
-				snapArray = [NSMutableArray array];
-				[allSnapshots setValue:snapArray forKey:[snapshot identifier]];
+				NSMutableArray * deviceArray = [allDevices valueForKey:[device identifier]];
+				
+				if (deviceArray == nil)
+				{
+					deviceArray = [NSMutableArray array];
+					[allDevices setValue:deviceArray forKey:[device identifier]];
+				}
+				
+				[deviceArray addObject:event];
+				[allDeviceEvents addObject:event];
 			}
 			
-			[snapArray addObject:event];
-			[allSnapshotEvents addObject:event];
-		}
-
-		Trigger * trigger = [[TriggerManager sharedInstance] triggerWithIdentifier:source];
-		
-		if (trigger != nil)
-		{
-			NSMutableArray * trigArray = [allTriggers valueForKey:[trigger identifier]];
+			Snapshot * snapshot = [[SnapshotManager sharedInstance] snapshotWithIdentifier:source];
 			
-			if (trigArray == nil)
+			if (snapshot != nil)
 			{
-				trigArray = [NSMutableArray array];
-				[allTriggers setValue:trigArray forKey:[trigger identifier]];
+				NSMutableArray * snapArray = [allSnapshots valueForKey:[snapshot identifier]];
+				
+				if (snapArray == nil)
+				{
+					snapArray = [NSMutableArray array];
+					[allSnapshots setValue:snapArray forKey:[snapshot identifier]];
+				}
+				
+				[snapArray addObject:event];
+				[allSnapshotEvents addObject:event];
 			}
 			
-			[trigArray addObject:event];
-			[allTriggerEvents addObject:event];
+			Trigger * trigger = [[TriggerManager sharedInstance] triggerWithIdentifier:source];
+			
+			if (trigger != nil)
+			{
+				NSMutableArray * trigArray = [allTriggers valueForKey:[trigger identifier]];
+				
+				if (trigArray == nil)
+				{
+					trigArray = [NSMutableArray array];
+					[allTriggers setValue:trigArray forKey:[trigger identifier]];
+				}
+				
+				[trigArray addObject:event];
+				[allTriggerEvents addObject:event];
+			}
 		}
-	}
-	
-	[formatter release];
-	
-	NSEnumerator * dateIter = [dateStrings objectEnumerator];
-	NSString * dateString = nil;
-	while (dateString = [dateIter nextObject])
-	{
-		NSMutableDictionary * dateDict = [NSMutableDictionary dictionaryWithObject:dateString forKey:@"label"];
 		
-		[dateDict setValue:[allDates valueForKey:dateString] forKey:EVENT_LIST];
-
-		[dateArray addObject:dateDict];
-	}
-
-	NSArray * devices = [[DeviceManager sharedInstance] devices];
-	NSEnumerator * deviceIter = [devices objectEnumerator];
-	Device * device = nil;
-	while (device = [deviceIter nextObject])
-	{
-		NSArray * deviceEvents = [allDevices valueForKey:[device identifier]];
+		[formatter release];
 		
-		if (deviceEvents != nil)
+		NSEnumerator * dateIter = [dateStrings objectEnumerator];
+		NSString * dateString = nil;
+		while (dateString = [dateIter nextObject])
 		{
-			NSMutableDictionary * deviceDict = [NSMutableDictionary dictionaryWithObject:[device name] forKey:@"label"];
+			NSMutableDictionary * dateDict = [NSMutableDictionary dictionaryWithObject:dateString forKey:@"label"];
 			
-			[deviceDict setValue:deviceEvents forKey:EVENT_LIST];
+			[dateDict setValue:[allDates valueForKey:dateString] forKey:EVENT_LIST];
 			
-			[deviceArray addObject:deviceDict];
+			[dateArray addObject:dateDict];
 		}
-	}
-
-	NSArray * snapshots = [[SnapshotManager sharedInstance] snapshots];
-	NSEnumerator * snapIter = [snapshots objectEnumerator];
-	Snapshot * snapshot = nil;
-	while (snapshot = [snapIter nextObject])
-	{
-		NSArray * snapEvents = [allSnapshots valueForKey:[snapshot identifier]];
 		
-		if (snapEvents != nil)
+		NSArray * devices = [[DeviceManager sharedInstance] devices];
+		NSEnumerator * deviceIter = [devices objectEnumerator];
+		Device * device = nil;
+		while (device = [deviceIter nextObject])
 		{
-			NSMutableDictionary * snapDict = [NSMutableDictionary dictionaryWithObject:[snapshot name] forKey:@"label"];
+			NSArray * deviceEvents = [allDevices valueForKey:[device identifier]];
 			
-			[snapDict setValue:snapEvents forKey:EVENT_LIST];
-			
-			[snapshotArray addObject:snapDict];
+			if (deviceEvents != nil)
+			{
+				NSMutableDictionary * deviceDict = [NSMutableDictionary dictionaryWithObject:[device name] forKey:@"label"];
+				
+				[deviceDict setValue:deviceEvents forKey:EVENT_LIST];
+				
+				[deviceArray addObject:deviceDict];
+			}
 		}
-	}
-
-	NSArray * triggers = [[TriggerManager sharedInstance] triggers];
-	NSEnumerator * trigIter = [triggers objectEnumerator];
-	Trigger * trigger = nil;
-	while (trigger = [trigIter nextObject])
-	{
-		NSArray * trigEvents = [allTriggers valueForKey:[trigger identifier]];
 		
-		if (trigEvents != nil)
+		NSArray * snapshots = [[SnapshotManager sharedInstance] snapshots];
+		NSEnumerator * snapIter = [snapshots objectEnumerator];
+		Snapshot * snapshot = nil;
+		while (snapshot = [snapIter nextObject])
 		{
-			NSMutableDictionary * trigDict = [NSMutableDictionary dictionaryWithObject:[trigger name] forKey:@"label"];
+			NSArray * snapEvents = [allSnapshots valueForKey:[snapshot identifier]];
 			
-			[trigDict setValue:trigEvents forKey:EVENT_LIST];
-			
-			[triggerArray addObject:trigDict];
+			if (snapEvents != nil)
+			{
+				NSMutableDictionary * snapDict = [NSMutableDictionary dictionaryWithObject:[snapshot name] forKey:@"label"];
+				
+				[snapDict setValue:snapEvents forKey:EVENT_LIST];
+				
+				[snapshotArray addObject:snapDict];
+			}
 		}
+		
+		NSArray * triggers = [[TriggerManager sharedInstance] triggers];
+		NSEnumerator * trigIter = [triggers objectEnumerator];
+		Trigger * trigger = nil;
+		while (trigger = [trigIter nextObject])
+		{
+			NSArray * trigEvents = [allTriggers valueForKey:[trigger identifier]];
+			
+			if (trigEvents != nil)
+			{
+				NSMutableDictionary * trigDict = [NSMutableDictionary dictionaryWithObject:[trigger name] forKey:@"label"];
+				
+				[trigDict setValue:trigEvents forKey:EVENT_LIST];
+				
+				[triggerArray addObject:trigDict];
+			}
+		}
+		
+		[cachedEventsTree addObject:byDate];
+		[cachedEventsTree addObject:byDevice];
+		[cachedEventsTree addObject:bySnapshot];
+		[cachedEventsTree addObject:byTrigger];
 	}
-	
-	[tree addObject:byDate];
-	[tree addObject:byDevice];
-	[tree addObject:bySnapshot];
-	[tree addObject:byTrigger];
-	
-	return tree;
+		
+	return cachedEventsTree;
 }
 
 @end

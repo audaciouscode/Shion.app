@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import <Shion/ASDevice.h>
+#import "ASDevice.h"
 
 #import "ASMutableDictionary.h"
 

@@ -24,6 +24,9 @@
     NSManagedObjectContext *managedObjectContext;
 	
 	BOOL dirty;
+	
+	NSMutableArray * cachedEventsTree;
+	NSTimer * treeInvalidator;
 }
 
 + (EventManager *) sharedInstance;

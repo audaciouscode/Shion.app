@@ -8,7 +8,7 @@
 
 #import "SetThermostatModeCommand.h"
 #import "Shion.h"
-#import <Shion/ASThermostatDevice.h>
+#import "ASThermostatDevice.h"
 #import "Thermostat.h"
 
 @implementation SetThermostatModeCommand

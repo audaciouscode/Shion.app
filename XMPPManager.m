@@ -6,7 +6,7 @@
 //  Copyright 2009 CASIS LLC. All rights reserved.
 //
 
-#import <Shion/ASDeviceController.h>
+#import "ASDeviceController.h"
 
 #import "NSDictionary+BSJSONAdditions.h"
 #import "NSScanner+BSJSONAdditions.h"
