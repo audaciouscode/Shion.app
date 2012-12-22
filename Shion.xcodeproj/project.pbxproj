@@ -1769,7 +1769,10 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					ppc,
+					i386,
+				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = 4.0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1782,6 +1785,7 @@
 				);
 				PREBINDING = NO;
 				SDKROOT = macosx10.4;
+				VALID_ARCHS = "i386 ppc ppc7400 ppc970";
 			};
 			name = Release;
 		};
