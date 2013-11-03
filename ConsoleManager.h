@@ -28,6 +28,8 @@
 	IBOutlet NSTabView * controlTabs;
 	
 	IBOutlet NSArrayController * snapshots;
+	IBOutlet NSArrayController * snapshotDevices;
+	
 	IBOutlet NSPanel * snapshotsPanel;
 	
 	IBOutlet NSImageView * mapView;
@@ -70,6 +72,7 @@
 
 - (IBAction) dismissSnapshotsPanel:(id) sender;
 - (IBAction) revealTriggerAction:(id) sender;
+- (IBAction) removeDeviceFromSnapshot:(id) sender;
 
 - (IBAction) beacon:(id) sender;
 

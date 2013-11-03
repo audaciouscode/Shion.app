@@ -267,11 +267,11 @@ static EventManager * sharedInstance = nil;
 {
 	treeInvalidator = nil;
 	
-	if (cachedEventsTree != nil)
-	{
-		[cachedEventsTree release];
-		cachedEventsTree = nil;
-	}
+	// if (cachedEventsTree != nil)
+	// {
+	// 	[cachedEventsTree release];
+	// 	cachedEventsTree = nil;
+	// }
 	
 	[self eventsTree];
 }

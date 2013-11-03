@@ -1394,4 +1394,15 @@ static ConsoleManager * sharedInstance = nil;
 		[cameraPanel makeKeyAndOrderFront:sender];
 }
 
+- (IBAction) removeDeviceFromSnapshot:(id) sender
+{
+	Snapshot * snapshot = [[[treeController selectedObjects] lastObject] valueForKey:@"snapshot"];
+	NSDictionary * device = [[snapshotDevices selectedObjects] lastObject];
+
+	NSMutableArray * identifiers = [NSMutableArray array];
+	[identifiers addObject:[device valueForKey:@"identifier"]];
+	
+	[snapshot removeDevices:identifiers];
+}
+
 @end
