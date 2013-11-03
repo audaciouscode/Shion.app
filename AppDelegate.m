@@ -6,6 +6,8 @@
 //  Copyright 2008 CASIS LLC. All rights reserved.
 //
 
+#import <HockeySDK/BITHockeyManager.h>
+
 #import "AppDelegate.h"
 
 #import "PreferencesManager.h"
@@ -89,9 +91,21 @@
 		[menuItem setImage:[NSImage imageNamed:@"cache-menu-off"]];
 }
 
+- (void) showMainApplicationWindow
+{
+    NSLog(@"SHOW MAIN WINDOW");
+}
 
 - (void) awakeFromNib
 {
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"a855984e414d7d37ba96d936468e4102"
+                                                        companyName:@"Audacious Software"
+                                         crashReportManagerDelegate:self];
+
+    [[BITHockeyManager sharedHockeyManager] setExceptionInterceptionEnabled:YES];
+    
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    
 	NSStatusBar * bar = [NSStatusBar systemStatusBar];
 	
 	menuItem = [[bar statusItemWithLength:NSVariableStatusItemLength] retain];

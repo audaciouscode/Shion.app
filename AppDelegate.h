@@ -7,8 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <HockeySDK/HockeySDK.h>
 
-@interface AppDelegate : NSObject 
+@interface AppDelegate : NSObject<BITCrashReportManagerDelegate>
 {
 	IBOutlet NSMenu * menu;
 	IBOutlet NSMenuItem * favorites;

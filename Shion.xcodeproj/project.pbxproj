@@ -59,7 +59,6 @@
 		384931521188CCCF006433AE /* remove_device.png in Resources */ = {isa = PBXBuildFile; fileRef = 384931511188CCCF006433AE /* remove_device.png */; };
 		3849FE53101E8AA300FC39E3 /* XMPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3849FE52101E8AA300FC39E3 /* XMPP.framework */; };
 		3849FE64101E8AC000FC39E3 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3849FE63101E8AC000FC39E3 /* libidn.a */; };
-		3849FEB9101E8D8F00FC39E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3849FEB8101E8D8F00FC39E3 /* SystemConfiguration.framework */; };
 		3849FEFF101E8EE500FC39E3 /* XMPP.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3849FE52101E8AA300FC39E3 /* XMPP.framework */; };
 		384A4C051440A1F800F9CB6B /* GarageHawk.m in Sources */ = {isa = PBXBuildFile; fileRef = 384A4C041440A1F800F9CB6B /* GarageHawk.m */; };
 		384A4C541440C11D00F9CB6B /* GarageHawkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 384A4C531440C11D00F9CB6B /* GarageHawkView.m */; };
@@ -197,7 +196,9 @@
 		38B82058126CFF4300AA5FE9 /* ActivateHouseLightsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B82057126CFF4300AA5FE9 /* ActivateHouseLightsCommand.m */; };
 		38B82120126D33F700AA5FE9 /* OpenCV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B8211F126D33F700AA5FE9 /* OpenCV.framework */; };
 		38B82166126D340200AA5FE9 /* OpenCV.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38B8211F126D33F700AA5FE9 /* OpenCV.framework */; };
-		38C88C5F111DD2DB003A67CE /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C88C5E111DD2DB003A67CE /* AddressBook.framework */; };
+		38BBDEA41826A8600016920A /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BBDEA31826A8600016920A /* HockeySDK.framework */; };
+		38BBDEA51826A88A0016920A /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38BBDEA31826A8600016920A /* HockeySDK.framework */; };
+		38BBDEA71826AA3E0016920A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BBDEA61826AA3E0016920A /* SystemConfiguration.framework */; };
 		38CD572914B965F20079270D /* NSDictionary+BSJSONAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CD572814B965F20079270D /* NSDictionary+BSJSONAdditions.m */; };
 		38CD572C14B966060079270D /* NSScanner+BSJSONAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CD572B14B966060079270D /* NSScanner+BSJSONAdditions.m */; };
 		38D4D5950F141FDC0076B966 /* cache-menu-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D4D5930F141FDC0076B966 /* cache-menu-on.png */; };
@@ -247,6 +248,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				38BBDEA51826A88A0016920A /* HockeySDK.framework in CopyFiles */,
 				38B82166126D340200AA5FE9 /* OpenCV.framework in CopyFiles */,
 				382F5BE1117CC15800BD3E2F /* LuaCore.framework in CopyFiles */,
 				383F5432103CA21800A26A9A /* SSCrypto.framework in CopyFiles */,
@@ -361,7 +363,6 @@
 		384931511188CCCF006433AE /* remove_device.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_device.png; sourceTree = "<group>"; };
 		3849FE52101E8AA300FC39E3 /* XMPP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XMPP.framework; sourceTree = "<group>"; };
 		3849FE63101E8AC000FC39E3 /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libidn.a; sourceTree = "<group>"; };
-		3849FEB8101E8D8F00FC39E3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		384A4C031440A1F800F9CB6B /* GarageHawk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GarageHawk.h; sourceTree = "<group>"; };
 		384A4C041440A1F800F9CB6B /* GarageHawk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GarageHawk.m; sourceTree = "<group>"; };
 		384A4C521440C11D00F9CB6B /* GarageHawkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GarageHawkView.h; sourceTree = "<group>"; };
@@ -607,7 +608,8 @@
 		38B82056126CFF4300AA5FE9 /* ActivateHouseLightsCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivateHouseLightsCommand.h; sourceTree = "<group>"; };
 		38B82057126CFF4300AA5FE9 /* ActivateHouseLightsCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivateHouseLightsCommand.m; sourceTree = "<group>"; };
 		38B8211F126D33F700AA5FE9 /* OpenCV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenCV.framework; sourceTree = "<group>"; };
-		38C88C5E111DD2DB003A67CE /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		38BBDEA31826A8600016920A /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
+		38BBDEA61826AA3E0016920A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		38CD572714B965F20079270D /* NSDictionary+BSJSONAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+BSJSONAdditions.h"; sourceTree = "<group>"; };
 		38CD572814B965F20079270D /* NSDictionary+BSJSONAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+BSJSONAdditions.m"; sourceTree = "<group>"; };
 		38CD572A14B966060079270D /* NSScanner+BSJSONAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScanner+BSJSONAdditions.h"; sourceTree = "<group>"; };
@@ -678,6 +680,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38BBDEA71826AA3E0016920A /* SystemConfiguration.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				38A018CF0F0E5CA200CEADED /* IOKit.framework in Frameworks */,
 				38B3D2EF0F1E0F51003F968F /* CoreServices.framework in Frameworks */,
@@ -686,12 +689,11 @@
 				3898120E100E98E00056A396 /* Sparkle.framework in Frameworks */,
 				3849FE53101E8AA300FC39E3 /* XMPP.framework in Frameworks */,
 				3849FE64101E8AC000FC39E3 /* libidn.a in Frameworks */,
-				3849FEB9101E8D8F00FC39E3 /* SystemConfiguration.framework in Frameworks */,
 				383F539D103C8EE000A26A9A /* SSCrypto.framework in Frameworks */,
-				38C88C5F111DD2DB003A67CE /* AddressBook.framework in Frameworks */,
 				382F5BC1117CC14F00BD3E2F /* LuaCore.framework in Frameworks */,
 				38B82120126D33F700AA5FE9 /* OpenCV.framework in Frameworks */,
 				389F652B1353B7330022CFA2 /* CoreFoundation.framework in Frameworks */,
+				38BBDEA41826A8600016920A /* HockeySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -720,12 +722,11 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				38BBDEA31826A8600016920A /* HockeySDK.framework */,
 				389F652A1353B7330022CFA2 /* CoreFoundation.framework */,
 				38B8211F126D33F700AA5FE9 /* OpenCV.framework */,
 				382F5BC0117CC14F00BD3E2F /* LuaCore.framework */,
-				38C88C5E111DD2DB003A67CE /* AddressBook.framework */,
 				383F539C103C8EE000A26A9A /* SSCrypto.framework */,
-				3849FEB8101E8D8F00FC39E3 /* SystemConfiguration.framework */,
 				3849FE63101E8AC000FC39E3 /* libidn.a */,
 				3849FE52101E8AA300FC39E3 /* XMPP.framework */,
 				38981208100E98DF0056A396 /* Growl-WithInstaller.framework */,
@@ -799,6 +800,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				38BBDEA61826AA3E0016920A /* SystemConfiguration.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
@@ -1432,6 +1434,8 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Shion" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
@@ -1698,10 +1702,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"/Users/cjkarr/Documents/GitHub/Shion-App",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -1709,6 +1715,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Shion_Prefix.pch;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -1716,6 +1723,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = Shion;
+				SDKROOT = macosx;
+				VALID_ARCHS = "$(VALID_ARCHS)";
 			};
 			name = Debug;
 		};
@@ -1723,14 +1732,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"/Users/cjkarr/Documents/GitHub/Shion-App",
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Shion_Prefix.pch;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -1738,6 +1750,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = Shion;
+				SDKROOT = macosx;
+				VALID_ARCHS = "$(VALID_ARCHS)";
 			};
 			name = Release;
 		};
